@@ -1,0 +1,51 @@
+{% extends "::layout.html.twig" %}
+{% block title %}
+  {{ parent() }}
+  <style>
+div#content {
+    display: none;
+    }
+    
+  </style>
+{% endblock %}
+
+{% block menu %}
+
+<h5>&nbsp;</h5>
+{% if app.request.getLocale() == 'ar' %}
+<ul class="nav nav-pills nav-stacked affix" style="width: 225px;margin-right: -50px">
+{% else %}
+<ul class="nav nav-pills nav-stacked affix" style="width: 225px;margin-left: -50px">
+{% endif %}
+  <li class="nav-header"></li>
+  <li class="active"><a href="{{ path('quizmoo_questionnaire_homepage', {'page': 1,'categorieId': 41 }) }}">{{'layout.survey'|trans}}</a></li>
+  <br>
+  <li class="active"><a href="{{ path('quizmoo_questionnaire_ajouter') }}">
+  {{'layout.new_survey'|trans}}</a></li>  
+</ul>
+{% block sidebarmenu %}
+{% endblock %}
+{# <div id="sidebar-menu" class="col-md-2 hidden-xs hidden-sm">
+  {% include "QuizmooQuestionnaireBundle:Questionnaire:questionTypeMenu.html.twig" %}
+</div> #}
+        
+
+{% endblock %}
+{% block body %}
+<div id="loadingI" style="margin-left: 45%;margin-right: 45%;">
+        <img  src="{{asset(('img/loadingImg.gif'))}}" class="image-btn new-web-link" id="loadingIm"  />
+        </div>
+<div id="content">
+
+  {% block quizmoo_questionnaire_body %}
+  
+  {% endblock %}
+</div>
+<script type="text/javascript">
+        function preloader(){
+            document.getElementById("loadingI").style.display = "none";
+            document.getElementById("content").style.display = "block";
+        }
+        window.onload = preloader;
+</script>
+{% endblock %}

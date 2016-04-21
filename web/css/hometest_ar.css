@@ -1,0 +1,380 @@
+
+    /* GLOBAL STYLES
+    -------------------------------------------------- */
+    /* Padding below the footer and lighter body text */
+
+    body {
+      padding-bottom: 40px;
+      color: #5a5a5a;
+    }
+    
+
+.muteddouble {
+color: #999;
+font-size: 25px;
+margin-left: 50%;
+}
+.muted {
+color: #999;
+font-size: 13px;
+margin-left: 46%;
+}
+
+    /* CUSTOMIZE THE NAVBAR
+    -------------------------------------------------- */
+
+    /* Special class on .container surrounding .navbar, used for positioning it into place. */
+    .navbar-wrapper {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 10;
+      margin-top: 0px;
+      margin-bottom: -90px; /* Negative margin to pull up carousel. 90px is roughly margins and height of navbar. */
+                    }
+    .navbar {
+       width: 100%;
+            }
+
+    /* Remove border and change up box shadow for more contrast */
+    .navbar .navbar-inner {
+      border: 0;
+      -webkit-box-shadow: 0 2px 10px rgba(0,0,0,.25);
+         -moz-box-shadow: 0 2px 10px rgba(0,0,0,.25);
+              box-shadow: 0 2px 10px rgba(0,0,0,.25);
+     height: 64px;
+    }
+
+    /* Downsize the brand/project name a bit */
+    .navbar .brand {
+      padding: 14px 20px 16px; /* Increase vertical padding to match navbar links */
+      font-size: 16px;
+      font-weight: bold;
+      text-shadow: 0 -1px 0 rgba(0,0,0,.5);
+    }
+
+    /* Navbar links: increase padding for taller navbar */
+    .navbar .nav > li > a {
+      padding: 15px 20px;
+          }
+
+    /* Offset the responsive button for proper vertical alignment */
+    .navbar .btn-navbar {
+      margin-top: 10px;
+    }
+
+
+
+    /* CUSTOMIZE THE CAROUSEL
+    -------------------------------------------------- */
+
+    /* Carousel base class */
+    .carousel {
+      margin-bottom: 5px;
+      padding-top: 4%;
+    }
+
+    .carousel .container {
+      position: relative;
+      z-index: 9;
+    }
+
+    .carousel-control {
+      height: 80px;
+      margin-top: 0;
+      font-size: 120px;
+      text-shadow: 0 1px 1px rgba(0,0,0,.4);
+      background-color: transparent;
+      border: 0;
+      z-index: 10;
+    }
+
+    .carousel .item {
+      height: 500px;
+    }
+    .carousel img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      min-width: 100%;
+      height: 500px;
+    }
+
+    .carousel-caption {
+      background-color: transparent;
+      position: static;
+      max-width: 1100px;
+      padding: 0 20px;
+      margin-top: 85px;
+    }
+    .carousel-caption h1,
+    .carousel-caption .lead {
+      margin: 0;
+      line-height: 1;
+      color: #090101;
+      /*text-shadow: 0px 0px 10px rgba(109,107,107,1);*/
+      margin-left: 180px;
+    }
+    .carousel-caption .btn {
+      margin-top: 30px;
+      
+    }
+
+
+
+    /* MARKETING CONTENT
+    -------------------------------------------------- */
+
+    /* Center align the text within the three columns below the carousel */
+    .marketing .span4 {
+      text-align: center;
+    }
+    .marketing h2 {
+      font-weight: normal;
+    }
+    .marketing .span4 p {
+      margin-left: 10px;
+      margin-right: 10px;
+    }
+
+
+    /* Featurettes
+    ------------------------- */
+
+    .featurette-divider {
+      margin: 80px 0; /* Space out the Bootstrap <hr> more */
+    }
+    .featurette {
+      padding-top: 120px; /* Vertically center images part 1: add padding above and below text. */
+      overflow: hidden; /* Vertically center images part 2: clear their floats. */
+    }
+    .featurette-image {
+      margin-top: -120px; /* Vertically center images part 3: negative margin up the image the same amount of the padding to center it. */
+    }
+
+    /* Give some space on the sides of the floated elements so text doesn't run right into it. */
+    .featurette-image.pull-left {
+      margin-right: 40px;
+    }
+    .featurette-image.pull-right {
+      margin-left: 40px;
+    }
+
+    /* Thin out the marketing headings */
+    .featurette-heading {
+      font-size: 50px;
+      font-weight: 300;
+      line-height: 1;
+      letter-spacing: -1px;
+    }
+
+
+
+    /* RESPONSIVE CSS
+    -------------------------------------------------- */
+
+    @media (max-width: 979px) {
+
+      .container.navbar-wrapper {
+        margin-bottom: 0;
+        width: auto;
+      }
+      .navbar-inner {
+        border-radius: 0;
+        margin: -20px 0;
+      }
+
+      .carousel .item {
+        height: 500px;
+      }
+      .carousel img {
+        width: auto;
+        height: 500px;
+      }
+
+      .featurette {
+        height: auto;
+        padding: 0;
+      }
+      .featurette-image.pull-left,
+      .featurette-image.pull-right {
+        display: block;
+        float: none;
+        max-width: 40%;
+        margin: 0 auto 20px;
+      }
+    }
+
+
+    @media (max-width: 767px) {
+
+      .navbar-inner {
+        margin: -20px;
+      }
+
+      .carousel {
+        margin-left: -20px;
+        margin-right: -20px;
+      }
+      .carousel .container {
+
+      }
+      .carousel .item {
+        height: 300px;
+      }
+      .carousel img {
+        height: 300px;
+      }
+      .carousel-caption {
+        width: 65%;
+        padding: 0 70px;
+        margin-top: 100px;
+      }
+      .carousel-caption h1 {
+        font-size: 30px;
+      }
+      .carousel-caption .lead,
+      .carousel-caption .btn {
+        font-size: 18px;
+      }
+
+      .marketing .span4 + .span4 {
+        margin-top: 40px;
+      }
+
+      .featurette-heading {
+        font-size: 30px;
+      }
+      .featurette .lead {
+        font-size: 18px;
+        line-height: 1.5;
+      }
+
+    }
+    .navbar .divider-vertical{
+     height: 40px;
+    }
+    .navbar .nav{
+     margin-top: 1%; 
+    }
+    element.style {
+}
+
+.navbar .nav > li > a {
+
+}
+
+span.copyright {
+font-weight: normal;
+letter-spacing: normal;
+text-transform: none;
+margin: 0 10px;
+vertical-align: middle;
+background: inherit;
+border: none;
+float: none;
+display: inline;
+}
+slid{
+  width: 80%;
+  margin-left: 10%;
+  margin-top: 1%
+}
+
+.welcomeText{
+  font-size: 25px;
+  line-height: 1.5em !important;
+  margin: -165px 0px 0px 40px !important;
+  font-weight: normal;
+}
+#features table{
+ width: 90%;
+ margin-left: 40px;
+}
+#features th {
+  text-align: left;
+  text-transform:  uppercase;
+}
+#features ul {
+  margin: 0 0 10px 5px
+}
+#features li {
+  float: none;
+  margin: 5px -9px;
+  /*background: url("../img/check_bootstrap.png") no-repeat left bottom;*/
+  list-style-type: none;
+  padding: 0px 0px 1px 24px;
+  vertical-align: middle;
+}
+#features table td  {
+  vertical-align: top;
+}
+
+#features a{
+  margin-top: 15px;
+  margin-bottom: 15px; 
+}
+
+.info{
+  line-height: 20px;
+}
+
+.centerbox{text-align: center !important;}
+.thselect{
+	width: auto;
+	display: block;
+	margin: auto;
+	text-align: center !important;
+	padding: 0;
+}
+
+.centerbox input[type="checkbox"] {
+height: 25px;
+width: 25px;
+}
+input[type="checkbox"] {
+margin: 3px 3px 3px 4px;
+}
+input[type="checkbox"] {
+-webkit-appearance: checkbox;
+box-sizing: border-box;
+}
+input[type="checkbox"] {
+
+padding: initial;
+background-color: initial;
+border: initial;
+}
+input, input[type="password"], input[type="search"], isindex {
+
+border-image: initial;
+-webkit-rtl-ordering: logical;
+-webkit-user-select: text;
+cursor: auto;
+}
+input, textarea, keygen, select, button, isindex {
+
+font: -webkit-small-control;
+color: initial;
+letter-spacing: normal;
+word-spacing: normal;
+text-transform: none;
+text-indent: 0px;
+text-shadow: none;
+display: inline-block;
+text-align: start;
+}
+input, textarea, keygen, select, button, isindex, meter, progress {
+-webkit-writing-mode: horizontal-tb;
+}
+
+.welcomfree{
+	
+	font-size: 23px;
+	margin: 2% 0 2% 5%;
+	color: #000;
+	line-height: 1.3em;
+	
+	
+}

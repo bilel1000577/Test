@@ -1,0 +1,24 @@
+{% extends "::layout.html.twig" %}
+{% block body %}
+{% if app.getRequest().getLocale() == 'ar' %}
+<style>
+	div.container.graphics{
+		direction: ltr !important;
+	}
+</style>
+{% endif %}
+
+<script src="{{ asset('bundles/obhighcharts/js/highcharts/highcharts.js') }}"></script> 
+<script src="{{ asset('bundles/obhighcharts/js/highcharts/modules/exporting.js') }}"></script> 
+{% javascripts  '@StatisticBundle/Resources/public/js/touch-tooltip-fix.js' %}
+      <script src="{{ asset_url}}"></script>
+{% endjavascripts %}
+<script type="text/javascript">
+{{ chart(pchart) }}
+{{ chart(bchart) }}
+</script>
+
+<div class="row" id="pie_chart_multiple_choice" style="padding-top: 5%;"></div>
+<div class="row" id="bar_chart_multiple_choice"></div>
+
+{% endblock %}

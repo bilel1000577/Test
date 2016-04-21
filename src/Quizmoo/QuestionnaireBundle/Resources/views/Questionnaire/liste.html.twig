@@ -1,0 +1,36 @@
+{% extends "QuizmooQuestionnaireBundle::layout.html.twig" %}
+{% block quizmoo_questionnaire_body %}
+<div id="content" >
+  <div class="questions">
+    <h2 > Questions </h2>
+    <div id="list_questions">
+     <ul ><br />
+        {% if entities is not empty %}<br />
+        {% for key, entity in entities %}<br />
+        <li>{{ entity.id }}</a></li><br />
+        {% endfor %}<br />
+        {% else %}<br />
+        <p>Résultat vide</p><br />
+        {% endif %}<br />
+      </ul><br />
+      
+      {% if last_page > 1 %}
+      <div class="pagination_sector"> <a href="{{ path('question_list', { 'page': 1 }) }}"> &amp;<span> prec </span> </a> <a href="{{ path('question_list', { 'page': previous_page }) }}"> &amp;<span> prec </span> </a><br />
+        <ol><br />
+          {% for page in 1..last_page %}<br />
+          {% if page == current_page %}<br />
+          <li>{{ page }}</li><br />
+          {% else %}<br />
+          <li> <a href="{{ path('question_list', { 'page': page }) }}">{{ page }}</a> </li><br />
+          {% endif %}<br />
+          {% endfor %}<br />
+        </ol><br />
+        <a href="{{ path('question_list', { 'page': next_page }) }}"> <span> suiv </span>&amp; </a> <a href="{{ path('question_list', { 'page': last_page }) }}"> <span> suiv </span>&amp;</a> </div><br />
+      {% endif %}<br />
+      <div class="pagination_desc"> <strong>{{ total_questions }}</strong> questions  dans la page</p>
+<p>        {% if last_page > 1 %}
+        - page <strong>{{ current_page }}/{{ last_page }}</strong> {% endif %} </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

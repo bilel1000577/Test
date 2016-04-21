@@ -1,0 +1,109 @@
+ .well {
+            margin-right: 50px;
+            margin-left: 50px;
+            margin-top: 2%;
+        }
+        .questionnaire_Link{
+           margin-bottom: 3px;
+            height: 20%;
+            border: 1px solid #CCC; 
+            margin-top: 3%;
+            width: 95%;
+            margin-left: 2%;
+            
+        }
+        .container_preview{
+           width: 100%;
+           height: 100%;
+           padding-bottom: 5%;
+        }
+        .list_questionnaire{
+        width: 104%;
+        padding-bottom: 3%;
+        }
+        .questionnaire_preview{
+        width: 90%;
+        margin-left: 3%;
+        margin-top: 5%;
+        }
+        
+        .url{
+      margin-left: 5%;
+      font-weight: bold;
+      font-size: 19px;
+      width: 95%;
+        }
+        .personalize_url{
+            width: 670px;
+            margin-left: 17%;
+        }
+
+         .container {
+            background: none;
+            text-align: left;
+
+
+        }
+        .row {
+            border-bottom: solid 1px #CCC;
+        }
+        .row, .td-manage-collectors {
+            padding: 10px;
+        }
+        .clearfix {
+            display: block;
+            border-top: solid 1px #CCC;
+            margin-bottom: 0.2%;
+            background-color: white;
+        }
+        .clearfix::after {
+            visibility: hidden;
+            display: block;
+            font-size: 0;
+            content: " ";
+            clear: both;
+            height: 0;
+        }
+        .more-ways-to-send .container {
+            text-align: left;
+        }
+        .first {
+            height: 52px;
+            width: 52px;
+        }
+        .three-column {
+        }
+        .three-column {
+            float: left;
+        }
+        .more-ways-to-send .container {
+            text-align: left;
+        }
+        .xInfoContent, .xEditInfoContent, .xInfoContentAcct {
+            font-size: 12px;
+        }
+        .content {
+            width: 80%;
+            padding: 4px 0 10px 10px;
+        }
+        .three-column {
+            float: left;
+        }
+        .more-ways-to-send .container {
+            text-align: left;
+        }
+        pl {
+            display: block;
+            -webkit-margin-before: 1em;
+            -webkit-margin-after: 1em;
+            -webkit-margin-start: 0px;
+            -webkit-margin-end: 0px;
+            font-size: 13px;
+            width: 90%;
+        }
+        h5{
+            font-size: 17px;
+        }
+        .btn-column {
+            width: 110px;;
+        }

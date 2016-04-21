@@ -1,0 +1,78 @@
+.container{
+  
+    background-repeat: no-repeat;
+  height: 95%;
+}
+.regis_block
+{
+widows: 275px;
+margin-left: 2%;    
+}
+input[type="text"], 
+input[type="password"], 
+input[type="datetime"], 
+input[type="datetime-local"], 
+input[type="date"], 
+input[type="month"], 
+input[type="time"], 
+input[type="week"],
+ input[type="number"],
+  input[type="email"],
+   input[type="url"],
+   input[type="search"],
+    input[type="tel"], 
+    input[type="color"],
+     .uneditable-input{
+	height: 35px;
+}
+input{
+width: 241px;
+}
+label.error {
+float: none;
+color: red;
+vertical-align: top;
+margin-left: -8px;
+}
+
+slid {
+    color: #333;
+    display: block;
+     margin-bottom: 20px;
+    width: 75%;
+    border: 0;
+border-bottom: 1px solid #E5E5E5;
+margin-right: 10%;
+
+    }
+    .span14{
+  width: 320px;         
+   position:relative;
+  top:50%;
+  border-radius: 4px;
+  background-color: #FFF;
+  background: -webkit-gradient(linear,left top,left bottom,color-stop(0%,white),color-stop(100%,#DDD));
+  background: -webkit-linear-gradient(top,white 0,#DDD 100%);
+  background: -moz-linear-gradient(top,white 0,#DDD 100%);
+  background: -ms-linear-gradient(top,white 0,#DDD 100%);
+  background: -o-linear-gradient(top,white 0,#DDD 100%);
+  background: linear-gradient(top,white 0,#DDD 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff',endColorstr='#dddddd',GradientType=0);
+  border-left: solid 1px #EEE;
+  border-right: solid 1px #EEE;
+  border-bottom: solid 1px #CCC;
+  -webkit-box-shadow: 0 1px 0 rgba(0, 0, 0, .1);
+  box-shadow: 0 1px 0 rgba(0, 0, 0, .1);
+  }
+  li
+{
+   float: left;
+   margin: 0 15px;
+}
+.navbar .slide-vertical {
+height: 20px;
+margin: 0 9px;
+border-right: 1px solid white;
+border-left: 1px solid #A5C2E0;
+}
+

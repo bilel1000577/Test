@@ -1,0 +1,440 @@
+homepage:
+    home: Accueil
+    contact: Contact
+    questions: FAQ
+    login: Connexion
+    signup: Inscrivez-vous
+    reports: Rapports
+    templateList: Mes templates
+    receivedSuruveys: Sondages reçus
+    listOfAgents: Mes agents
+contact:
+    label: Nous contacter
+    email: Email 
+    name: Nom
+    subject: Sujet
+    body: Message
+    submit: Envoyer
+    pname: Votre nom
+    psubject: Sujet de votre email
+    pemail: Votre email
+    pbody: Veuillez écrire votre message ici
+questionnaire:
+    display_single_question: Cochez la case pour afficher une question par page
+    design: Conception du sondage
+    title: Nom de la template
+    description: Description
+    s_title: Nom du sondage
+    submit_title: Valider
+    submit_description: Valider
+    edit_title: Editer
+    edit_description: Editer
+    title: Titre de sondage
+    label: sondage
+    categorie: Catégorie
+    empty_value: Choisir une catégorie
+    empty_survey: Cliquer sur le type de question de votre choix dans la liste à gauche pour ajouter une question
+    add_question: Ajout de question
+    questions_list: Liste des questions
+    send_survey: Envoyer le sondage
+    create_question: Création de question
+    save_description: Enregistrer la description
+    delete_question: Supprimer
+    close_question: Fermer
+    edit_question: Modifier
+    template_surveys: Liste de modèle des sondages
+    predefined_survey: Modèles prédéfinis
+    no_template: Il n'y a pas de templates dans cette categorie.
+    preview_survey: Aperçu
+    saveAsTemplate: Enregistrer Template
+    survey_Link: Lien du sondage
+    send: Envoyer
+    save: Enregistrer
+    sendAnswer: Envoyer 
+    save_as_popup: >
+      Un modèle existant porte le même nom, souhaitez-vous le remplacer?
+    btn_continue: Continuer
+    btn:
+        create: + Créer Sondage
+        add_tmp: + Créer Template
+
+    single_textbox: Question à réponse textuelle unique
+    multiple_textbox: Question à plusieurs réponses ouvertes
+    ranking_question: Mettre dans l'ordre
+    rating_question: Echelle d'appréciation
+    selectbox_question: Choisir à partir d'une liste
+    pictorial_question: Commentaire sur une photo
+    multiple_choice_question: Question à choix multiple
+    single: (Seule Réponse)
+    multiple: (Multiple Réponses)
+    personalize_link: Personnalisez le lien
+    personalized_invitations: Créez des invitations personnalisées par e-mail à un ou plusieurs répondants
+    edit: Editer
+    update: Mise à jour
+    copy: copier
+    post_page: Postez le sondage sur votre page Web
+    add_website: Copiez et collez le code HTML ci-dessous pour ajouter votre lien de site Web sur n'importe quelle page web:
+    follow_interviewees: Créez des invitations personnalisées par e-mail à une ou plusieurs personnes.
+    send_via_email:  Envoyer par e-mail
+    personalize_survey_description:  Personnalisez votre description du sondage
+    write_mail: écrire le(s) mail ici:
+    seperated_comma: (écrire chaque e-mail séparé par une virgule)
+    be_social: Réseaux sociaux
+    share_text: Partagez votre sondage avec vos amis et collègues en publiant sur Facebook ou Google+.
+    delete_survey: Voulez-vous vraiment supprimer le sondage
+    close_survey: En fermant un sondage, vous ne serez plus capable d’en recevoir des réponses. Voulez-vous procéder?
+sending:
+    confirmation: Confirmation
+    confirmation_text: |
+     En cliquant sur envoyer, vous recevez l'URL de votre sondage que vous
+     pouvez partger par mail ou réseaux sociaux.  Vous ne serez plus en mesure
+     de modifier le sondage. Etes-vous sûr de vouloir continuer?
+    confirmation_yes: Oui
+    confirmation_no: Non
+    success: Un email avec toutes les graphiques a été envoyé
+    close: Fermer
+layout:
+    survey: Mes sondages
+    surveys: Sondages
+    new_survey: +Créer sondage
+questionnaires_ongoing:
+    carte: Carte GPS des réponses
+    survey: Sondage
+    created: Crée le
+    modified: Dernière modification
+    sendToAgents: Envoyer aux agents
+    nbAnswers: Nombre de répondants
+    data: Saisie des données
+    share: Envoyer sondage
+    analyse: Analyser résultats
+    download: Télécharger Excel
+    send: Envoyer résultats
+    delete: Supprimer
+    close: Fermer
+    action : Action
+    close_selected: Fermer la séléction
+    delete_selected: Supprimer la séléction
+    graphics : Télécharger graphiques 
+    charts: Envoyer graphiques 
+questionnaires_closed:
+    carte: Carte GPS des réponses
+    survey: Sondage
+    created: Crée le
+    modified: Dernière modification
+    analyse: Analyser résultats
+    download: Télécharger Excel
+    delete: Supprimer
+    edit: Modifier Sondage
+    action : Action
+    preview: Prévisualiser
+    delete_selected: Supprimer la séléction
+    numberOfAnswers: Nombre de répondents
+    graphics : Télécharger graphiques 
+questionnaires_drafts:
+    survey: Sondage
+    created: Crée le
+    modified: Dernière modification
+    edit: Modifier Sondage
+    delete: Supprimer
+    action : Action
+    delete_selected: Supprimer la séléction
+questionnaires_state:
+    ongoing: Mes sondages
+    closed: Fermés
+    drafts: Brouillons
+    received: Sondages reçus
+Categories: Catégories
+categorie:
+    label: Catégorie
+question:
+    label: Choisissez une option pour ajouter une nouvelle question
+    QuestionText: Question
+    number: Question
+    maximize: Agrandir
+    minimize: Réduire
+    copy: Copier
+    btn:
+        create: Créer
+        cancel: Annuler
+        update: Editer 
+        back: Retour
+        delete: Supprimer
+    msg:
+        delete: Voulez-vous vraiment supprimer la question?
+singletextboxquestion:
+    QuestionType: Type de question
+rankingquestion:
+    answer_choices: Choix de réponse: Entrez chaque choix sur une ligne distincte (un choix par ligne).
+ratingscalequestion:
+    AddRowLabels: Entrez chaque items sur une ligne distincte (un item par ligne).
+    RatingScaleLevel:  Échelle d'évaluation: Entrez chaque niveau sur une ligne distincte (Un niveau par ligne).
+multiplechoicequestion:
+    check_single_answers: A choix unique
+    answers_choices: Choix de réponse: Entrez chaque choix sur une ligne distincte (un choix par ligne).
+pictorialquestion:
+    upload: Uploader une image
+multipletextboxquestion:
+    box_choices: Entrez chaque champ de réponse sur une ligne distincte (un champ par ligne)
+about:
+    p1: Les sondages sont faciles avec Quizmoo
+    p2: >
+      C’est plus que jamais facile de créer, d’envoyer et d’analyser vos sondages gratuitement !
+    p3: >
+      Vous voulez faire un sondage, une étude de marché ou un questionnaire d’opinion sur un évènement, 
+      un endroit ou un produit ? Quizmoo est votre outil idéal. 
+    p4: >
+      L’outil est en phase beta et nous travaillons jour après jour pour l’optimiser afin qu’il survienne à vos besoins alors aidez nous s’il vous plait à 
+      atteindre ce but en nous envoyant les fautes que vous découvrez ou des propositions d’optimisation à:  
+    p21: Quizmoo en quelques points
+    p22: >
+      Concevez vos sondages : créez vos propres sondages et enregistrez les pour les réutiliser ultérieurement.
+    p23: >
+      Partagez vos sondages : envoyez vos sondages par mail 
+      ou partagez les sur les réseaux sociaux pour un maximum de réponses. 
+    p24: >
+      Saisissez les données sur mobile : entrez les réponses directement sur mobile au lieu d’utiliser des imprimés du sondage.
+    p25: >
+      Visualisez et télécharger les résultats : utilisez nos outils analytiques pour une meilleure
+      analyse et téléchargez les graphiques  et les résultats sur votre PC ou envoyez les par mail sur votre mobile.
+analyse:
+    feed: Avis des répondents
+    nb_respondents: Nombre de répondants 
+    label : Analyser les résultats
+    filter: Filtrer selon
+    download: Télécharger
+    downloadText: les résultats sous format Excel
+    sendEmail: graphiques 
+    messageSent: Toutes les graphiques seront envoyées par Mail à l'adresse
+    messageSent1: Cette opération peut durer jusqu'à quelques minutes.
+    no_results : >
+      Aucune personne n'a encore répondu à ce sondage, veuillez rééssayer plus tard.
+    collect : Collecter les réponses
+    open_chart : Ouvrir le(s) graphiques 
+    download_chart: Télécharger le(s) graphiques
+    emptyMap: La carte GPS des réponses est vide!
+results:
+    statistics: Statistiques descriptives
+    retrieved: Les résultats de cette question peuvent être récupérés dans les résultats excel.
+    item: Item
+    mean: Moyenne
+    standard: Ecart-type
+    min: Min
+    max: Max
+    median: Médiane
+    nbr: Nombre des réponses
+send:
+    btn_update: Mettre à jour
+    description: Tapez votre description ici (optionnel)
+    email: Entrez e-mail ici
+    msg1: Merci d'avoir répondu au sondage!
+    msg2: Vous pouvez partager le lien sur les réseaux sociaux et donner la chance à vos amis d'exprimer leur avis.
+    msg3: > 
+      Vous pouvez également créer, partager et analyser votre propre enquête gratuitement sur
+    msg4: Quizmoo!
+mail:
+    name: Quizmoo
+    btn: Répondre
+    link: Votre lien: 
+    team: L'équipe de Quizmoo
+modal:
+    delete: Supprimer Sondage
+    close: Fermer Sondage
+    btn_cancel: Annuler
+    btn_delete: Supprimer
+    btn_stop: Continuer
+questionnaires:
+    delete_survey: Voulez-vous vraiment supprimer le(s) sondage(s) sélectionné(s)?
+    close_survey: En fermant ce(s) sondage(s), vous ne serez plus capable d’en recevoir des réponses. Voulez-vous procéder?
+    no_survey: Vous n'avez pas de sondages -
+    no_survey_closed: Aucun sondage n'a été fermé
+    no_survey_mobile: Vous n'avez aucun sondage dans cette catégorie
+    new_survey: Créer un nouveau sondage
+placeholder:
+    answer: Votre texte de la réponse est ici ...
+    comment: Commentaire sur une photo...
+closed:
+    msg: Désolé, ce sondage a été fermé. Mais si vous voulez créer, partager et analyser vos sondage en quelques clics et gratuitement,  rejoignez
+    msg3: Quizmoo
+    msg4: Maintenant.
+select:
+    anoption: Choisir une question
+    ananswer: Choisir une réponse
+    alloption: Tout
+select_field:
+     multiple: Réponse à choix multiples
+     liste: Votre liste de choix est de type
+     empty: Choisir une option
+     nombre: Nombre
+     text: Texte
+     options: Options de la question : Entrer chaque option sur une ligne distincte
+     increment: Incrément
+     de: De
+     a: à
+category:
+    item1: Réactions des clients
+    item2: Ressources humaines
+    item3: Étude de marché 
+    item4: Social et politique
+    item5: Autre
+description:
+    text: (Une fois vous avez fini d'écrire la description, cliquez en dehors du champ de description pour enregistrer)
+help:
+    title1: Qui sommes nous?
+    p1: >
+      Quizmoo a été concu par la société Disycs!  Disycs coopére avec des experts nationaux et internationaux dans le domaine des statistiques pour offrir une meilleur expérience à vos sondages et de meilleurs résultats. 
+    title2: Pourquoi Quizmoo?
+    p21: >
+      Un sondage est un moyen important pour faire des mesures réelles sur une variable pour des raisons de recherches scientifiques, pour mesurer le degrés de satisfaction des clients, pour faire une étude de marché sur l’acceptabilité  d’un produit ou autre.
+    p22: >
+      Or, il y a un grand manque d’outils de sondage en ligne et les produits existants sont payants ou incomplets. Quizmoo offre une palette de fonctionnalités qui aident l’utilisateur à créer, distribuer et analyser statistiquement des sondages gratuitement.
+    title3: Quelles sont les fonctionnalités de Quizmoo ?
+    p30: Quizmoo propose gratuitement une palette de fonctionnalités utiles pour vos sondages :
+    p31: Sondages illimités
+    p32: Questions illimitées par sondage
+    p33: Envoi de sondage par E-mail
+    p34: Personnalisation du courrier 
+    p35: Partage sur réseaux sociaux du sondage
+    p36: Réponses illimitées 
+    p37: Collecte de réponses en Excel
+    p38: Téléchargements de résultats graphiques
+    p39: Tableaux de statistiques descriptives 
+    pp39: Modèles de sondages réutilisables
+    ppp39: Saisie et analyse optimisés pour mobile
+    pppp39: Envoi de graphes via mobile
+    title4: Quelles sont les fonctionnalités que proposera Quizmoo prochainement ?
+    p40: Nous travaillons actuellement sur plusieurs fonctionnalités qui seront lancées au fur et à mesure. Voici un aperçu :
+    p41: Intégration avec SPSS, un outil puissant d’analyses statistiques
+    p42: Export de résultats sous forme d’un rapport PDF
+    p43: Notification par E-mail au cas où le sondage a atteint un certain nombre de réponses
+    p44: Sondages décisionnels : Les questions à venir dépendent de la réponse à la question actuelle
+    title5: Comment contacter l’équipe de quizmoo ?
+    p50: Vous pouvez nous contacter à tout moment par E-mail :
+    p51: feedback@quizmoo.com 
+    p52: et nous vous promettons une réponse en moins de 48 heures.
+    title6: Que se passe-t-il avec mes données?
+    p60: Toute donnée personnelle est en sécurité et aucune personne ni physique ni morale n'aura accès sur vos données personnelles.
+report:
+    message: >
+      Si vous voulez recevoir les rapport d'études faites par Quizmoo, veuillez remplir les champs suivants:
+Pbtn:
+    previous: précédent
+    next: suivant
+number:
+    question: Nombre de question : 
+    answers: Nombre de réponses :
+rating:
+    level1: |
+            Pas d'accord du tout
+            Plutôt pas d'accord
+            Moyennement d'accord
+            Plutôt d'accord
+            Totalement d'accord
+check:
+    multiple: Afficher plusieurs questions par page
+    single: Afficher une seule question par page
+answer:
+    noanswer: Pas de réponse
+btn:
+    addFilter: Ajouter Filtre
+    Filter: Filtrer
+    reinitialize: Réinitialiser
+
+sample:
+    multipleChoice:
+        oneanswer:
+            title: Recommendez vous notre service a un ami / cousin ? 
+            option1: Oui
+            option2: Non
+        multipleanswers:
+            title: Votre opérateur téléphonique est  ? 
+            option1: Ooredoo
+            option2: Orange
+            option3: Tunisie Telecom
+    selectBox:
+        title: Vous êtes ? 
+        option1: Homme
+    multipleTextBox:
+        title: Avez vous des remarques concernant notre service client ?
+        option1: qualité de service
+        option2: utilité du représentant
+        option3: rapidité de la réponse
+    pictorial:
+        title: Que pensez vous de notre nouveau logo ? 
+    singleTextBox:
+        title: Avez-vous des remarques / améliorations sur les produits ? 
+    ratingScale:
+        title: Comment évalueriez-vous votre expérience avec notre service  clientèle ? 
+        option1v: Pas d'accord du tout
+        option2v: Plutôt pas d'accord
+        option3v: Plutôt pas d'accord
+        option4v: Plutôt d'accord
+        option5v: Totalement d'accord
+        option1h: Qualité de service
+        option2h: Utilité des représentants
+        option3h: Rapidité de réponse
+    ranking:
+        title: Classez les films suivants (1 est le meilleur)
+        option1v: 1
+        option2v: 2
+        option3v: 3
+        option1h: Titanic
+        option2h: Lord of the rings
+        option3h: The wolf of wall street
+    inputPlaceholder: Votre réponse ici 
+
+menu:
+    multipleOne : Question à choix multiple (Seule Réponse)
+    multipleMultiple : Question à choix multiple (Multiple Réponses)
+    selectBox : Choisir à partir d'une liste
+    ratingScale : Echelle d'appréciation
+    singleText : Question ouverte
+    rankingQuestion : Mettre dans l'ordre
+    multipleTextBox : Question à plusieurs réponses ouvertes
+    pictorialQuestion : Commentaire sur une photo
+    label: Types de questions
+translation: 
+    languages: Langues
+choose:
+    category: Choisir une catégorie
+add:
+    title: Cliquez ici pour ajouter un titre
+agent:
+    list: Liste des agents pour le sondage
+    add: Ajouter nouvel agent
+    delete_agent: Supprimer L'envoi
+    email: Email de l'agent 
+    first: Prénom
+    last: Nom
+    location: Emplacement
+    phone: N° téléphone
+    action: Action
+    notSent: Ce sondage n'est pas envoyé à aucun agent
+    share: Partager le sondage avec un agent
+    delete: Supp
+    send: Envoyer
+    create: Créer
+    notfound: Vous n'avez ajoutez aucun agent !
+    successMessage: Votre sondage a été envoyée avec succès
+pEmail: Email de l'agent
+survey:
+    received: Liste des sondages reçus
+    name: Nom du sondage
+    nbAnswers: Nbre de réponses
+    receiveddate: Reçu le
+    dataEntry: Action
+    noReceived: Vous n'avez reçu aucun sondage
+share:
+    submit: Envoyer
+not:
+  blank:
+    firstname: le prénom ne peut pas être vide !
+    lastname: le nom ne peut pas être vide !
+    location: la location ne peut pas être vide !
+    phoneNumber: le numéro de téléphone ne peut pas être vide !
+  valid:
+    phoneNumber: Entrez un numéro de téléphone valide !
+invalid:
+    parameter:
+        agent: Cet agent a déjà été ajouté !
+        email: Aucun utilisateur n'est affecté à cette adresse e-mail !
+        agents: Vous devez sélectionner un ou plusieurs agent (s ) !

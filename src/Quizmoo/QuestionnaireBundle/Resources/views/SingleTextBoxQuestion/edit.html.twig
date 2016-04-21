@@ -1,0 +1,22 @@
+
+<form class="form-horizontal" id={{entity.id}} action="{{ path('singletextboxquestion_update', { 'id': entity.id , 'questionnaire': id_questionnaire }) }}" method="post" {{ form_enctype(edit_form) }}>
+<div class="row">
+	<div class="col-lg-12">
+    {# {{ form_widget(edit_form) }} #}
+    {{ form_row(edit_form.questionText,{ 'attr': {'class': 'form-control' } }) }}
+	</div>
+    <div class="col-lg-6"style="padding-top: 2%;">
+     	<input type="submit" value="{{'question.btn.update'|trans}}" class="btn btn-primary"/> 
+     	<a href='#' id="cancelBtn{{entity.id}}" data-link="{{path('singletextboxquestion_show',
+     	{'id':entity.id})}}" data-id="{{entity.id}}" class="btn btn-default">{{'question.btn.cancel'|trans}} </a> 
+     </div>
+    {{ form_widget(edit_form._token) }}
+</div>
+</form>
+
+
+
+{# <form action="{{ path('singletextboxquestion_delete', { 'id': entity.id , 'questionnaire' : id_questionnaire }) }}" method="post"> #}
+    {# { form_widget(delete_form) } #}
+    {# <p> <input type="submit" value="Delete" class="btn btn-danger" /> </p> #}
+{# </form> #}

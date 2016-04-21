@@ -1,0 +1,5 @@
+quizmoo_api_response:
+    pattern:     /{questionnaire_id}
+    defaults:  { _controller: QuizmooRespondentBundle:api:Respond }
+    requirements:
+        _method: post        

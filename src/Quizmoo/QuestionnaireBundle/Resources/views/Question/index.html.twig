@@ -1,0 +1,42 @@
+<h1>Question list</h1>
+
+<table class="records_list">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Questiontext</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for entity in questions %}
+        <tr>
+            <td><a href="{{ path('question_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+            <td>{{ entity.questionText }}</td>
+            <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('question_show', { 'id': entity.id }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('question_edit', { 'id': entity.id }) }}">edit</a>
+                    </li>
+                </ul>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+<div class="pagination">
+  <br>
+    <ul>
+      {# On utilise la fonction range(a, b) qui crée un tableau de valeurs entre a et b #}
+      {% for p in range(1, nombrePage) %}
+        <li{% if p == page %} class="active"{% endif %}>
+          <a href="{{ path('question', {'page': p}) }}">{{ p }}</a>
+        </li>
+      {% endfor %}
+    </ul>
+</div>
+  

@@ -1,0 +1,475 @@
+{% extends "QuizmooQuestionnaireBundle::layout.html.twig" %}
+{% block title %}
+   {{ parent() }}
+{% endblock %}
+{% block menu %}
+    {{parent()}} 
+{% endblock %}
+{% block quizmoo_questionnaire_body %}
+<style>
+	div.thumbnail.bootsnipp-thumb{
+    		height: 150px;
+    		/*border-radius: 3px;
+			box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);*/
+    }
+    @media(max-width:767px){
+        
+        div.row.analyse{
+        	margin-left: 5%;
+        	margin-right: 5%;
+        }
+        
+        div#Questions{
+        	padding-top:4%;
+        }
+        div#Answeroptions{
+        	padding-top:2%;
+        }
+        div#Grp-btn{
+        	padding-top:2%;
+        }
+        .btn.btn-danger.btn-remove,.btn.btn-primary.btn-add{
+        	margin-bottom: -4%;
+        }
+    }
+    @media(min-width:768px){
+    	div.row.filter{
+    		width: 100%;
+    	}
+    	form#FilterForm{
+    		margin-left: 16%;
+    		margin-right: 16%;
+    	}
+    	div#Questions{
+        	padding-top:2%;
+        }
+        div#Answeroptions{
+        	padding-top:2%;
+        }
+        div#Grp-btn{
+        	padding-top:2%;
+        }
+        .btn.btn-danger.btn-remove,.btn.btn-primary.btn-add{
+        	margin-bottom: -2%;
+        }
+    }
+    @media(min-width:992px){
+
+    	
+    }
+    @media(min-width:1200px){
+    	div#Questions{
+        	padding-top:0%;
+        }
+        div#Answeroptions{
+        	padding-top:0%;
+        }
+        div#Grp-btn{
+        	padding-top:0%;
+        }
+    	
+    }
+    div.row.filter{
+    	border: solid #ccc 1px;
+		/*border-radius: 6px;*/
+		margin-left: 0px;
+		margin-right: 0px;
+		padding-bottom: 1%;
+		padding-top: 1%;
+		margin-bottom: 1%;
+    }
+</style>
+<script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+<script src="{{ path('fos_js_routing_js', {"callback": "fos.Router.setData"}) }}"></script>
+<div class="row analyse" style="margin-right: 0px;margin-left: 0px;">
+
+					<script src="{{ asset('bundles/obhighcharts/js/highcharts/highcharts.js') }}"></script>
+					<script src="{{ asset('bundles/obhighcharts/js/highcharts/modules/exporting.js') }}"></script>
+						<label style="font-weight: bold;" class="survey-label"> {{'analyse.label'|trans}} : {{ questionnaire.questionnaireName }}</label>
+						<input type="hidden" id="questionnaire_id" value="{{ questionnaire.id}}">
+						<input type="hidden" id="locale" value="{{ app.request.getLocale() }}">
+		
+						{% if questionnaire.numberOfAnswers>0  %}
+						<div class="row">
+					        <div class="col-xs-12">
+					            <ul class="nav nav-pills nav-justified thumbnail">
+					            	<li>
+					                    <h5 class="list-group-item-heading" align="center" style="font-weight: bold;">{{'analyse.nb_respondents'|trans}} </h5>
+					                    <p class="list-group-item-text" align="center" style="padding-top: 2%;">
+					                    	{% if questionnaire.numberOfAnswers>0  %}
+											 <label id="numberLabel">{{ questionnaire.numberOfAnswers }}</label>
+											{% else %}
+											 <label id="number"> 0 </label>
+											 {% endif %}
+					                    </p>
+					                </li>
+					                <li>
+					                    <h5 class="list-group-item-heading" align="center" style="font-weight: bold;">{{'analyse.download'|trans}} </h5>
+					                    <p class="list-group-item-text" align="center" style="padding-top: 2%;">
+					                    	<a href="{{path('export_questionnaire_to_excel',{'id': questionnaire.id })}}">  
+								          		 {{'analyse.downloadText'|trans}}
+								          	</a>
+								          	
+					                    </p>
+					                </li>  
+					                
+					            </ul>
+					        </div>
+						</div>
+
+						{# <div class="row">
+					        <div class="col-xs-12">
+							<ul class="nav nav-pills nav-justified thumbnail">
+						        <li>
+								 <h5 style="font-weight: bold">{{'analyse.filter'|trans}}</h5>
+								<form  class="form-horizontal" role="form" id="FilterForm">
+								
+			                    	<div class="row filter">
+				      					<div class="col-lg-6" id="Questions"> 
+								                    <select class="form-control" id="FilterQuestions0" name="selectedFilter">
+														 <option value="default option">{{'select.anoption'|trans}}</option>
+														 {% for question in questionnaire.questions %}
+														 	{% if question.questionType == "Ranking Question" %}
+														 	{% for rank in question.answerOptions %}
+									          				<option value="{{path('getAnswerOptions',{'id': question.id, 'rank': rank.id})}}" row-id={{rank.id}}>{{ question.questionText }} {{ rank.answerText}} </option>
+									          				{% endfor %}
+															{% endif %}
+														    {% if question.questionType == "Multiple Choice Question" %}
+									          				<option value="{{path('getAnswerOptions',{'id': question.id})}}" row-id={{question.id}}>{{ question.questionText }} </option>
+															{% endif %}
+									          			 {% endfor %}
+								          			</select>
+								          			
+								        </div>
+								        <div class="col-lg-3" id="Answeroptions">
+								          			<select class="form-control FilterSelection" id="FilterOptions0">
+								          				<option value="default option">{{'select.ananswer'|trans}}</option>
+								          			</select>
+								        </div>
+								        <div class="col-lg-3" id="Grp-btn">
+							        	<button class="btn btn-primary btn-add">{{'btn.addFilter'|trans}}</button>
+							        	</div>
+							        	<br>
+							    	</div>
+							    	<div class="pull-left filter_btn" style="padding-top: 1%;padding-bottom: 1%;">
+								    	 <input class="btn btn-primary" type="submit" id="submitFilter"  value="{{'btn.Filter'|trans}}" dataUrl="{{path('answers_per_choice',{'questionnaireId': questionnaire.id , _locale: app.request.getLocale() })}}"/> 
+								    	 <input class="btn btn-primary" type="button" id="reinitializeFilter"  value="{{'btn.reinitialize'|trans}}" dataUrl="{{path('answers_per_choice',{'questionnaireId': questionnaire.id , _locale: app.request.getLocale() })}}"/> 
+								    	 <img  src="{{asset(('img/loading.gif'))}}" class="image-btn new-web-link" id="loadingcancel" hidden />
+							    	<div>
+						    	</form>
+						    	</li>
+					    	</ul>
+					    	</div>
+						</div> #}
+
+						{% set type = "" %}
+						{% set chart = "" %}
+						{% set chartType = "" %}
+						{% if questionnaire.questions.count > 0 %}
+							{% set counter = 0 %}
+							<div class="row" id="listOfQ">
+							{% for question in questionnaire.questions %}
+								{% set counter = counter + 1 %}
+								{% if question.questionType == "Single TextBox Question" %}
+								{% set type = "collect_SingleTextBoxAnswer" %}
+								{% set chart = "img/tableau.png" %}
+								<div class="col-sm-12 col-xs-12 col-md-6 col-lg-6">
+						    	    <div class="thumbnail bootsnipp-thumb">
+						                <div class="text">
+						                    <label style="font-weight: bold;">{{ 'question.number'|trans }} {{ counter }}: {{ question.questionText }} </label>
+						                </div>
+						                <div class="options">
+						                    <p align="center">
+						                    
+						                    	<a  data-routing="collect_SingleTextBoxAnswer" data-id="{{question.id}}" href="{{ path(type, {'questionId': question.id}) }}" class="filterPath">{{'analyse.collect'|trans}}</a> <br> <br>
+								      		</p>
+						                </div>
+						            </div>
+								</div>
+								{% endif %}
+
+								
+
+								
+
+								{% if question.questionType == "Multiple Choice Question" %}
+								{% set type = "statistic_multiple_choice" %}
+								{% set chart = "img/pieChart.png" %}
+								{% set chartType = "Question à choix multiple" %}
+								<div class="col-sm-12 col-xs-12 col-md-6 col-lg-6">
+						    	    <div class="thumbnail bootsnipp-thumb">
+						                <div class="text">
+						                    <label style="font-weight: bold;">{{ 'question.number'|trans }} {{ counter }}: {{ question.questionText }} </label>
+						                </div>
+						                <div class="options">
+						                		
+							                    <p align="center">
+							                       <a  data-routing="statistic_multiple_choice" data-id="{{question.id}}" href="{{ path(type, {'questionId':question.id , _locale: app.request.getLocale() }) }}" class="filterPath">{{'analyse.open_chart'|trans}}</a> <br>
+
+											      <a data-type="{{chartType}}" data-routing="download_chart" data-id="{{question.id}}" id='downloadLink{{question.id}}' href="{{ path('download_chart', {'questionId':question.id,'chartType':chartType}) }}" class="downloadPath">
+											      	{{'analyse.download_chart'|trans}}</a> &nbsp; <img  src="{{asset(('img/loading.gif'))}}" class="image-btn new-web-link" id="loadingw{{question.id}}" hidden />
+											  	  <div class="check" id="checkDownload{{question.id}}"> </div>
+											  	 </p>
+						                </div>
+						            </div>
+								</div>
+								{% endif %}
+
+								
+								{% if question.questionType == "Ranking Question" %}
+								{% set type = "statistic_ranking" %}
+								{% set chart = "img/barChart.png" %}
+								{% set chartType = "Mettre dans l'ordre" %}
+								<div class="col-sm-12 col-xs-12 col-md-6 col-lg-6">
+						    	    <div class="thumbnail bootsnipp-thumb">
+						                <div class="text">
+						                    <label style="font-weight: bold;">{{ 'question.number'|trans }} {{ counter }}: {{ question.questionText }} </label>
+						                </div>
+						                <div class="options">
+						                
+						                <p align="center">
+						                <a  data-routing="statistic_ranking" data-id="{{question.id}}" href="{{ path(type, {'questionId': question.id , _locale: app.request.getLocale()}) }}" class="filterPath">{{'analyse.open_chart'|trans}}</a> <br>
+								      	<a data-type="{{chartType}}" data-routing="download_chart" data-id="{{question.id}}" id='downloadLink{{question.id}}' href="{{ path('download_chart', {'questionId':question.id,'chartType':chartType}) }}" class="downloadPath">
+								      	{{'analyse.download_chart'|trans}}</a> &nbsp; <img  src="{{asset(('img/loading.gif'))}}" class="image-btn new-web-link" id="loadingw{{question.id}}" hidden />
+								      	<div class="check" id="checkDownload{{question.id}}"> </div>
+								      </p>
+						                </div>
+						            </div>
+								</div>
+								{% endif %}
+								<script type="text/javascript">
+									$('a#downloadLink{{question.id}}').click(function(){
+									    	$("#loadingw{{question.id}}").show();
+									        $.ajax({
+									            type: "get",
+									            url:  $(this).attr('href'),
+									            success: function(json, status){
+											        if (status != "success") {
+											            console.log("Error loading data");
+											            return;
+											        }
+											        $("#loadingw{{question.id}}").hide();
+											        console.log("Data loaded!");
+											        document.getElementById("checkDownload{{question.id}}").innerHTML="Your download will start in few seconds ...";
+											        setTimeout(function(){
+											         document.getElementById("checkDownload{{question.id}}").innerHTML="";
+											        },5000);
+											    },
+											    error: function(result, status, err) {
+											        console.log("Error loading data");
+											        return;
+											    }
+									        });
+									});
+								</script>
+							{% endfor %}
+							</div>
+						{% endif %}
+					
+						
+						{% else %}
+						   <p> 
+						   	{{'analyse.no_results'|trans}}
+						   </p>        
+						 {% endif %}    
+					  
+</div>  
+<script type="text/javascript">
+$(document).ready(function() {
+	//buildUrl Function => getUrl + queryString
+	function buildUrl(url, parameters){
+	  var qs = "";
+	  for(var key in parameters) {
+	    var value = parameters[key];
+	    qs += encodeURIComponent(key) + "=" + encodeURIComponent(value) + "&";
+	  }
+	  if (qs.length > 0){
+	    qs = qs.substring(0, qs.length-1); //chop off last "&"
+	    url = url + "?" + qs;
+	  }
+	  return url;
+	}
+
+
+	var $form = $('#FilterForm');
+        $form.submit(function(){
+        	$("#loadingcancel").show();
+			var parameters = new Array();
+			$('.FilterSelection option:selected').each(function() {
+				var $ref = $(this).attr("name");
+				var $id = $(this).val();
+				var $questionId = $(this).attr("question-data");
+				var $row = $(this).attr("row-data");
+				
+				var $answer = $(this).attr("answer-data");
+				parameters[$ref+':'+$questionId+':'+$id+':'+$row+':'+$answer] = $id+':'+$row;
+
+				//console.log($( ".FilterSelection option:selected" ).text());
+				console.log(parameters);
+			});
+			var locale = document.getElementById("locale").value;
+			// set url to display charts
+			$('.filterPath').each(function() {
+				var $path = $(this).attr("data-routing");
+				var $questionId = $(this).attr("data-id");
+			    var url_path = Routing.generate($path, {_locale: locale , questionId: $questionId }); 
+			    var new_url = buildUrl(url_path, parameters);
+			    $(this).attr('href', new_url);
+			});
+
+			// set url to download charts
+			$('.downloadPath').each(function() {
+				var $path = $(this).attr("data-routing");
+				var $questionId = $(this).attr("data-id");
+				var $type = $(this).attr("data-type");
+			    var url_path = Routing.generate($path, {_locale: locale , questionId: $questionId, chartType:$type}); 
+			    var new_url = buildUrl(url_path, parameters);
+			    $(this).attr('href', new_url);
+			});
+			// set send form url
+			$('#sendForm').each(function() {
+				var $path = $(this).attr("data-routing");
+				var $questionnaireId = $(this).attr("data-id");
+			    var url_path = Routing.generate($path, {_locale: locale , id: $questionnaireId}); 
+			    var new_url = buildUrl(url_path, parameters);
+			    $(this).attr('action', new_url);
+			});
+			//set href to download charts for closed Survey
+			$('.closedSurvey').each(function() {
+			    $(this).attr('href', $(this).attr("href-data"));
+			});
+			//set number of answers
+			$('#submitFilter').each(function() {
+				var url_ctr = $('#submitFilter').attr('dataUrl');
+				var new_url_ctr = buildUrl(url_ctr, parameters);
+				$.ajax({
+	            type: "POST",
+	            url:  new_url_ctr,
+	            data: $('#submitFilter').serialize(),
+	            success: function(data) {
+	            	console.log(data);
+	                var json = $.parseJSON(data);
+			  		$("#numberLabel").text(json.Number);
+			  		$("#loadingcancel").hide();
+	            }
+	            });
+			});
+			return false;  
+        });
+	// reinitialize click function
+	$('#reinitializeFilter').click(function() {
+				$("#loadingcancel").show();
+				var url_ctr = $('#reinitializeFilter').attr('dataUrl');
+				$.ajax({
+	            type: "POST",
+	            url:  url_ctr,
+	            data: $('#reinitializeFilter').serialize(),
+	            success: function(data) {
+	            	// set number of answer
+	                var json = $.parseJSON(data);
+			  		$("#numberLabel").text(json.Number);
+			  		// remove cloned fields
+			  		$('.fieldToRemove').remove();
+			  		$('select#FilterOptions0').empty();
+			  		$('select#FilterOptions0').prepend("<option value='default option'>{{'select.ananswer'|trans}}</option>");
+			  		$('select#FilterQuestions0').val('default option');
+
+			  		var locale = document.getElementById("locale").value;
+			  		// set url to display charts
+					$('.filterPath').each(function() {
+						var $path = $(this).attr("data-routing");
+						var $questionId = $(this).attr("data-id");
+					    var url_path = Routing.generate($path, {_locale: locale , questionId: $questionId }); 
+					    $(this).attr('href', url_path);
+					});
+					// set url to download charts
+					$('.downloadPath').each(function() {
+						var $path = $(this).attr("data-routing");
+						var $questionId = $(this).attr("data-id");
+						var $type = $(this).attr("data-type");
+					    var url_path = Routing.generate($path, {_locale: locale , questionId: $questionId, chartType:$type}); 
+					    $(this).attr('href', url_path);
+					});
+					//set default href to download charts for closed Survey
+					$('.closedSurvey').each(function() {
+						var $path = $(this).attr("data-routing");
+						var $questionnaireId = $(this).attr("questionnaire-data");
+					    var url_path = Routing.generate($path, {_locale: locale , id: $questionnaireId}); 
+					    $(this).attr('href', url_path);
+					    
+					});
+					// set send form url
+					$('#sendForm').each(function() {
+						var $path = $(this).attr("data-routing");
+						var $questionnaireId = $(this).attr("data-id");
+					    var url_path = Routing.generate($path, {_locale: locale , id: $questionnaireId}); 
+					    $(this).attr('action', url_path);
+					});
+
+			  		$("#loadingcancel").hide();
+	            }
+	            });
+	});
+
+});
+</script>
+
+<script type="text/javascript">
+//display  select field with the appropriate answer options
+$(function(){
+  $("select#FilterQuestions0").change(function(){
+    $.ajax({
+            url:  this.value,
+            data: $(this).serialize(),
+            success: function(data) {
+              $("#loadingSelect").show();
+              //console.log(data);
+              var rowId = $('#FilterQuestions0 option:selected').attr("row-id");
+			  var obj = $.parseJSON(data);
+			  var options = '';
+			  $.each(obj, function() {
+			      options += '<option row-data="' + rowId + '" question-data="' + this['questionId'] + '" value="' + this['id'] + '" name="' + this['ref'] + '" answer-data="' + this['answer'] + '">' + this['answer'] + '</option>';
+			  });
+			  //$("select#FilterOptions").attr('id', 'FilterOptions' + id);
+			  $("select#FilterOptions0").html(options);
+			  $("#loadingSelect").hide();           
+			}
+		   });
+	})
+})
+//add filter function
+var id = 0;
+btnValue="Remove";
+var locale = document.getElementById("locale").value;
+$(document).on('click', '.btn-add', function (event) {
+			id = id+1;
+            event.preventDefault();
+
+            var field = $(this).closest('.filter');
+            field.find('select#FilterQuestions0').attr('id', 'FilterQuestions' + id);
+            field.find('select#FilterOptions0').attr('id', 'FilterOptions' + id);
+            field.addClass('fieldToRemove')
+            var field_new = field.clone(true);
+
+            field.find('select#FilterQuestions'+id).prop('disabled', 'disabled');
+            $(this)
+                .removeClass('btn-default')
+                .removeClass('btn-add')
+                .removeClass('btn-primary')
+                .toggleClass('btn-danger')
+                .toggleClass('btn-remove')
+                .html(btnValue);
+            field_new.find('select#FilterOptions'+id).attr('id', 'FilterOptions0');
+            field_new.find('select#FilterQuestions'+id).attr('id', 'FilterQuestions0');
+            field_new.find('select#FilterOptions0').empty();
+            field_new.find('select#FilterOptions0').prepend("<option value='default option'>{{'select.ananswer'|trans}}</option>");
+            field_new.removeClass('fieldToRemove');
+   
+            field_new.insertAfter(field);
+        });
+$(document).on('click', '.btn-remove', function (event) {
+            event.preventDefault();
+            $(this).closest('.filter').remove();
+});
+</script>
+{% endblock %}

@@ -1,0 +1,8 @@
+homepage:
+    home: Home
+    signup: Sign Up
+    login: Login
+    profile:
+        edit: Edit Profile
+        changepwd: Change password
+        logout: Logout

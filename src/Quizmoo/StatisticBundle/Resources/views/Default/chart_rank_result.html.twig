@@ -1,0 +1,26 @@
+{% extends "::layout.html.twig" %}
+{% block body %}
+<style>
+.table td {
+   text-align: center;   
+}
+
+.item {
+   text-align: left;   
+}
+</style>
+
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+
+<script src="{{ asset('bundles/obhighcharts/js/highcharts/highcharts.js') }}"></script> 
+<script src="{{ asset('bundles/obhighcharts/js/highcharts/modules/exporting.js') }}"></script> 
+{% javascripts  '@StatisticBundle/Resources/public/js/touch-tooltip-fix.js' %}
+      <script src="{{ asset_url}}"></script>
+{% endjavascripts %}
+<script type="text/javascript">
+        {{ chart(bchart) }}
+</script>
+<div id="barChart"  style="width:80%; height: 400px;"></div>
+
+{% endblock %}

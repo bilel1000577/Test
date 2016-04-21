@@ -1,0 +1,100 @@
+<html> 
+<head>
+      <link rel="icon" 
+      type="image/png" 
+      href="{{asset('/web/faviconquiz.png')}}">
+      <meta charset="utf-8"  style="visibility:hidden;display: block !important;width: 0px !important;height: 0px !important;border-style: none !important;">
+    <title>Quizmoo &middot; Platform</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>{% block title %}Quizmoo{% endblock %}</title>
+		{% block stylesheets %}
+		  <link rel="stylesheet" href="{{ asset('css/mobile/bootstrap.css') }}" type="text/css" />
+                  <link rel="stylesheet" href="{{ asset('css/mobile/hometest.css') }}" type="text/css" />
+		{% endblock %}
+ {% block javascripts %}
+    <script type="text/javascript" src="{{ asset('js/jquery.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/bootstrap.js') }}"></script>
+  {% endblock %}
+  </head>
+  <body>
+      
+{% include '::navbarquizmoo.html.twig' %}
+      <div class="hero-unit" style="width: 70%;text-align: center;margin-left: 10%;margin-top: 10%;">
+      <div class="entry-content">
+	
+<!-- Fast Secure Contact Form plugin 3.1.8.1 - begin - FastSecureContactForm.com -->
+<div id="FSContact1" style="width:375px;margin-left: 30%;">
+<form action="http://disycs.com/?page_id=23#FSContact1" id="si_contact_form1" method="post">
+<div style="text-align:left;">
+
+   </div>
+
+         <div>
+               <input type="hidden" name="si_contact_CID" value="1" />
+        </div>
+
+        <div style="text-align:left; padding-top:5px;">
+                <label for="si_contact_name1">Name:<span style="text-align:left;">*</span></label>
+        </div>
+        <div style="text-align:left;">
+                <input style="text-align:left; margin:0;" type="text" id="si_contact_name1" name="si_contact_name" value=""  size="40" />
+        </div>
+
+        <div style="text-align:left; padding-top:5px;">
+                <label for="si_contact_email1">E-Mail Address:<span style="text-align:left;">*</span></label>
+        </div>
+        <div style="text-align:left;">
+                <input style="text-align:left; margin:0;" type="text" id="si_contact_email1" name="si_contact_email" value=""  size="40" />
+        </div>
+
+        <div style="text-align:left; padding-top:5px;">
+                <label for="si_contact_subject1">Subject:<span style="text-align:left;">*</span></label>
+        </div>
+        <div style="text-align:left;">
+                <input style="text-align:left; margin:0;" type="text" id="si_contact_subject1" name="si_contact_subject" value=""  size="40" />
+        </div>
+
+        <div style="text-align:left; padding-top:5px;">
+                <label for="si_contact_message1">Message:<span style="text-align:left;">*</span></label>
+        </div>
+        <div style="text-align:left;">
+                <textarea style="text-align:left; margin:0;" id="si_contact_message1" name="si_contact_message"  cols="30" rows="10"></textarea>
+        </div>
+
+<div style="text-align:left; padding-top:5px;"> </div>
+ <div style="width:250px; height:65px; padding-top:2px;">
+    <img class="ctf-captcha" id="si_image_ctf1" style="border-style:none; margin:0; padding:0px; padding-right:5px; float:left;" src="http://disycs.com/?page_id=23&#038;ctf_show_captcha=1&#038;ctf_form_num=1" width="175" height="60" alt="CAPTCHA Image" title="CAPTCHA Image" />
+    <div id="si_refresh_ctf1">
+      <a href="#" rel="nofollow" title="Refresh Image" onclick="document.getElementById('si_image_ctf1').src = 'http://disycs.com/?page_id=23&#038;ctf_show_captcha=1&#038;ctf_form_num=1&amp;sid=' + Math.random(); return false;">
+      <img src="http://disycs.com/wp-content/plugins/si-contact-form/captcha/images/refresh.png" width="22" height="20" alt="Refresh Image" style="border-style:none; margin:0; padding:0px; vertical-align:bottom;" onclick="this.blur();" /></a>
+   </div>
+   </div>
+
+      <div style="text-align:left; padding-top:5px;">
+                <label for="si_contact_captcha_code1">CAPTCHA Code:<span style="text-align:left;">*</span></label>
+        </div>
+        <div style="text-align:left;">
+                <input style="text-align:left; margin:0; width:50px;" type="text" value="" id="si_contact_captcha_code1" name="si_contact_captcha_code"  size="6" />
+       </div>
+
+    <input type="hidden" name="si_postonce_1" value="342a0a00337f18db93e0c65490960f5d,1368547931" />
+
+<div style="text-align:left; padding-top:2px;">
+  <input type="hidden" name="si_contact_action" value="send" />
+  <input type="hidden" name="si_contact_form_id" value="1" />
+  <input type="submit" id="fsc-submit-1" style="cursor:pointer; margin:0;" class="btn btn-primary" value="Submit" /> 
+</div>
+
+</form>
+</div>
+      </div>
+
+
+ {% include '::footerquizoo.html.twig' %}
+  </div>
+   </body>
+</html>

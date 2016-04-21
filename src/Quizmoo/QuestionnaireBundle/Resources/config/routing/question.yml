@@ -1,0 +1,47 @@
+question:
+    pattern:  /{page}
+    defaults: { _controller: "QuizmooQuestionnaireBundle:Question:index", page: 1}
+    requirements:
+        page:  \d*
+
+question_order:
+    pattern: /{id}/order
+    defaults: { _controller: "QuizmooQuestionnaireBundle:Question:setOrder" }
+    requirements: { _method: post }
+    options:
+        expose: true
+
+question_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "QuizmooQuestionnaireBundle:Question:show" }
+
+question_new:
+    pattern:  /new/{id}
+    defaults: { _controller: "QuizmooQuestionnaireBundle:Question:new" }
+
+question_create:
+    pattern:  /create/{id}
+    defaults: { _controller: "QuizmooQuestionnaireBundle:Question:create" }
+    requirements: { _method: post }
+
+question_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "QuizmooQuestionnaireBundle:Question:edit" }
+
+question_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "QuizmooQuestionnaireBundle:Question:update" }
+    requirements: { _method: post }
+
+question_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "QuizmooQuestionnaireBundle:Question:delete" }
+    requirements: { _method: post }
+
+getAnswerOptions:
+    pattern:  /getAnswerOptions/{id}/{rank}
+    defaults: { _controller: "QuizmooQuestionnaireBundle:Question:displayAnswerOptions", rank:'' }
+# to test
+FilterOptions:
+    pattern:  /FilterOptions
+    defaults: { _controller: "QuizmooQuestionnaireBundle:Question:FilterOptions" }

@@ -1,0 +1,10 @@
+{% extends "FOSUserBundle::layout.html.twig" %}
+{% block menu %}
+{% endblock %}
+{% block fos_user_content %}
+<div style="color: blue;">
+<p >
+{{ 'resetting.check_email'|trans({'%email%': email}, 'FOSUserBundle') }}
+</p>
+</div>
+{% endblock fos_user_content %}

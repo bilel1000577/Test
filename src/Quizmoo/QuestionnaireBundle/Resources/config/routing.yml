@@ -1,0 +1,173 @@
+quizmoo_questionnnaire_get_by_state:
+    pattern: /state
+    defaults: { _controller: QuizmooQuestionnaireBundle:Questionnaire:getByState, page: 1 }
+
+quizmoo_questionnaire_close:
+   pattern: /{id}/close
+   defaults: { _controller: QuizmooQuestionnaireBundle:Questionnaire:close}
+
+quizmoo_questionnaire_closeMultiple:
+   pattern: /{questionnaires_ids}/closeMultiple
+   defaults: { _controller: QuizmooQuestionnaireBundle:Questionnaire:MultipleClose}
+
+quizmoo_questionnaire_open:
+  pattern: /{id}/open
+  defaults: { _controller: QuizmooQuestionnaireBundle:Questionnaire:open }
+quizmoo_questionnaire_openMultiple:
+   pattern: /{questionnaires_ids}/{state}/{page}/{categoryname}/openMultiple
+   defaults: { _controller: QuizmooQuestionnaireBundle:Questionnaire:openMultiple , _locale: en }
+export_questionnaire_to_excel:
+  pattern: /{id}/export
+  defaults: { _controller: QuizmooQuestionnaireBundle:Excel:export}
+
+quizmoo_questionnaire_homepage:
+    pattern:     /{page}/{categorieId}/{pagination}/{closed}
+    defaults:  { _controller: QuizmooQuestionnaireBundle:Questionnaire:index, page: 1,categorieId:41,pagination:false,closed:false }
+    requirements:
+        page:  \d*
+
+quizmoo_questionnaire_homepage_test:
+    pattern:  /index
+    defaults: { _controller: QuizmooQuestionnaireBundle:Default:index }
+    requirements:
+        id:  \d+
+quizmoo_questionnaire_voir:
+    pattern:      /questionnaire/{id}
+    defaults:  { _controller: QuizmooQuestionnaireBundle:Questionnaire:voir }
+    requirements:
+        id:  \d+
+quizmoo_questionnaire_ajouter:
+    pattern:      /add
+    defaults:  { _controller: QuizmooQuestionnaireBundle:Questionnaire:ajouter }
+quizmoo_questionnaire_list_templates:
+    pattern:      /mytemplates
+    defaults:  { _controller: QuizmooQuestionnaireBundle:Questionnaire:templateList }
+quizmoo_questionnaire_addTemplate:
+    pattern:      /addTemplate
+    defaults:  { _controller: QuizmooQuestionnaireBundle:Questionnaire:addtemplate }
+
+quizmoo_questionnaire_modifier:
+    pattern:      /design/{id}
+    defaults:  { _controller: QuizmooQuestionnaireBundle:Questionnaire:modifier }
+    requirements:
+        id:  \d+ 
+question_list:
+    pattern:  /list/{page}
+    defaults: { _controller: "QuizmooQuestionnaireBundle:Questionnaire:liste", page: 1}
+# quizmoo_questionnaire_supprimer:
+#     pattern:      /delete/{id}/{state}/{page}/{categorieId}
+#     defaults:  { _controller: QuizmooQuestionnaireBundle:Questionnaire:supprimer }
+#     requirements:
+#         id:  \d+
+quizmoo_questionnaire_supprimer:
+    pattern:      /delete/{id}
+    defaults:  { _controller: QuizmooQuestionnaireBundle:Questionnaire:supprimer }
+    requirements:
+        id:  \d+
+quizmoo_questionnaire_delete_multiple:
+    pattern:      /deleteMultiple/{questionnaires_ids}
+    defaults:  { _controller: QuizmooQuestionnaireBundle:Questionnaire:MultipleDeletes}
+quizmoo_questionnaire_Task_Tag:
+    pattern:  /task
+    defaults: { _controller: QuizmooQuestionnaireBundle:Default:new }
+QuizmooQuestionnaireBundle_multipletextboxquestion:
+    resource: "@QuizmooQuestionnaireBundle/Resources/config/routing/multipletextboxquestion.yml"
+    prefix:   /multipletextboxquestion
+QuizmooQuestionnaireBundle_commentbox:
+    resource: "@QuizmooQuestionnaireBundle/Resources/config/routing/commentbox.yml"
+    prefix:   /commentbox
+QuizmooQuestionnaireBundle_multiplechoice:
+    resource: "@QuizmooQuestionnaireBundle/Resources/config/routing/multiplechoice.yml"
+    prefix:   /multiplechoicequestion
+QuizmooQuestionnaireBundle_selectfield:
+    resource: "@QuizmooQuestionnaireBundle/Resources/config/routing/selectfield.yml"
+    prefix:   /selectfield     
+QuizmooQuestionnaireBundle_ratingscale:
+    resource: "@QuizmooQuestionnaireBundle/Resources/config/routing/ratingscale.yml"
+    prefix:   /ratingscale    
+QuizmooQuestionnaireBundle_matrixofchoicequestion:
+    resource: "@QuizmooQuestionnaireBundle/Resources/config/routing/matrixofchoicequestion.yml"
+    prefix:   /matrixofchoicequestion
+QuizmooQuestionnaireBundle_question:
+    resource: "@QuizmooQuestionnaireBundle/Resources/config/routing/question.yml"
+    prefix:   /question
+QuizmooQuestionnaireBundle_singletextboxquestion:
+    resource: "@QuizmooQuestionnaireBundle/Resources/config/routing/singletextboxquestion.yml"
+    prefix:   /singletextboxquestion    
+QuizmooQuestionnaireBundle_rankingquestion:
+    resource: "@QuizmooQuestionnaireBundle/Resources/config/routing/rankingquestion.yml"
+    prefix:   /rankingquestion       
+quizmoo_questionnaire_search:
+    pattern: /api/v1/search
+    defaults: { _controller: QuizmooQuestionnaireBundle:Questionnaire:getJSONQuestionnaire , _locale: fr }
+    requirements: { _method: get }
+QuizmooQuestionnaireBundle_pictorialquestion:
+    resource: "@QuizmooQuestionnaireBundle/Resources/config/routing/pictorialquestion.yml"
+    prefix:   /pictorialquestion
+QuizmooQuestionnaireBundle_matrixofdropdownquestion:
+    resource: "@QuizmooQuestionnaireBundle/Resources/config/routing/matrixofdropdownquestion.yml"
+    prefix:   /matrixofdropdownquestion
+QuizmooQuestionnaireBundle_questionnaire:
+        resource: "@QuizmooQuestionnaireBundle/Resources/config/routing/questionnaire.yml"
+        prefix: /survey
+        options:
+                expose: true
+quizmoo_questionnaire_analyse:
+    pattern:      /analyse/{id}
+    defaults:  { _controller: QuizmooQuestionnaireBundle:Questionnaire:analyse}
+    requirements:
+        id:  \d+ 
+quizmoo_questionnaire_map:
+    pattern:      /mapOfAnswers/{id}
+    defaults:  { _controller: QuizmooQuestionnaireBundle:Questionnaire:map}
+    requirements:
+        id:  \d+ 
+quizmoo_questionnaire_categories:
+    pattern:  /categories
+    defaults: { _controller: QuizmooQuestionnaireBundle:Categorie:getCategories }
+quizmoo_render_pdf:
+    pattern:  /render
+    defaults: { _controller: QuizmooQuestionnaireBundle:Questionnaire:renderPDF }
+quizmoo_questionnaire_get_by_state:
+    pattern:     /{state}/{page}/{categorieId}
+    defaults:  { _controller: QuizmooQuestionnaireBundle:Questionnaire:getQuestionnaireByState, page: 1 }
+    requirements:
+        page:  \d*
+quizmoo_questionnaire_closed:
+    pattern:     /closed/{page}/{categorieId}
+    defaults:  { _controller: QuizmooQuestionnaireBundle:Questionnaire:closedQuestionnaires, page: 1 }
+    requirements:
+        page:  \d*
+quizmoo_questionnaire_ongoing:
+    pattern:     /ongoing/{page}/{categorieId}
+    defaults:  { _controller: QuizmooQuestionnaireBundle:Questionnaire:ongoingQuestionnaires}
+    requirements:
+        page:  \d*
+quizmoo_questionnaire_template:
+    pattern:  /template/
+    defaults: {_controller: QuizmooQuestionnaireBundle:Questionnaire:getTemplatesByCategorie}
+quizmoo_questionnaire_save_as_template:
+    pattern:  /save_as_template/{id}
+    defaults: {_controller: QuizmooQuestionnaireBundle:Questionnaire:saveAsTemplate}
+    requirements:
+        _method:  post
+quizmoo_questionnaire_override_template:
+    pattern:  /override_template/{id}
+    defaults: {_controller: QuizmooQuestionnaireBundle:Questionnaire:overrideTemplate}
+    requirements:
+        id:  \d+
+        _method:  post
+quizmoo_questionnaire_creation:
+    pattern:  /testCreation
+    defaults: { _controller: QuizmooQuestionnaireBundle:Default:create }
+QuizmooQuestionnaireBundle_share:
+    resource: "@QuizmooQuestionnaireBundle/Resources/config/routing/share.yml"
+    prefix:   /share
+QuizmooQuestionnaireBundle_listofagents:
+    resource: "@QuizmooQuestionnaireBundle/Resources/config/routing/listofagents.yml"
+    prefix:   /agents
+questionnaire_mysurveys:
+    pattern:  /mysurveys/{categorieId}
+    defaults: { _controller: "QuizmooQuestionnaireBundle:Questionnaire:mySurveys",categorieId:41}
+    requirements:
+        _method:  get

@@ -1,0 +1,80 @@
+questionnaire_copy:
+        pattern: /{id}/copy/
+        defaults:  { _controller: QuizmooQuestionnaireBundle:Questionnaire:copy }
+        options:
+                expose: true
+questionnaire_describe:
+        pattern: /describe/{id}
+        defaults:  { _controller: QuizmooQuestionnaireBundle:Questionnaire:describe }
+        requirements:
+            id:  \d+
+            _method:  post
+questionnaire_preview:
+        pattern: /{id}/preview
+        defaults:  { _controller: QuizmooQuestionnaireBundle:Questionnaire:preview }
+        
+questionnaire_generate_url:
+      pattern:  /{id}/generate
+      defaults: { _controller: QuizmooQuestionnaireBundle:Questionnaire:generateQuestionnaireUrl }
+
+questionnaire_cyclic_permutation:
+    pattern:  /{id}/permute
+    defaults: { _controller: QuizmooQuestionnaireBundle:Questionnaire:cyclicPermutation, _locale: en  }
+    options:
+        expose: true
+
+send_mail_questionnaire:
+     pattern: /sendmailquestionnaire
+     defaults: { _controller: QuizmooQuestionnaireBundle:Questionnaire:send }
+       
+questionnaire_generate_json_list:
+    pattern:   /user/{userId}/page/{page}/count/{count}/info.json
+    defaults: { _controller: QuizmooQuestionnaireBundle:Questionnaire:getquestionnaireJson }
+    requirements: 
+            _method: get 
+            userId:  \d+
+            page:  \d+ 
+            count: \d+
+shar_facebook_questionnaire:
+     pattern: /sharfacebook
+     defaults: { _controller: QuizmooQuestionnaireBundle:Questionnaire:shar }
+     
+personaliser_hash_questionnaire:
+     pattern: /{id}/newhashquestionnaire
+     defaults: { _controller: QuizmooQuestionnaireBundle:Questionnaire:personaliserHash }
+
+     
+my_app_greeting:
+    pattern:  /{id}/generate2
+    defaults: { _controller: QuizmooQuestionnaireBundle:Questionnaire:greeting}
+    requirements:
+        _method:  POST|GET
+        
+rename_questionnaire:
+  pattern: /{id}/rename
+  defaults: { _controller: QuizmooQuestionnaireBundle:Questionnaire:rename}
+  
+questionnaire_copy_template:
+     pattern: /{id}/copyTemplate/
+     defaults:  { _controller: QuizmooQuestionnaireBundle:Questionnaire:copyTemplate }
+quizmoo_questionnaire_remove_template:
+    pattern: /removeTemplate/{id}
+    defaults: {_controller: QuizmooQuestionnaireBundle:Questionnaire:removeTemplate}
+    requirements: { _method: post }
+
+displaySingleQuestion:
+    pattern: /{id}/displaySingleQuestion
+    defaults: { _controller: QuizmooQuestionnaireBundle:Questionnaire:displaySingleQuestion}
+
+displayMultipleQuestion:
+    pattern: /{id}/displayMultipleQuestion
+    defaults: { _controller: QuizmooQuestionnaireBundle:Questionnaire:displayMultipleQuestion}
+
+questionnaire_chooseCategorie:
+    pattern: /{id}/{categorieId}/chooseCategorie
+    defaults: { _controller: QuizmooQuestionnaireBundle:Questionnaire:chooseCategorie}
+
+questionnaire_copy_question:
+    pattern:  /copy-question/{questionId}/{questionnaireId}
+    defaults: { _controller: "QuizmooQuestionnaireBundle:Questionnaire:cloneQuestion" }
+

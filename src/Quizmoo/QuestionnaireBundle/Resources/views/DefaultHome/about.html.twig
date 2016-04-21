@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<head>
+      <link rel="icon" 
+      type="image/png" 
+      href="{{asset('/web/faviconquiz.png')}}">
+      <meta charset="utf-8"  style="visibility:hidden;display: block !important;width: 0px !important;height: 0px !important;border-style: none !important;">
+    <title>Quizmoo &middot; Surveys made easy</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>{% block title %}Quizmoo{% endblock %}</title>
+		{% block stylesheets %}
+		  {% if app.getRequest().getLocale() == 'ar' %}
+            <link rel="stylesheet" href="{{ asset('css/bootstrap.rtl.css') }}" type="text/css" />
+             <style>
+            div.hero-unit {
+              margin-right: 10%; 
+              }
+            div{
+              text-align: right;
+            }
+            </style>
+            {% else %}
+            <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}" type="text/css" />
+      {% endif %}
+      <link rel="stylesheet" href="{{ asset('css/hometest.css') }}" type="text/css" />
+		{% endblock %}
+ {% block javascripts %}
+    <script type="text/javascript" src="{{ asset('js/jquery.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/bootstrap.js') }}"></script>
+  {% endblock %}
+</head>
+  <body>
+      
+{% include '::navbarquizmoo.html.twig' %}
+      <div class="hero-unit" style="width: 74%;text-align: left;margin-left: 8%;margin-top: 7%;background-color: #FFFFFF;">
+      <div class="entry-content">
+	
+          <div class="accordion" id="accordion2">
+          <div class="accordion-group">
+            <div class="accordion-heading">
+              <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
+              {{'about.p1'|trans|raw}}
+              </a>
+            </div>
+            <div id="collapseOne" class="accordion-body collapse">
+              <div class="accordion-inner">
+               <ul>
+                <li>
+                 <p1> <h5>{{'about.p2'|trans|raw}}</h5> <p1>
+                </li>
+                <li>
+                <p1> <h5> {{'about.p3'|trans|raw}} </h5>  </p1>
+                </li>
+                <li>
+                 <p1> <h5> {{'about.p4'|trans|raw}} <a href="mailto:feedback@quizmoo.com"> feedback@quizmoo.com </a> </h5> </p1>
+                </li>
+              </ul>
+              </div>
+            </div>
+          </div>
+          <div class="accordion-group">
+            <div class="accordion-heading">
+              <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
+                {{'about.p21'|trans|raw}}
+              </a>
+            </div>
+            <div id="collapseTwo" class="accordion-body collapse">
+              <div class="accordion-inner">
+                <ul>
+                <li>
+                <h5> {{'about.p22'|trans|raw}} </h5>
+                </li>
+                <li>
+                <h5> {{'about.p23'|trans|raw}} </h5>
+                </li>
+                <li>
+                <h5> {{'about.p24'|trans|raw}} </h5>
+                </li>
+                <li>
+                <h5> {{'about.p25'|trans|raw}} </h5>
+                </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      </div>
+</body>
+</html>

@@ -1,0 +1,30 @@
+pictorialquestion:
+    pattern:  /
+    defaults: { _controller: "QuizmooQuestionnaireBundle:PictorialQuestion:index" }
+
+pictorialquestion_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "QuizmooQuestionnaireBundle:PictorialQuestion:show" }
+
+pictorialquestion_new:
+    pattern:  /new/{id}
+    defaults: { _controller: "QuizmooQuestionnaireBundle:PictorialQuestion:new" }
+
+pictorialquestion_create:
+    pattern:  /create/{id}
+    defaults: { _controller: "QuizmooQuestionnaireBundle:PictorialQuestion:create" }
+    requirements: { _method: post }
+
+pictorialquestion_edit:
+    pattern:  /{id}/edit/{questionnaire}
+    defaults: { _controller: "QuizmooQuestionnaireBundle:PictorialQuestion:edit" }
+
+pictorialquestion_update:
+    pattern:  /{id}/update/{questionnaire}
+    defaults: { _controller: "QuizmooQuestionnaireBundle:PictorialQuestion:update" }
+    requirements: { _method: post }
+
+pictorialquestion_delete:
+    pattern:  /{id}/delete/{questionnaire}
+    defaults: { _controller: "QuizmooQuestionnaireBundle:PictorialQuestion:delete" }
+

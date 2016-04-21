@@ -1,0 +1,41 @@
+login:
+    using: Ou connectez-vous en utilisant 
+    welcome: |
+      Créez, envoyer et analysez vos sondages en quelques clics! 
+    freewelcome: |
+     Bénéficiez gratuitement de toutes les fonctionnalités ci-dessous. <br>Si vous avez d'autres exigences,
+    freewelcome1: |
+      n’hésitez pas à
+    contact_us: nous contacter 
+    signup: Inscrivez-vous maintenant
+    sign_in: Connectez-vous
+    remember: Se souvenir de moi
+    noaccount: Je n'ai pas de compte
+    forget: J'ai oublié mon mot de passe
+    connected: Restez connectés
+    user_mail: Nom d'utilisateur ou email
+    pwd: mot de passe
+register:
+    legend: Créer un compte utilisateur
+    have_an_account: Vous avez déjà un compte
+    cancel: Annuler
+    username:  Nom d'utilisateur
+    email: Email
+    mailConfir: Confirmation de mail
+    pwd: Mot de passe
+    verification: Vérification
+    firstname: Prénom
+    lastname: Nom
+    gender: Sexe
+    education: Education
+    position: Profession
+    location: Région
+    birthday: Date de naissace
+    anoption: Choisir une option
+    homme: Homme
+    femme: Femme
+    ecole: Ecole primaire
+    lycee: Lycée
+    universite: Université
+    doctorat: Doctorat
+    mba: MBA

@@ -1,0 +1,45 @@
+share:
+    pattern:  /
+    defaults: { _controller: "QuizmooQuestionnaireBundle:Share:index" }
+
+share_show:
+    pattern:  /show/{id}
+    defaults: { _controller: "QuizmooQuestionnaireBundle:Share:show" }
+
+share_new:
+    pattern:  /new/{questionnaireId}
+    defaults: { _controller: "QuizmooQuestionnaireBundle:Share:new" }
+
+share_create:
+    pattern:  /create
+    defaults: { _controller: "QuizmooQuestionnaireBundle:Share:create" }
+    requirements: { _method: post }
+
+share_edit:
+    pattern:  /edit/{id}
+    defaults: { _controller: "QuizmooQuestionnaireBundle:Share:edit" }
+
+share_update:
+    pattern:  /update/{id}
+    defaults: { _controller: "QuizmooQuestionnaireBundle:Share:update" }
+    requirements: { _method: post }
+
+share_delete:
+    pattern:  /delete/{questionnaireId}/{agentId}
+    defaults: { _controller: "QuizmooQuestionnaireBundle:Share:delete" }
+    # requirements: { _method: post }
+
+share_list:
+    pattern:  /listOfAgents/{questionnaireId}
+    defaults: { _controller: "QuizmooQuestionnaireBundle:Share:listAgent" }
+
+share_surveys_list:
+    pattern:  /listOfReceivedSurveys
+    defaults: { _controller: "QuizmooQuestionnaireBundle:Share:listSurveysByAgent" }
+
+share_find_agent:
+    pattern:  /search
+    defaults: { _controller: "QuizmooQuestionnaireBundle:Share:search" }
+    requirements: { _method: post }
+
+

@@ -1,0 +1,8 @@
+homepage:
+    home: Acceuil
+    signup: Inscrivez-vous
+    login: Connexion
+    profile:
+        edit: Editer Mon Profil
+        changepwd: Changer mot de passe
+        logout: Déconnexion

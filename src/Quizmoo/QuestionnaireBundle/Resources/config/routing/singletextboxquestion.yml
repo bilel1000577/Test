@@ -1,0 +1,49 @@
+singletextboxquestion:
+    pattern:  /
+    defaults: { _controller: "QuizmooQuestionnaireBundle:SingleTextBoxQuestion:index" }
+
+singletextboxquestion_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "QuizmooQuestionnaireBundle:SingleTextBoxQuestion:show" }
+
+singletextboxquestion_new:
+    pattern:  /new/{id}
+    defaults: { _controller: "QuizmooQuestionnaireBundle:SingleTextBoxQuestion:new" }
+
+singletextboxquestion_create:
+    pattern:  /create/{id}
+    defaults: { _controller: "QuizmooQuestionnaireBundle:SingleTextBoxQuestion:create" }
+    requirements: { _method: post }
+
+singletextboxquestion_edit:
+    pattern:  /{id}/edit/{questionnaire}
+    defaults: { _controller: "QuizmooQuestionnaireBundle:SingleTextBoxQuestion:edit" }
+
+singletextboxquestion_update:
+    pattern:  /{id}/update/{questionnaire}
+    defaults: { _controller: "QuizmooQuestionnaireBundle:SingleTextBoxQuestion:update" }
+
+singletextboxquestion_delete:
+    pattern:  /{id}/delete/{questionnaire}
+    defaults: { _controller: "QuizmooQuestionnaireBundle:SingleTextBoxQuestion:delete" }
+
+api_v1_put_singletextboxquestion:
+    pattern:  /v1/put_singletextboxquestion
+    defaults: { _controller: "QuizmooQuestionnaireBundle:SingleTextBoxQuestion:putsingleTextBoxQuestion"}
+    requirements:
+        _method:  PUT
+api_v1_get_singletextboxquestion:
+    pattern:  /v1/get_singletextboxquestion/{id}
+    defaults: { _controller: "QuizmooQuestionnaireBundle:SingleTextBoxQuestion:getsingleTextBoxQuestion"}
+    requirements:
+        _method:  GET
+api_v1_delete_singletextboxquestion:
+    pattern:  /v1/delete_singletextboxquestion/{id}
+    defaults: { _controller: "QuizmooQuestionnaireBundle:SingleTextBoxQuestion:deletesingleTextBoxQuestion"}
+    requirements:
+        _method:  DELETE
+api_v1_post_singletextboxquestion:
+    pattern:  /v1/post_singletextboxquestion/{id}
+    defaults: { _controller: "QuizmooQuestionnaireBundle:SingleTextBoxQuestion:updatesingleTextBoxQuestion"}
+    requirements:
+        _method:  POST

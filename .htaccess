@@ -1,0 +1,8 @@
+    <IfModule mod_rewrite.c>
+    
+    RewriteEngine On
+    RewriteCond %{HTTP_HOST} ^(www.)?quizmoo.com$
+    RewriteRule ^(/)?$ web/login [L]
+
+    
+</IfModule>

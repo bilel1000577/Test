@@ -1,0 +1,14 @@
+
+<div class="alert alert-profile " style="width: 27%;margin-left: 22%;padding-left: 8%;padding-bottom: 4%;padding-top: 5%;">
+<div class="edit input-xlarge">
+<form action="{{ path('fos_user_profile_edit') }}" {{ form_enctype(form) }} method="POST" class="fos_user_profile_edit">
+    {{ form_widget(form) }}
+    <div>
+        <input type="submit" class="btn btn-primary" value="{{ 'profile.edit.submit'|trans({}, 'FOSUserBundle') }}" />
+    </div>
+</form>
+ </div>
+</div>
+
+  
+

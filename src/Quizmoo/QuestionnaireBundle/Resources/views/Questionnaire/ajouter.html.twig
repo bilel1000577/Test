@@ -1,0 +1,267 @@
+
+	 {% extends "QuizmooQuestionnaireBundle::layout.html.twig" %} 
+	 {% block title %}
+	 Create Survey - {{ parent() }} 
+	 {% endblock %} 
+	 {% block stylesheets %}
+	 {{parent()}}
+	 <style>
+	 			{% if app.getRequest().getLocale() == 'ar' %}
+	 			div.btncopycreat{
+	 				margin-right: 5%
+	 			}
+
+	 			input.btn.btn-primary{
+	 				margin-right: 1%;
+	 			}
+
+	 			fieldset#fields{
+	 				margin-right: 6%;
+	 			}
+	 			{% endif %}
+                @media(max-width:767px){
+                  input#quizmoo_questionnairebundle_questionnairetype_questionnaireName.form-control{
+                  	width: 89%;
+                  }
+                }
+                @media(min-width:768px){
+                  input#quizmoo_questionnairebundle_questionnairetype_questionnaireName.form-control{
+                  	width: 92%;
+                  }
+                }
+                @media(min-width:992px){
+                  input#quizmoo_questionnairebundle_questionnairetype_questionnaireName.form-control{
+                  	width: 92%;
+                  }
+                }
+                @media(min-width:1200px){
+                   input#quizmoo_questionnairebundle_questionnairetype_questionnaireName.form-control{
+                  	width: 100%;
+                  }
+                }
+    </style>
+	 {%endblock stylesheets %} 
+	 {% block javascripts %} 
+	 {{parent()}}
+	<script
+		type="text/javascript"
+		src="{{ asset('http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.0/jquery.validate.js') }}"></script>
+	<script
+		type="text/javascript"
+		src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+	<!--script
+		type="text/javascript"
+		src="{{ asset('bundles/quizmooquestionnaire/js/searchhint.js') }}"></script-->
+	<script
+		type="text/javascript"
+		src="{{ path('fos_js_routing_js', {"callback": "fos.Router.setData"}) }}"></script>
+	<script
+		type="text/javascript" src="{{ asset('js/jquery-ui.js') }}"></script>
+	{%endblock javascripts %}
+
+	{% block quizmoo_questionnaire_body %} 
+	{%javascripts '@QuizmooQuestionnaireBundle/Resources/public/js/ajout_questionnaire.js' %}
+	<script src="{{ asset_url }}"></script>
+	{% endjavascripts %}
+
+<div class="row" style="margin-top: 2%;">		
+		<div class="col-lg-6">
+			<div class="panel panel-primary">
+	            <div class="panel-heading">{{'questionnaire.predefined_survey'|trans}}</div>
+	            
+	              <ul class="list-group list-group-flush" style="list-style-type: none;">
+	               <li class="list-group-item ng-scope" ng-repeat="rule in rules">
+	                <h5 class="list-group-item-heading ng-binding">{{'questionnaire.template_surveys'|trans}}
+	                  <span class="label pull-right ng-binding" ng-class="rule.runClass" ng-show="hasRun" style="display: none;">  
+	                  </span>
+	                </h5>
+	               </li>
+	               <br>
+	               <div id="accordion" style="margin-left: 5%;">
+	               <li><h8>1-<a
+					href="javascript:visibilite('{{'category.item1'|trans}}','42');">
+					{{'category.item1'|trans}} </a></h8></li><br>
+					<li><h8>2-<a href="javascript:visibilite('{{'category.item2'|trans}}','43');">
+					{{'category.item2'|trans}} </a></h8></li><br>
+									
+					<li><h8>3-<a href="javascript:visibilite('{{'category.item3'|trans}}','44');">
+					{{'category.item3'|trans}}</a></h8></li><br>
+					<li><h8>4-<a
+					href="javascript:visibilite('{{'category.item4'|trans}}','45');">
+					{{'category.item4'|trans}} </a></h8></li><br>
+					<li><h8>5-<a
+					href="javascript:visibilite('{{'category.item5'|trans}}','47');">
+					{{'category.item5'|trans}} </a></h8></li>	<br>					
+					</div>
+	           	  </ul>
+				
+		
+	            <div class="panel-heading">{{'layout.new_survey'|trans}}</div>
+				
+                
+                <div class="row" style="margin-left: 5%;margin-top: 4%;margin-bottom: 5%;">
+								<form  class="form-horizontal" action="{{ path('quizmoo_questionnaire_ajouter')}}"
+									method="POST"   {{ form_enctype(form) }}>
+									{% form_theme form
+									'QuizmooQuestionnaireBundle:Questionnaire:fields_errors.html.twig'
+									%}
+									<fieldset id="fields">
+									<div class="form-group" id="name-group">
+      									<div class="col-lg-10">
+										 {{ form_label(form.questionnaireName) }}
+										 {{ form_widget(form.questionnaireName, { 'attr': {'class': 'form-control'} }) }}
+										 </div>
+    								</div>
+
+    								<div class="form-group" id="cat-group">
+      									<div class="col-lg-10">
+										 {{ form_row(form.categorie, { 'label': 'categorie.label' }) }}
+										 {{form_widget(form.categorie, { 'attr': {'class': 'form-control'} }) }}
+										 </div>
+    								</div>
+									 {{ form_rest(form) }} 
+									 </fieldset>
+									<div class="btncopycreat" style="margin-top: 5%;">
+										<input type="submit" class="btn btn-primary" value="{{'questionnaire.btn.create'|trans}}" />
+									</div>
+								</form>
+				</div>
+			</div>			
+		 
+		</div>
+
+
+		<div class="col-lg-6">
+			<div class="panel panel-primary">
+	            <div class="panel-heading"><div id="categorytitle"></div></div>
+
+				<div id="accordion2">
+					<div class="table-responsive">
+						<table class="table" id="customerfeed">
+
+						</table>
+					</div>
+				</div>
+				<a data-toggle="modal" data-target="#addNewTemplate" >
+							
+				<input type="button" name="add_template" value="{{'questionnaire.btn.add_tmp'|trans}}"
+							style="margin-left: 5%;" class="btn btn-primary"/> <br> <br>
+						
+				</a>
+			</div>
+		</div>
+
+	</div>
+
+	<div id="addNewTemplate" class="modal fade" tabindex="-1"
+		role="dialog" aria-labelledby="addTemplateLabel" aria-hidden="true">
+		<div class="modal-dialog">
+            <div class="modal-content">
+				<div class="modal-body">
+					<button type="button" class="close" data-dismiss="modal"
+				    aria-hidden="true">×</button>
+					<div class="createquestionnaire">
+						<form class="form-horizontal" action="{{ path('quizmoo_questionnaire_addTemplate')}}"
+							method="POST"     {{ form_enctype(templateform) }}>
+							{% form_theme templateform
+							'QuizmooQuestionnaireBundle:Questionnaire:fields_errors.html.twig'
+							%} 
+								<div class="form-group" id="name-group">
+	      						<div class="col-lg-10">
+								{{ form_row(templateform.questionnaireName, { 'attr': {'class': 'form-control'} }) }} 
+								</div>
+								</div>
+							<input
+								id="hiddenCategorie" type='hidden' value='42'
+								name='quizmoo_questionnairebundle_questionnairetype[categorie]'/> 
+							<input
+								type="hidden" id='istemplate' name='istemplate' value='true'/>
+							<div class="btncopycreat">
+								{{ form_row(templateform._token) }} 
+								<input type="submit" class="btn btn-primary" value="{{'question.btn.create'|trans}}" style="margin-right: -5%;" />
+							</div>
+						</form>
+					</div>
+			    </div>
+			</div>
+		</div>
+	</div>
+
+	</div>
+</div>
+
+	<script type="text/javascript">
+
+          $(document).ready(function() {
+
+          	  $("select#quizmoo_questionnairebundle_questionnairetype_categorie option[value='41']").remove();
+        	  $('#hiddenCategorie').attr('value','42');
+				
+              var CustFeed='';
+             
+              $('#categoryname').attr('value','42');
+
+            $.get('{{ path('quizmoo_questionnaire_template')}}',
+               { categorieId:'42' },
+               function(data) {
+
+               	if(data.length>0){
+               		
+            	   for (var i = 0; i < data.length; i++) {
+                       
+                       CustFeed = CustFeed + '<tr><td><a href="'+data[i][1]+'">'+data[i][0]+'</a></td><td><a href="'+data[i][2]+'">'+data[i][3]+'<span class="glyphicon glyphicon-remove" title="delete" alt="delete"></span></a></td></tr>';
+                   } 
+                   
+                 }else{
+                 	CustFeed = CustFeed +'<tr><td> {{'questionnaire.no_template'|trans}} </td></tr>';
+                 }
+                  $("#customerfeed").append(CustFeed);   
+                  $("#categorytitle").append('{{'category.item1'|trans}}');
+
+            });
+              
+          });
+     </script>
+	<script>
+		 function visibilite(catname,categorie)
+          {
+           
+            $('#hiddenCategorie').attr('value',categorie);
+				
+            var CustFeed='';
+           
+            $('#categoryname').attr('value',categorie);
+
+            //1. creer variable jquery  (container de templates et forms)
+
+            var container = jQuery(".grid-u-1-2 cell");
+
+            //2. dans get, on boucle pour ajouter la liste de templates 
+            //3. changer le titre suivant la catgorie 
+            //4. afficher le container 
+			
+	
+				
+             $.get("{{ path('quizmoo_questionnaire_template')}}",
+               { categorieId:categorie },
+                function(data) {
+				$('#customerfeed').empty();
+                $('#categorytitle').empty();
+
+               	if(data.length>0){
+            	   for (var i = 0; i < data.length; i++) {
+                       
+                        CustFeed = CustFeed + '<tr><td><a href="'+data[i][1]+'">'+data[i][0]+'</a></td><td><a href="'+data[i][2]+'">'+data[i][3]+'<span class="glyphicon glyphicon-remove" title="delete" alt="delete"></span></a></td></tr>';
+                   } 
+                 }else{
+                 	CustFeed = CustFeed +'<tr><td> {{'questionnaire.no_template'|trans}} </td></tr>';
+                 }
+                  $("#customerfeed").append(CustFeed);   
+                  $("#categorytitle").append(catname);
+            });
+
+          }
+    </script>
+
+{% endblock quizmoo_questionnaire_body %}
+

@@ -1,0 +1,28 @@
+multiplechoice:
+    pattern:     /
+    defaults:  { _controller: QuizmooQuestionnaireBundle:MultipleChoice:index}
+multiplechoice_new:
+    pattern:     /new/{id}/{choice}
+    defaults:  { _controller: QuizmooQuestionnaireBundle:MultipleChoice:new, choice: single }
+multiplechoice_show:
+    pattern:     /{id}/show
+    defaults:  { _controller: QuizmooQuestionnaireBundle:MultipleChoice:show}
+    requirements:
+        id:  \d+ 
+multiplechoice_create:
+    pattern:     /create/{id}
+    defaults:  { _controller: QuizmooQuestionnaireBundle:MultipleChoice:create}
+multiplechoice_edit:
+    pattern:     /{id}/edit/{questionnaire}
+    defaults:  { _controller: QuizmooQuestionnaireBundle:MultipleChoice:edit}
+    requirements:
+        id:  \d+
+multiplechoice_update:
+    pattern:     /{id}/update/{questionnaire}
+    defaults:  { _controller: QuizmooQuestionnaireBundle:MultipleChoice:update}
+    requirements:
+        id:  \d+ 
+multiplechoice_delete:
+    pattern:     /{id}/delete/{questionnaire}
+    defaults:  { _controller: QuizmooQuestionnaireBundle:MultipleChoice:delete}
+

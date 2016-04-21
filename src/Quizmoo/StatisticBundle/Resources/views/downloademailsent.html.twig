@@ -1,0 +1,24 @@
+{% extends "QuizmooQuestionnaireBundle::layout.html.twig" %}
+{% block title %}
+ 					
+  Survey Details- {{ parent() }}
+
+{% endblock %}
+{% block menu %}
+	<br><br>
+	<ul class="nav nav-pills nav-stacked" style="max-width: 300px;" id="myid">
+	            <li class="nav-header"></li>
+	            <li class="active"><a href="{{ path('quizmoo_questionnaire_homepage', {'page': 1,'categorieName':'All'}) }}">{{'layout.survey'|trans}}</a></li>
+	            <br>
+	            <li class="active"><a href="{{ path('quizmoo_questionnaire_ajouter') }}">{{'layout.new_survey'|trans}}</a></li>
+	
+	 
+	
+	 </ul> 
+{% endblock %}
+
+{% block body %}
+<div id="text" style="margin-top: 8%;">
+	{{'analyse.messageSent'|trans}} {{email}}
+</div>
+{% endblock %}

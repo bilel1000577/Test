@@ -1,0 +1,14 @@
+<form id={{entity.id}} data-type="delete" action="{{ path('rankingquestion_delete', { 'id': entity.id  , 'questionnaire' : id_questionnaire }) }}" method="post">
+  {{ form_widget(delete_form) }}
+          
+  <p>
+    {{'question.msg.delete'|trans}}  
+  </p>
+    <p>
+	    <a href="#" data-dismiss="modal" id="backDelete{{entity.id}}" data-link="{{path('rankingquestion_show',{'id':entity.id})}}" data-id="{{entity.id}}"   class="btn btn-default">
+	     {{'question.btn.back'|trans}}
+	    </a>
+	    <input type="submit" value="{{'question.btn.delete'|trans}}" class="btn btn-primary" />
+	    {{ form_rest(delete_form) }}
+	</p>
+</form>

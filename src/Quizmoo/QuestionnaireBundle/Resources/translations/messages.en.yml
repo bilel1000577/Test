@@ -1,0 +1,441 @@
+homepage:
+    home: Home
+    contact: Contact 
+    questions: FAQ
+    login: Log in
+    signup: Sign Up
+    reports: Reports
+    templateList: My templates
+    receivedSuruveys: Received surveys
+    listOfAgents: My agents
+contact:
+    label: Contact us
+    email: Email 
+    name: Name
+    subject: Subject
+    body: Body
+    submit: Submit
+    pname: Your name
+    psubject: Subject of email
+    pemail: Your email
+    pbody: Please write your message here
+questionnaire:
+    display_single_question: Check the box to display single question per page
+    design: Design Survey
+    title: Template Name
+    description: Description
+    s_title: Name of the survey
+    label: survey
+    submit_title: Validate
+    submit_description: Validate
+    edit_title: Edit
+    edit_description: Edit
+    title: Title of survey
+    categorie: Category
+    empty_value: Choose category
+    empty_survey: Click on the type of question you want from the list at left to add a question
+    add_question: Add question
+    questions_list: List of Questions
+    send_survey: Send survey
+    create_question: Question creation
+    save_description: Save description
+    delete_question: Delete
+    close_question: Close
+    edit_question: Edit Question
+    template_surveys: List of surveys template
+    predefined_survey: Predefined survey templates
+    no_template: There are no templates in this category.
+    preview_survey: Preview survey
+    saveAsTemplate: Save as template
+    survey_Link: Survey Link
+    send: Send
+    save: Save
+    sendAnswer: Send
+    save_as_popup: >
+      An existing template has the same name, would you like to override it?
+    btn_continue: Continue
+    btn:
+        create: + Create Survey
+        add_tmp: + Create Template
+
+    single_textbox: Single TextBox Question
+    multiple_textbox: Multiple TextBox Question
+    ranking_question: Ranking Question
+    rating_question: Rating Scale Question
+    selectbox_question: Select Box Question
+    pictorial_question: Pictorial Question
+    multiple_choice_question: Multiple Choice Question
+    single: (Only One Answer)
+    multiple: (Multiple Answers)
+    personalize_link: Personalize link
+    personalized_invitations: Create personalized invitations by email to one or more respondents
+    edit: Edit
+    update: Update
+    copy: Copy
+    post_page: Post it in your Web Page
+    add_website: Copy and paste the HTML code below to add your website link on any web page:
+    follow_interviewees: Create personalized invitations by E-Mail to one or more persons.
+    send_via_email: Send via Email
+    personalize_survey_description: Personalize your survey description
+    write_mail: write e-mail here:
+    seperated_comma: (write each email separated by a comma)
+    be_social: Be Social
+    share_text: Share your survey with your friends and colleagues by publishing it on your Facebook or Google+ wall.
+    delete_survey: Do you really want to delete the survey
+    close_survey: By closing a survey, you will no longer get answers to it.  You can edit and reopen it again. Would you like to proceed?
+sending:
+    confirmation: Confirmation
+    confirmation_text: |
+      By clicking on sending, you will get your live URL to your survey that you can 
+      share via mail or social networks. You will no longer be able to edit the survey.
+      Are you sure you want to proceed?
+    confirmation_yes: Yes
+    confirmation_no: No
+    success: A mail with all charts has been sent to you
+    close: Close
+layout:
+    survey: My Surveys
+    surveys: Surveys
+    new_survey: Create new survey
+questionnaires_ongoing:
+    carte: GPS map of the answers
+    survey: Survey
+    created: Created
+    modified: Last modification
+    sendToAgents: Send to agents
+    nbAnswers: Number Of respondents
+    data: Data entry
+    share: Send Survey
+    analyse: Analyse results
+    send: Send results
+    download: Download Excel
+    delete: Delete
+    close: Close
+    action : Action
+    close_selected: Close Selected
+    delete_selected: Delete Selected
+    graphics : Download graphics
+    charts: Send charts
+    sendToAgents: Send to agents
+questionnaires_closed:
+    carte: GPS map of the answers
+    survey: Survey
+    created: Created
+    modified: Last modification
+    analyse: Analyse results
+    download: Download Excel
+    delete: Delete
+    edit: Edit Survey
+    action : Action
+    preview: Preview
+    delete_selected: Delete Selected
+    numberOfAnswers: Number Of respondents
+    graphics : Download graphics
+questionnaires_drafts:
+    survey: Survey
+    created: Created
+    modified: Last modification
+    edit: Edit Survey
+    delete: Delete
+    action : Action
+    delete_selected: Delete Selected
+questionnaires_state:
+    ongoing: My Surveys
+    closed: Closed
+    drafts: Drafts
+    received: Received surveys
+Categories: Categories
+categorie:
+    label: Category
+question:
+    label: Choose an option to add new question
+    QuestionText: Question
+    number: Question
+    maximize: Maximize
+    minimize: Minimize
+    copy: Copy
+    btn:
+        create: Create
+        cancel: Cancel
+        update: Update 
+        back: Back
+        delete: Delete
+    msg:
+        delete: Do you really want to delete the question?
+singletextboxquestion:
+    QuestionType: Question Type
+rankingquestion:
+    answer_choices: Answer Choices: Enter each choice on a separate line
+ratingscalequestion:
+    AddRowLabels: Add Row Labels :  Enter row labels for your question, each choice on a separate line
+    RatingScaleLevel: Rating Scale Level : Enter each level on a separate line
+multiplechoicequestion:
+    check_single_answers: Check for single answer
+    answers_choices: Answer Choices: Enter each choice on a separate line
+pictorialquestion:
+    upload: Upload an image 
+multipletextboxquestion:
+    box_choices: Input Box Choices: Enter each choice on a separate line
+about:
+    p1: Surveys made easy by Quizmoo : 
+    p2: >
+      It's easier than ever to create, send and analyse surveys for free!
+    p3: >
+      Whether it is a survey, a market research or a customer feedback on an even,
+      location or product, Quizmoo is the right tool for you. 
+    p4: >
+      The tool is still on beta version and we are looking forward to improving it for you day after day, 
+      so please help us by writing us any bugs you discover or optimization propositions on : 
+    p21: Quizmoo in a some bullet points:
+    p22: >
+      Design your survey : build your own surveys and save them as templates for reuse.
+    p23: >
+      Share your survey : send the survey via mail or share social media to profit from virality.
+    p24: >
+      Collect data on mobile : enter respondent’s answers directly on the survey’s mobile
+      version instead of using survey prints.
+    p25: >
+      Visualize charts and download results : use our powerful analytical tools for intelligent insights,
+      download the results on PC or send them via mail on mobile.
+analyse:
+    feed: Customer Feedback 
+    nb_respondents: Number Of Respondents 
+    label : Analyse Results
+    filter: filtered by
+    download: Download
+    downloadText: results in Excel format
+    sendEmail: Graphics
+    messageSent: All charts of this survey will be sent to you shortly by E-Mail to the address
+    messageSent1: This operation could take up to some minutes.
+    no_results : >
+      There are no results yet since no respondents have answered the survey. Please try again later.
+    collect : Collect 
+    open_chart : Open Chart
+    download_chart: Download Charts
+    emptyMap: The GPS map of the answers is empty!
+results:
+    statistics: Descriptive statistics
+    retrieved: The results of this question can be retrieved in the results excel sheet.
+    item: Item
+    mean: Mean
+    standard: Standard deviation 
+    min: Min
+    max: Max
+    median: Median
+    nbr: Number of answers 
+send:
+    btn_update: Update
+    description: Type your description here (optional)
+    email: Type email here
+    msg1: Thank you for answering the survey!
+    msg2: Please share the survey and help getting more answers.
+    msg3: > 
+      You can also create, share and analyse your own survey for free by joining 
+    msg4: Quizmoo!
+mail:
+    name: Quizmoo
+    btn: Answer
+    link: Your Link: edit
+    
+    team: Quizmoo Team
+modal:
+    delete: Delete Survey
+    close: Close Survey
+    btn_cancel: Cancel
+    btn_delete: Delete
+    btn_stop: Stop getting Answers
+questionnaires:
+    delete_survey: Do you really want to delete the selected survey(s) ?
+    close_survey: By closing a survey, you will no longer get answers to it. Would you like to proceed?
+    no_survey: You still have no surveys -
+    no_survey_closed: No survey has been closed
+    no_survey_mobile: Vous n'avez aucun sondage in this category
+    new_survey: Create new survey
+placeholder:
+    answer: Your answer text is here...
+    comment: Comment a picture...
+closed:
+    msg: Sorry, this survey has been closed. But if you want to create, share and analyze your survey in a few clicks. Join
+    msg3: Quizmoo
+    msg4: Now.
+select:
+    anoption: Choose a question
+    ananswer: Choose an answer
+    alloption: All
+select_field:
+     multiple: Multiple Choices Answer
+     liste: Your list type is
+     empty: Choose an option
+     nombre: Number
+     text: Text
+     options: Question options: Enter each option on a separate line
+     increment: Increment
+     de: From
+     a: To
+category:
+    item1: Customer Feedback
+    item2: Human Resources
+    item3: Market Research 
+    item4: Social and political
+    item5: Other
+description:
+    text: (Once finished editing the description, click outside the box to save)
+help:
+    title1: Who are we?
+    p1: >
+      Quizmoo was designed by the company Disycs! <br> Disycs cooperates with national and international experts in the field of statistics to provide a better experience for your surveys and better results.
+    title2: Why Quizmoo?
+    p21: >
+      A survey is an important way to make actual measurements on a variable for reasons of scientific research, to measure the degree of customer satisfaction, to make a market study on the acceptability of a product or other.
+    p22: >
+      However, there is a great lack of tools online survey and existing products are paid or incomplete. Quizmoo offers a range of features that help the user to create, distribute and analyze statistical surveys free.
+    title3: What are the features Quizmoo?
+    p30: Quizmoo offers free range of useful features for your survey:
+    p31: Unlimited surveys
+    p32: Unlimited questions
+    p33: Send Survey via Mail
+    p34: Customize outgoing mail 
+    p35: Share survey on social media
+    p36: Unlimited answers
+    p37: Collect Excel report
+    p38: Downlaod visual charts
+    p39: Tables of descriptive statistics 
+    pp39: Create survey templates for reuse
+    ppp39: Mobile optimized data entry and analysis
+    pppp39: Send charts from mobile
+    title4: What features are offered Quizmoo soon?
+    p40: We are currently working on several features that will be launched progressively. Here is an overview:
+    p41: Integration with SPSS, a powerful statistical analysis tool
+    p42: Export results as a PDF report
+    p43: Notification by e-mail if the survey has reached a certain number of responses
+    p44: Polls decision: Questions to come depend on the answer to the current question
+    title5: How to contact the team quizmoo?
+    p50: You can contact us any time by E-mail:
+    p51: feedback@quizmoo.com 
+    p52: and we promise you an answer within 48 hours.
+    title6: What is happening with my data?
+    p60: All personal data is safe and no one neither physical nor moral will have access to your personal data.
+report:
+    message: >
+      If you want to receive the report studies by Quizmoo, please complete the following fields:
+Pbtn:
+    previous: previous
+    next: next
+number:
+    question: Number of question :
+    answers: Number Of Answers :
+rating:
+    level1: |
+            Not agree at all 
+            Tend to disagree
+            Somewhat agree
+            Tend to agree
+            Totally agree
+check:
+    multiple: Show multiple questions per page
+    single: Show only one question per page
+answer:
+    noanswer: No Answer
+btn:
+    addFilter: Add Filter
+    Filter: Filter
+    reinitialize: Reinitialize
+sample:
+    multipleChoice:
+        oneanswer:
+            title: Would you recommend our service to a friend/relative ?
+            option1: Yes
+            option2: No
+        multipleanswers:
+            title: Operating system that you used ? 
+            option1: Windows
+            option2: GNU/Linux 
+            option3: Mac OS X
+    selectBox:
+        title: You are ? 
+        option1: Male
+    multipleTextBox:
+        title: Have you any remarks concerning our customer services ?   
+        option1: quality of service
+        option2: helpfulness of representatives
+        option3: promptness of response
+    pictorial:
+        title: What you think of our new logo ? 
+    singleTextBox:
+        title: Have you any remarks/improvements about our product ? 
+    ratingScale:
+        title: How would you rate your experience with our customer support ? 
+        option1v: Not agree at all
+        option2v: Tend to disagree
+        option3v: Somewhat agree
+        option4v: Tend to agree
+        option5v: Totally agree
+        option1h: Quality of service 
+        option2h: Helpfulness of representatives
+        option3h: Promptness of response
+    ranking:
+        title: Rank the following movies ( 1 is the best ) 
+        option1v: 1
+        option2v: 2
+        option3v: 3
+        option1h: Titanic
+        option2h: Lord of the rings
+        option3h: The wolf of wall street
+    inputPlaceholder: Your Answer text is here... 
+
+menu:
+    multipleOne : Multiple Choice Question (Only One Answer)
+    multipleMultiple : Multiple Choice Question (Multiple Answers)
+    selectBox : Select Box Question
+    ratingScale : Rating Scale Question
+    singleText : Single Textbox Question
+    rankingQuestion : Ranking Question
+    multipleTextBox : Multiple Textbox Question
+    pictorialQuestion : Pictorial Question
+    label: Types of questions
+translation:
+    languages: Languages
+choose:
+    category: Select category
+add:
+    title: Click here to add title
+agent:
+    list: List of agents for survey
+    add: Add new agent
+    delete_agent: Delete Sending
+    email: Agent Email
+    first: First Name
+    last: Last Name
+    location: Location
+    phone: Phone N°
+    action: Action
+    notSent: This survey is not sent to any agent
+    share: Share survey with Agent
+    delete: Del
+    send: Send
+    create: create
+    notfound: You don't add any agent !
+    successMessage: Your survey was sent with success
+pEmail: Agent Email
+survey:
+    received: List of received surveys
+    name: Survey Name
+    nbAnswers: Number of answers
+    receiveddate: Received
+    dataEntry: Data Entry
+    noReceived: You have no received survey
+share:
+    submit: Send
+not:
+  blank:
+    firstname: First name can not be blank !
+    lastname: Last name can not be blank !
+    location: location field can not be blank !
+    phoneNumber: phoneNumber field can not be blank !
+  valid:
+    phoneNumber: Enter a valid phone number !
+invalid:
+    parameter:
+        agent: This agent has already been added !
+        email: No user is assigned to this email address !
+        agents: You must select one or more agent(s) !

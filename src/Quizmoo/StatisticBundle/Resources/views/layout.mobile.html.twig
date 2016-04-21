@@ -1,0 +1,18 @@
+{% extends "::layout.mobile.html.twig" %}
+{% block title %}
+  {{ parent() }}
+{% endblock %}
+
+{% block body %}
+
+  {# On définit un nouveau bloc, que les vues du bundle pourront remplir #}
+  {% block quizmoo_questionnaire_body %}
+
+  {% block exportButton %}
+
+
+  {% endblock %}
+  
+  {% endblock %}
+
+{% endblock %}

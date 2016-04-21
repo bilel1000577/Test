@@ -1,0 +1,55 @@
+<style>
+        div.dragbox-content.editableRanking{
+          margin: 12px 12px 48px 12px;
+        }
+        @media(max-width:767px){
+            div.dragbox-content.editableRanking{
+            margin: 12px 12px 58px 12px;
+            }
+        }
+</style>
+<h2>   <span class="questionOrder"> {{ question.questionOrder }}</span>  {{ question.questionText }}  
+        <li class="dropdown" style="display: initial;;float: right;">
+            <a class="dropdown-toggle " data-toggle="dropdown" href="#" id="toggleQuestion"><img src="{{asset('img/chevron.png')}}" style="height: 10px"> </a>
+            <ul class="dropdown-menu" aria-labelledby="toggleQuestion">
+              <li>
+                <a class='minimize1' href="#" data-minimize="{{question.id}}" id="minimize{{question.id}}" >{{'question.minimize'|trans}}</a>
+                <a class='minimize2' href="#" data-maximize="{{question.id}}" id="maximize{{question.id}}" style="display:none;">{{'question.maximize'|trans}}</a>
+              </li> 
+              <li>
+                <a class="cloneQuestion"href="#" data-linkCopy="{{ path('questionnaire_copy_question', { 'questionId': question.id ,'questionnaireId' : questionnaire_id }) }}" data-idQuestion="{{question.id}}" data-idQuestionnaire="{{questionnaire_id}}">{{'question.copy'|trans}}</a>
+              </li> 
+            </ul>
+          </li>   </h2> 
+
+            <div class="dragbox-content editableRanking"> 
+            	<!--ul class="sortable">
+                      {% for answer in question.answerOptions %}
+                                <li> <h5> {{ answer.answerTitle }} </h5> </li>
+                      {% endfor %}
+				</ul-->
+				 <div class="table-responsive">
+                    <table class="table">
+                    <th></th>
+                    
+                    {% for i in 1..question.answerOptions.count %}
+                        <th>{{loop.index}}</th>
+                    {% endfor %}
+                    {% for answer in question.answerOptions %}
+                        <tr>
+                            <td>{{ answer.answerTitle }}</td>
+                            {% for i in 1..question.answerOptions.count %}
+                                <td><input id="{{question.id}}" type="radio" name="{{loop.index}}" class="ranking" value="{{answer.id}}" required="true"/></td>
+                            {% endfor %}
+                        </tr>
+                    {% endfor %}
+                </table>
+              </div>
+
+				
+				<div class="pull-right" style="margin-top: -3%;"> 
+	                <a  id="editQestion{{question.id}}" class="btn btn-primary"  href="#" data-link="{{path('rankingquestion_edit', { 'id': question.id ,'questionnaire' : questionnaire_id }) }}" >{{'question.btn.update'|trans}}</a>
+	                <a data-toggle="modal" id="deleteQuestion{{question.id}}" class="btn btn-primary"  href="{{path('rankingquestion_delete', { 'id': question.id ,'questionnaire' : questionnaire_id }) }}" data-target="#ModalDeleteQuestion{{question.id}}">{{'question.btn.delete'|trans}}</a>
+	            </div>
+	            
+          </div>

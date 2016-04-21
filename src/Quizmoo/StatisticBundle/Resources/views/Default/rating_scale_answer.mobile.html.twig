@@ -1,0 +1,71 @@
+
+{% extends "StatisticBundle::layout.mobile.html.twig" %}
+{% block title %}
+ 					
+  Survey Details- {{ parent() }}
+{% endblock %}
+{% block menu %}
+	
+	
+	 
+{% endblock %}
+
+{% block body %}
+				<form  id="chart_form" action="#" class="form-horizontal" >
+					<script src="{{ asset('bundles/obhighcharts/js/highcharts/highcharts.js') }}"></script>
+					<script src="{{ asset('bundles/obhighcharts/js/highcharts/modules/exporting.js') }}"></script>
+					<script type="text/javascript" src="{{ asset('js/jquery.js') }}">
+						jQuery.noConflict();
+					</script>
+
+
+<script type="text/javascript">
+        {{ chart(bchart) }}
+</script>
+<style>
+.table td {
+   text-align: center;   
+}
+
+.item {
+   text-align: left;   
+}
+</style>
+
+<p> <h5 style="margin-left: 45%;">{{'results.statistics'|trans}} </h5> </p>
+<table id="recap_table"  class="table table-bordered">
+	<thead>
+		<th>{{'results.item'|trans}}</th>
+		<th>{{'results.mean'|trans}}</th>
+		<th>{{'results.standard'|trans}}</th>
+		<th>{{'results.min'|trans}} </th>
+		<th>{{'results.max'|trans}} </th>
+		<th>{{'results.median'|trans}} </th>
+		<th>{{'results.nbr'|trans}}</th>
+	<thead>
+	<tbody>
+	{% for value in recap_array %}
+	  <tr>
+	  {% for key , element in value %}
+	  	{% if key==0 %}
+{# 	  	<td style="text-align:left;"> {{element}} </td>#}
+	  	<td style="text-align:left;"><a  href="{{path('statistic_rating_scale_item',{'questionId': recap_array[recap_array|length -1] ,'scale': element,'choiceId':choiceId })}}">   {{element}}  </a> </td>
+	  	{% else %}
+	  	<td> {{element}} </td>
+	  	{% endif %}
+	  {% endfor %}
+	</tr>
+	{% endfor %}
+	</tbody>
+
+</table>
+<div  id="bar_chart_rating_scale"  style="width:80%; height: 400px; margin: 0 auto"></div>
+ 
+	{% for name in test %}
+		{% render  'StatisticBundle:RatingScaleAnswerChart:getItemResult' with {'questionId': recap_array[recap_array|length -1],'scale':name,'template':'StatisticBundle:Default:rating_scale_item.html.twig','choiceId':choiceId } %}
+	{% endfor %}
+
+{% block exportButton %}
+{{parent()}}
+{% endblock %}
+{% endblock %}

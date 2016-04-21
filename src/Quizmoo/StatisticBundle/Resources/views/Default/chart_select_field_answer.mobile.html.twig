@@ -1,0 +1,30 @@
+{% extends "StatisticBundle::layout.mobile.html.twig" %}
+{% block title %}
+ 					
+  Questionnaire Details- {{ parent() }}
+{% endblock %}
+{% block menu %}
+	
+	
+	 
+{% endblock %}
+
+{% block body %}
+				<form  id="chart_form" action="#" class="form-horizontal" >
+					<script src="{{ asset('bundles/obhighcharts/js/highcharts/highcharts.js') }}"></script>
+					<script src="{{ asset('bundles/obhighcharts/js/highcharts/modules/exporting.js') }}"></script>
+					<script type="text/javascript" src="{{ asset('js/jquery.js') }}">
+						jQuery.noConflict();
+					</script>
+
+
+<script type="text/javascript">
+        {{ chart(pchart) }}
+        {{ chart(bchart) }}
+</script>
+<div id="pie_chart_select_field"  style="width:80%; height: 400px; margin: 0 auto"></div>
+<div id="bar_chart_select_field"  style="width:80%; height: 400px; margin: 0 auto"></div>
+{% block exportButton %}
+{{parent()}}
+{% endblock %}
+{% endblock %}

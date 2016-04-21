@@ -1,0 +1,30 @@
+matrixofdropdownquestion:
+    pattern:  /
+    defaults: { _controller: "QuizmooQuestionnaireBundle:MatrixOfDropDownQuestion:index" }
+
+matrixofdropdownquestion_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "QuizmooQuestionnaireBundle:MatrixOfDropDownQuestion:show" }
+
+matrixofdropdownquestion_new:
+    pattern:  /new/{id}
+    defaults: { _controller: "QuizmooQuestionnaireBundle:MatrixOfDropDownQuestion:new" }
+
+matrixofdropdownquestion_create:
+    pattern:  /create/{id}
+    defaults: { _controller: "QuizmooQuestionnaireBundle:MatrixOfDropDownQuestion:create" }
+    requirements: { _method: post }
+
+matrixofdropdownquestion_edit:
+    pattern:  /{id}/edit/{questionnaire}
+    defaults: { _controller: "QuizmooQuestionnaireBundle:MatrixOfDropDownQuestion:edit" }
+
+matrixofdropdownquestion_update:
+    pattern:  /{id}/update/{questionnaire}
+    defaults: { _controller: "QuizmooQuestionnaireBundle:MatrixOfDropDownQuestion:update" }
+    requirements: { _method: post }
+
+matrixofdropdownquestion_delete:
+    pattern:  /{id}/delete/{questionnaire}
+    defaults: { _controller: "QuizmooQuestionnaireBundle:MatrixOfDropDownQuestion:delete" }
+

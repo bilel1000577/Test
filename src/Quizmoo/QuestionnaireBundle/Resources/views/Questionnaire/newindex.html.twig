@@ -1,0 +1,368 @@
+{% extends "QuizmooQuestionnaireBundle::layout.html.twig" %}
+{% block title %}
+   {{ parent() }}
+{% endblock %}
+{% block menu %}
+    {{parent()}} 
+{% endblock %}
+{% block quizmoo_questionnaire_body %}
+<style>
+
+    .form-group label {
+        float: left;
+        text-align: left;
+        font-weight: normal;
+    }
+
+    .form-group select {
+        display: inline-block;
+        width: auto;
+        vertical-align: middle;
+    }
+    table { 
+      width: 100%; 
+      border-collapse: collapse; 
+    }
+    /* Zebra striping */
+    tr:nth-of-type(odd) { 
+      background: #f9f9f9; 
+    }
+    th { 
+      /*background: #666666;
+      color: white; */
+      background: white;
+      color: grey;
+      font-weight: 700;
+    }
+
+    td, th { 
+      padding: 6px; 
+      border: 1px solid #ccc; 
+      text-align: left; 
+    }
+
+    @media(max-width:767px){
+          td.thide{
+            display: none;
+          }
+          th.thide{
+            display: none;
+          }
+
+          /* Force table to not be like tables anymore */
+          table, thead, tbody, th, td, tr { 
+            display: block; 
+          }
+          
+          /* Hide table headers (but not display: none;, for accessibility) */
+          thead tr { 
+            position: absolute;
+            top: -9999px;
+            left: -9999px;
+          }
+          
+          tr { border: 1px solid #ccc; }
+          
+          td { 
+            /* Behave  like a "row" */
+            border: none;
+            border-bottom: 1px solid #eee; 
+            position: relative;
+            padding-left: 50%; 
+          }
+          
+          td:before { 
+            /* Now like a table header */
+            /*position: absolute;*/
+            /* Top/left values mimic padding */
+            top: 6px;
+            left: 6px;
+            width: 45%; 
+            padding-right: 10px; 
+            white-space: nowrap;
+          }
+          div.td_label{
+            display: inline;
+          }
+        
+          span.glyphicon.glyphicon-ok{
+            margin-left: 2%;
+            padding-right: 5%;
+          }
+          span.glyphicon.glyphicon-map-marker{
+            margin-left: 2%;
+            padding-right: 5%;
+          }
+          span.glyphicon.glyphicon-export{
+            margin-left: 2%;
+            padding-right: 5%;
+          }
+          span.glyphicon.glyphicon-transfer{
+             margin-left: 2%;
+             padding-right: 5%;
+          }
+          span.glyphicon.glyphicon-stats{
+            margin-left: 2%;
+             padding-right: 5%;
+          }
+          span.glyphicon.glyphicon-download-alt{
+             margin-left: 2%;
+             padding-right: 5%;
+          }
+
+          span.glyphicon.glyphicon-link{
+             margin-left: 2%;
+             padding-right: 5%;
+          }
+          
+          span.glyphicon.glyphicon-remove{
+             margin-left: 2%;
+             padding-right: 5%;
+          }
+
+          span.glyphicon.glyphicon-folder-close{
+             margin-left: 2%;
+             padding-right: 5%;
+          }
+
+          span.glyphicon.glyphicon-remove.closed{
+            margin-left: 2%;
+             padding-right: 5%;
+          } 
+          span.glyphicon.glyphicon-zoom-in{
+            margin-left: 2%;
+             padding-right: 5%;
+          }
+
+          span.glyphicon.glyphicon-remove.draft{
+            margin-left: 2%;
+             padding-right: 2%;
+          } 
+
+          .row.tab{
+            margin-left: 2%;
+            margin-right: 2%;
+          }
+          .row.head{
+            margin-left: -3%;
+            margin-right: -3%;
+          }
+          div.col-xs-12.col-sm-12.col-md-6.categories{
+            display: none;
+          }
+          div.rowcategories{
+            display: none;
+          }
+         }
+          @media(min-width:768px){}
+          @media(min-width:992px){}
+          @media(min-width:1200px){
+          span.glyphicon.glyphicon-ok{
+            margin-left:  35%;
+          }
+          span.glyphicon.glyphicon-export{
+            margin-left:  35%;
+          }
+          span.glyphicon.glyphicon-transfer{
+            margin-left: 32%;
+          }
+          span.glyphicon.glyphicon-stats{
+            margin-left: 30%;
+          }
+          span.glyphicon.glyphicon-download-alt{
+            margin-left: 40%;
+          }
+
+          span.glyphicon.glyphicon-link{
+            margin-left: 40%;
+          }
+          
+          span.glyphicon.glyphicon-remove{
+            margin-left: 34%;
+          }
+
+          span.glyphicon.glyphicon-folder-close{
+            margin-left: 35%;
+          }
+
+          span.glyphicon.glyphicon-zoom-in{
+            margin-left: 32%;
+          }
+
+          span.glyphicon.glyphicon-remove.draft{
+            margin-left: 40%;
+          } 
+
+          span.glyphicon.glyphicon-edit.draft{
+            margin-left: 45%;
+          } 
+          span.glyphicon.glyphicon-map-marker{
+            margin-left: 40%;
+          
+          }
+    }
+</style>
+{% javascripts '@QuizmooQuestionnaireBundle/Resources/public/js/index_questionnaire.js' %}
+<script src="{{ asset('bundles/quizmooquestionnaire/js/index_questionnaire.js') }}"></script>
+<script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+<script src="{{ path('fos_js_routing_js', {"callback": "fos.Router.setData"}) }}"></script>
+{{parent()}}
+ <script src="{{ asset_url}}"></script>
+{% endjavascripts %}
+<div style="display:none;">
+  <input type="hidden" id="locale" value="{{app.getRequest().getLocale()}}"></div>
+</div> 
+
+<ul class="nav nav-tabs" id="myTab">
+	 <li {% if tab == "ongoing" %} class="active" {% endif %}  ><a href="#ongoing" data-toggle="tab">{{'questionnaires_state.ongoing'|trans}} <b> ({{ total_entities_ongoing }})</b></a></li>
+	 <li {% if tab == "drafts" %}  class="active" {% endif %}><a href="#drafts" data-toggle="tab">{{'questionnaires_state.drafts'|trans}}<b> ({{ total_entities_drafts  }})</b></a></li>
+
+ </ul>
+ 
+<div id="myTabContent" class="tab-content">
+ 	<!--ongoing surveys tab-->
+ 	<div  class="tab-pane fade {% if tab == "ongoing" %}active in{% endif %}" id="ongoing">
+ 		{% if entities_ongoing is not empty %}
+ 		<table class="table" id="QuestionnairesTable">
+            <thead>
+                <tr>
+                    <th style="text-align: left;width: 180px;"> {{'questionnaires_ongoing.survey'|trans}}</th>
+                    <th style="text-align: left;"> {{'questionnaires_ongoing.nbAnswers'|trans}}</th>
+                 
+                    <th style="text-align: left;"> {{'questionnaires_ongoing.data'|trans}}</th>
+                    <th style="text-align: left;"> {{'questionnaires_ongoing.share'|trans}}</th>
+                    <th style="text-align: left;"> {{'questionnaires_ongoing.analyse'|trans}}</th>
+                    <th style="text-align: left;"> {{'questionnaires_ongoing.download'|trans}}</th>
+                </tr>
+            </thead>
+            <tbody> 
+	            {% for questionnaire in entities_ongoing %}
+	               <tr>
+	                    <td class="ongoing">
+	                      <div class="td_label" hidden style="font-weight: bold;"> {{'questionnaires_ongoing.survey'|trans}} </div>
+	                      	{% if questionnaire.numberOfAnswers>0  %}
+	                        <a href="{{ path('quizmoo_questionnaire_analyse', {'id': questionnaire.id} ) }}"> {{questionnaire.questionnaireName }}</a>          
+                          {% else %}
+                          {{questionnaire.questionnaireName }} 
+                          {% endif %}
+	                    </td>
+                        <td  class="ongoing">
+                          <div class="td_label" hidden style="font-weight: bold;">{{'questionnaires_ongoing.nbAnswers'|trans}} </div>
+                          {% if questionnaire.numberOfAnswers>0  %}
+                          {{questionnaire.numberOfAnswers }}
+                          {% else %} 0 {% endif %}                           
+                        </td>
+                        
+                        
+                        <td  class="ongoing">
+                          <a href="{{path('quizmoo_respondent',{'hash': questionnaire.hash } )}}">
+                            <span class="glyphicon glyphicon-ok" title="Data Entry" alt="Data Entry"></span>
+                            <div class="td_label" hidden >{{'questionnaires_ongoing.data'|trans}} </div>
+                          </a>  
+                        </td>
+                        <td class="ongoing">
+                            <a href="{{ path('questionnaire_generate_url', {'id': questionnaire.id} ) }}" > 
+                            <span class="glyphicon glyphicon-transfer" title="Share" alt="Share"></span>
+                            <div class="td_label" hidden >{{'questionnaires_ongoing.share'|trans}} </div>
+                            </a>
+                        </td>
+                        <td class="ongoing">
+                          {% if questionnaire.numberOfAnswers>0  %}
+                        	<a href="{{ path('quizmoo_questionnaire_analyse', {'id': questionnaire.id} ) }}">
+                            <span class="glyphicon glyphicon-stats" title="Analyze"
+                                alt="Analyze"></span>
+                            <div class="td_label" hidden >{{'questionnaires_ongoing.analyse'|trans}} </div>
+                       		</a>
+                          {% else %}
+                          <span class="glyphicon glyphicon-stats" title="Analyze"
+                                alt="Analyze"></span>
+                            <div class="td_label" hidden >{{'questionnaires_ongoing.analyse'|trans}} </div>
+                          {% endif %}
+                        </td>
+                        <td class="ongoing">
+                          {% if questionnaire.numberOfAnswers>0  %}
+                            <a href="{{path('export_questionnaire_to_excel',{'id': questionnaire.id })}}">
+                            <span class="glyphicon glyphicon-download-alt" title="Export to Excel"
+                                alt="Export Answers  to Excel"></span>
+                            <div class="td_label" hidden >{{'questionnaires_ongoing.download'|trans}} </div>
+                            </a>
+                          {% else %}
+                           <span class="glyphicon glyphicon-download-alt"></span>
+                           <div class="td_label" hidden >{{'questionnaires_ongoing.download'|trans}} </div>
+                          {% endif %}
+                        </td>
+
+                    </tr>
+
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+        <p> {{'questionnaires.no_survey'|trans}}  <a href="{{ path('quizmoo_questionnaire_ajouter') }}"> 
+        {{'questionnaires.new_survey'|trans}}</a> </p>
+        {% endif %}
+        <!--pagination-->
+        <center>
+          {% if total_entities_ongoing > numberOfPage %}
+          <ul class="pagination">
+          <li class="{% if current_page == 1 %}inactive{% endif %}"><a href="{{ path('questionnaire_mysurveys', {'categorieId': categorieId , 'current_page': current_page-1 ,'page_ongoing': page_ongoing-1, 'query':query ,'page_closed' : page_closed,'page_drafts' : page_drafts,'page_received':page_received, 'tab':'ongoing'}) }}">«</a></li>
+          {% for p in range(1, last_page) %}
+          <li {% if p == page_ongoing %}class="active"  {% endif %}><a href="{{ path('questionnaire_mysurveys', {'categorieId': categorieId , 'current_page': p ,'page_ongoing': p ,'page_closed' : page_closed,'page_drafts' : page_drafts, 'query':query ,'page_received':page_received, 'tab':'ongoing'}) }}">{{ p }}</a></li>
+          {% endfor %}
+          <li class="{% if current_page == last_page %}inactive{% endif %}"><a href="{{ path('questionnaire_mysurveys', {'categorieId': categorieId , 'current_page': current_page+1 ,'page_ongoing': page_ongoing+1 , 'query':query ,'page_closed' : page_closed,'page_drafts' : page_drafts,'page_received':page_received, 'tab':'ongoing'}) }}">»</a></li>
+           </ul>
+          {% endif %} 
+        </center>
+    </div>
+    <!--drafts surveys tab-->
+    <div class="tab-pane fade {% if tab == "drafts" %}active in{% endif %}"  id="drafts">
+    	{% if entities_drafts is not empty %}
+    	<table class="table" id="QuestionnairesTable">
+		  	<thead>
+                <tr>
+                    <th style="text-align: left;width: 275px;"> {{'questionnaires_drafts.survey'|trans}}</th>
+                    <th style="text-align: left;"> {{'questionnaires_drafts.modified'|trans}}</th>
+                    <th style="text-align: left;"> {{'questionnaires_drafts.edit'|trans}}</th>                    
+              </tr>
+            </thead>
+  			<tbody>
+  				{% for questionnaire in entities_drafts %}
+                    <tr>
+                        <td class="draft">
+                          <div class="td_label" hidden  style="font-weight: bold;">{{'questionnaires_drafts.survey'|trans}} </div>
+                          <a href="{{ path('quizmoo_questionnaire_modifier', {'id': questionnaire.id} ) }}">{{
+                                questionnaire.questionnaireName }}</a>
+                        </td>
+                        <td class="draft">
+                        <div class="td_label" hidden style="font-weight: bold;" >{{'questionnaires_drafts.modified'|trans}} </div>
+                        {{ questionnaire.modified|date("Y-m-d H:i")}}
+                        </td>
+                        <td class="draft">
+                          <a href="{{ path('quizmoo_questionnaire_modifier', {'id': questionnaire.id} ) }}"
+                            > <span class="icon glyphicon glyphicon-edit draft" title="Edit" alt="Edit"></span>
+                            <div class="td_label" hidden >{{'questionnaires_drafts.edit'|trans}} </div>
+                             </a>
+                        </td>
+                    </tr>
+                {% endfor %} 
+  			</tbody> 
+  		</table>
+  		{% else %}
+        <p>  {{'questionnaires.no_survey'|trans}}  <a href="{{ path('quizmoo_questionnaire_ajouter') }}"> 
+        {{'questionnaires.new_survey'|trans}}</a> </p>
+        {% endif %}
+        <center>
+         {% if total_entities_drafts > numberOfPage %}
+            <ul class="pagination">
+              <li class="{% if current_page == 1 %}inactive{% endif %}"><a href="{{ path('questionnaire_mysurveys', {'categorieId': categorieId , 'current_page': current_page-1 ,'page_drafts': page_drafts-1,'page_ongoing': page_ongoing,'page_closed': page_closed,'page_received':page_received, 'query':query , 'tab':'drafts'}) }}">«</a></li>
+              {% for p in range(1, last_page_drafts) %}
+              <li {% if p == page_drafts %}class="active"  {% endif %}><a href="{{ path('questionnaire_mysurveys', {'categorieId': categorieId , 'current_page': p ,'page_drafts': p ,'page_ongoing' : page_ongoing,'page_closed': page_closed,'page_received':page_received, 'query':query , 'tab':'drafts'}) }}">{{ p }}</a></li>
+              {% endfor %}
+              <li class="{% if current_page == page_drafts %}inactive{% endif %}"><a href="{{ path('questionnaire_mysurveys', {'categorieId': categorieId , 'current_page': current_page+1 ,'page_drafts': page_drafts+1 , 'query':query ,'page_ongoing' : page_ongoing,'page_closed': page_closed,'page_received':page_received, 'tab':'drafts' }) }}">»</a></li>
+            </ul>
+          {% endif %} 
+        </center>
+    </div>
+ 
+</div>
+{% endblock %}

@@ -1,0 +1,18 @@
+<h5>{{'Categories'|trans}}</h5>
+<div class="controls">  
+ <select  class="form-control" id="my_selection"> 
+ <option value="" selected> {{'select.anoption'|trans}}</option>
+{% for categorie in categories %}
+ {%  if categorie.id == categorieId %}
+ <option value="{{ path('quizmoo_questionnaire_get_by_state', {'state':state,'page': 1,'categorieId': categorie.id }) }}" selected> {{ categorie.name }}</option>  
+ {% else %}
+     <option value="{{ path('quizmoo_questionnaire_get_by_state', {'state':state,'page': 1,'categorieId': categorie.id }) }}"> {{ categorie.name }}</option>
+ {% endif %}  
+{% endfor %}
+</select>  
+</div>  
+<script>
+    document.getElementById("my_selection").onchange = function() {
+            window.location.href = this.value;      
+    };
+</script>

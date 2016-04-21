@@ -1,0 +1,36 @@
+{% extends "::layout.html.twig" %}
+
+
+{% block body %}
+<style>
+.table td {
+   text-align: center;   
+}
+
+.item {
+   text-align: left;   
+}
+</style>
+
+<p> <h5>{{'results.retrieved'|trans}} </h5></p>
+<h5>{{question.questionText}} </h5>
+<div class="table-responsive">
+<table id="recap_table"  class="table table-bordered" style="width: 95%;" id="AnswersTable">
+   {% for singleTextBoxAnswer in singleTextBoxAnswers %}
+  <tr >
+  {% if singleTextBoxAnswer.answerText != "" %}
+  <td>
+   {{ singleTextBoxAnswer.answerText }} 
+  </td>
+ {% else %}
+  <td>
+  {{'answer.noanswer'|trans}}
+  </td>
+{% endif %}
+   </tr>
+{% endfor %}
+  </tr>
+  </table>
+</div>
+
+{% endblock %}

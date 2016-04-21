@@ -1,0 +1,50 @@
+{% extends "StatisticBundle::layout.mobile.html.twig" %}
+{% block title %}
+ 					
+  Questionnaire Details- {{ parent() }}
+{% endblock %}
+{% block menu %}
+	
+	
+	 
+{% endblock %}
+
+{% block body %}
+				
+           <div class="nav nav-tabs">
+
+           	<h5> {{questionText}} - Export diagram </h5>
+
+           </div>
+
+
+            <span style="margin:20px">Wich format do you like to send : </span>
+
+            <form id="imagesSend" name="imagesSend" action="{{ path('send_images_mail',{'chartType':chartType,'questionnaireId': questionnaireId }) }}" method="POST" class="form_style">
+
+            <div style="padding:5px; line-height: 1.5em;">
+      				<input style="margin:4px;" type="checkbox" name="jpg" id="jpg" value="jpg">JPG<br>
+      				<input style="margin:4px;" type="checkbox" name="png" id="png" value="png">PNG<br>
+      				<input style="margin:4px;" type="checkbox" name="pdf" id="pdf" value="pdf">PDF<br>
+      			</div>
+
+           <span style="line-height: 2.5em;">
+           	Please type in the E-Mail address(es) of the person(s) you would like to send the diagram to (seperated by a comma):
+           </span> 
+
+           <div style="padding:5%;">
+
+				      <textarea rows="4" class="fbarea" style="width:94%;" name="mails" id="mails" placeholder="E-Mail addresses separated by comma" required="true"></textarea>
+
+           </div>
+
+           <div>
+           	
+            <button class="btn btn-success telbtn" style="width:100%;" type="submit" name="imageMail">Send
+            </button>
+
+
+           </div>
+			</div>
+
+{% endblock %}

@@ -1,0 +1,30 @@
+matrixofchoicequestion:
+    pattern:  /
+    defaults: { _controller: "QuizmooQuestionnaireBundle:MatrixOfChoiceQuestion:index" }
+
+matrixofchoicequestion_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "QuizmooQuestionnaireBundle:MatrixOfChoiceQuestion:show" }
+
+matrixofchoicequestion_new:
+    pattern:  /new/{id}
+    defaults: { _controller: "QuizmooQuestionnaireBundle:MatrixOfChoiceQuestion:new" }
+
+matrixofchoicequestion_create:
+    pattern:  /create/{id}
+    defaults: { _controller: "QuizmooQuestionnaireBundle:MatrixOfChoiceQuestion:create" }
+    requirements: { _method: post }
+
+matrixofchoicequestion_edit:
+    pattern:  /{id}/edit/{questionnaire}
+    defaults: { _controller: "QuizmooQuestionnaireBundle:MatrixOfChoiceQuestion:edit" }
+
+matrixofchoicequestion_update:
+    pattern:  /{id}/update/{questionnaire}
+    defaults: { _controller: "QuizmooQuestionnaireBundle:MatrixOfChoiceQuestion:update" }
+    requirements: { _method: post }
+
+matrixofchoicequestion_delete:
+    pattern:  /{id}/delete/{questionnaire}
+    defaults: { _controller: "QuizmooQuestionnaireBundle:MatrixOfChoiceQuestion:delete" }
+

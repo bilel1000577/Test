@@ -1,0 +1,33 @@
+    		<style>
+    		div.dragbox-content.editableTB{
+    			margin: 12px 12px 27px 12px;
+    		}
+            @media(max-width:767px){
+                div.dragbox-content.editableTB {
+                margin: 12px 12px 42px 12px;
+                }
+             }
+    		</style>
+    		<h2>   <span class="questionOrder"> {{ question.questionOrder }}</span>  {{ question.questionText }}  
+        <li class="dropdown" style="display: initial;;float: right;">
+            <a class="dropdown-toggle " data-toggle="dropdown" href="#" id="toggleQuestion"><img src="{{asset('img/chevron.png')}}" style="height: 10px"> </a>
+            <ul class="dropdown-menu" aria-labelledby="toggleQuestion">
+              <li>
+                <a class='minimize1' href="#" data-minimize="{{question.id}}" id="minimize{{question.id}}" >{{'question.minimize'|trans}}</a>
+                <a class='minimize2' href="#" data-maximize="{{question.id}}" id="maximize{{question.id}}" style="display:none;">{{'question.maximize'|trans}}</a>
+              </li> 
+              <li>
+                <a class="cloneQuestion"href="#" data-linkCopy="{{ path('questionnaire_copy_question', { 'questionId': question.id ,'questionnaireId' : questionnaire_id }) }}" data-idQuestion="{{question.id}}" data-idQuestionnaire="{{questionnaire_id}}">{{'question.copy'|trans}}</a>
+              </li> 
+            </ul>
+          </li>  </h2> 
+
+            <div class="dragbox-content editableTB">   
+                
+				<p>  <textarea class="form-control" id="textarea" placeholder="Enter an answer here... "></textarea></p><br>
+				
+				<div class="pull-right" style="margin-top: -3%;"> 
+					<a  id="editQestion{{question.id}}" class="btn btn-primary"  href="#" data-link="{{path('singletextboxquestion_edit', { 'id': question.id ,'questionnaire' : questionnaire_id }) }}" >{{'question.btn.update'|trans}}</a>
+					<a data-toggle="modal" id="deleteQuestion{{question.id}}" class="btn btn-primary"  href="{{path('singletextboxquestion_delete', { 'id': question.id ,'questionnaire' : questionnaire_id }) }}" data-target="#ModalDeleteQuestion{{question.id}}">{{'question.btn.delete'|trans}}</a>
+				</div>
+            </div>

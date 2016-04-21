@@ -1,0 +1,8 @@
+quizmoo_api_questionnaire_get_by_state:
+    pattern:     /{state}/{page}/{categorieID}
+    defaults:  { _controller: QuizmooQuestionnaireBundle:Api:getQuestionnaireByState, page: 1,_locale:en }
+    requirements:
+        page:  \d*
+quizmoo_api_questionnaire_get_quetions:
+    pattern:     /details/{id}
+    defaults:  { _controller: QuizmooQuestionnaireBundle:Api:getQuestions }

@@ -1,0 +1,6 @@
+parameters:
+    statistic.example.class: Quizmoo\StatisticBundle\DependencyInjection\ImageCreatorService
+
+services:
+    statistic.ImageCreatorService:
+        class: %statistic.example.class%

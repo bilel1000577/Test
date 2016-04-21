@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+    <head>
+        <link rel="icon" 
+        type="image/png" 
+        href="{{asset('faviconquiz.png')}}">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta property="og:title" content="{{questionnaire.questionnaireName}}">
+        <meta property="og:url" content="{{ app.request.uri }}">
+        <meta property="og:image" content="{{app.request.getSchemeAndHttpHost() ~ asset('img/logoquiz.png')}}">
+        <meta property="og:image:type" content="image/png">
+        <meta property="og:image:width" content="300" />
+        <meta property="og:image:height" content="300" />
+        <meta property="og:description" content="{{questionnaire.description | raw }}">
+        <meta charset="utf-8" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>Quizmoo &middot; Surveys made easy</title>
+
+        {% block stylesheets %}
+        {% if app.getRequest().getLocale() == 'ar' %}
+        <link rel="stylesheet" href="{{ asset('css/bootstrap.rtl.css') }}" type="text/css" rel="stylesheet" media="screen" />
+        {% else %}
+        <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}" type="text/css" rel="stylesheet" media="screen"  />
+        {% endif %}
+        <style>
+        .colorize {
+            background: #eee;
+        }
+        label.error{
+          color: red;
+          font-size: small;
+        }
+        div.well{
+          background-color: #fff;
+        }
+        @media(max-width:767px){
+
+        td.thide{
+          display: none;
+        }
+        th.thide{
+          display: none;
+        }
+
+        /* Force table to not be like tables anymore */
+        table, thead, tbody, th, td, tr { 
+          display: block; 
+        }
+        
+        /* Hide table headers (but not display: none;, for accessibility) */
+        thead tr { 
+          position: absolute;
+          top: -9999px;
+          left: -9999px;
+        }
+        
+        tr { border: 1px solid #ccc; }
+        
+        td { 
+          /* Behave  like a "row" */
+          border: none;
+          border-bottom: 1px solid #eee; 
+          position: relative;
+          padding-left: 50%; 
+        }
+        
+        td:before { 
+          /* Now like a table header */
+          /*position: absolute;*/
+          /* Top/left values mimic padding */
+          top: 6px;
+          left: 6px;
+          width: 45%; 
+          padding-right: 10px; 
+          white-space: nowrap;
+        }
+      
+        /*
+        Label the data
+        */
+      
+        td.rank:nth-of-type(2):after { content: "1";font-weight: 100; }
+        td.rank:nth-of-type(3):after { content: "2";font-weight: 100; }
+        td.rank:nth-of-type(4):after { content: "3";font-weight: 100; }
+        td.rank:nth-of-type(5):after { content: "4";font-weight: 100; }
+        td.rank:nth-of-type(6):after { content: "5";font-weight: 100; }
+        td.rank:nth-of-type(7):after { content: "6";font-weight: 100; }
+        td.rank:nth-of-type(8):after { content: "7";font-weight: 100; }
+        td.rank:nth-of-type(9):after { content: "8";font-weight: 100; }
+        td.rank:nth-of-type(10):after { content: "9";font-weight: 100; }
+        td.rank:nth-of-type(11):after { content: "10";font-weight: 100; }
+
+        td.rate:nth-of-type(2):after { content: attr(title);font-weight: 100; }
+        td.rate:nth-of-type(3):after { content: attr(title);font-weight: 100; }
+        td.rate:nth-of-type(4):after { content: attr(title);font-weight: 100; }
+        td.rate:nth-of-type(5):after { content: attr(title);font-weight: 100; }
+        td.rate:nth-of-type(6):after { content: attr(title);font-weight: 100; }
+        td.rate:nth-of-type(7):after { content: attr(title);font-weight: 100; }
+        td.rate:nth-of-type(8):after { content: attr(title);font-weight: 100; }
+        td.rate:nth-of-type(9):after { content: attr(title);font-weight: 100; }
+        td.rate:nth-of-type(10):after { content: attr(title);font-weight: 100; }
+        td.rate:nth-of-type(11):after { content: attr(title);font-weight: 100; }
+
+        td.tdmobile{
+          font-weight: bold;
+        }
+        }
+        @media(min-width:768px){  
+          
+        }
+        @media(min-width:992px){
+          
+        }
+        @media(min-width:1200px){
+          
+        }
+        div.well{
+                    background-color: #fff;
+                  }
+        </style>
+        {% endblock stylesheets %}
+        {% block javascripts %}      
+        <script type="text/javascript" src="{{ asset('js/jquery.js') }}"></script>
+         {% javascripts 
+            '@QuizmooQuestionnaireBundle/Resources/public/js/BC_preview.js'%}
+             <script src="{{ asset_url}}"></script>
+             <script type="text/javascript" src="{{ asset('js/bootstrap.js') }}"></script>
+        {% endjavascripts %}
+        {% endblock %}
+        {% include '::navbarquizmoo.html.twig' %}
+    </head>    
+<body>
+<div class="container-fluid">
+    <div class="jumbotron" style="background-color: white;">
+    </div>
+</div> 
+<div class="container">
+{% if url is defined %}
+<div class="questionnaire_Link">
+    <h4> <p class="text-info" align="center" style="margin-bottom: 2%;">  Quistionnaire Link 
+
+        </p> </h4>
+    <div class="url">{{ url }}</div> 
+</div>
+{% endif %}
+        <div class="questionnaire_preview">
+            <form method="post" action="{{path('questionnaire_answers',{'questionnaire_id': questionnaire.id}  )}}" >
+
+                <div class="list_questionnaire">
+                  {% set counter = 0 %}
+                  {% if questionnaire.questions.count > 0 %}
+                        <h4> {{ questionnaire.questionnaireName }}</h4>
+
+                        {% if (questionnaire.description is defined) and (questionnaire.description != null)  %}
+                            <div class="row" style="margin-left: 0%;width: 100%;margin-right: 0%;"><pre style="background-color: white;">{{ questionnaire.description }}</pre></div>
+                        {% endif %}
+
+                        <input type="hidden" id="locale" value="{{app.getRequest().getLocale()}}">
+                        {% for question in questionnaire.questions %}
+                        {% set counter = counter + 1 %}
+                          <input type="hidden" value="{{question.id}}" name="questionId[]" />
+                          <div class="well" span=6>
+                            <h4>{{ counter }}- {{ question.questionText }} </h4>
+                                            
+                          {#Multiple Choice Question#}
+                          {% if question.questionType == "Multiple Choice Question"%}
+                          {# here we should make a test on the type of the question in order to render the answer options#}
+                          <ul class="grp_radio" style="list-style: none;margin-left: -3%;margin-right: -3%">
+                          {% for key,answer in question.answerOptions %}                 
+                               {% if question.isSingle %}
+                                {% if key==0 %}
+                                 <li> <input type="radio" id="multipleChoiceRadio" name="selectMultipleChoice{{question.id}}" value="{{answer.id}}" required="true">
+                                 {{ answer.answerTitle }}
+                                  </li>
+                                 {% else %}
+                                 <li> <input type="radio" id="multipleChoiceRadio" name="selectMultipleChoice{{question.id}}" value="{{answer.id}}" >
+                                 {{ answer.answerTitle }}
+                                  </li>
+                                {% endif %}            
+                                {% else %}
+                                {% if key==0 %}
+                                <li>
+                                <input type="checkbox" id="multipleChoiceCheckbox"  name="selectMultipleChoice{{question.id}}[]" value="{{ answer.id }}" required="true">  {{ answer.answerTitle }}
+                                 </li>
+                                {% else %}
+                                <li>
+                                <input type="checkbox" id="multipleChoiceCheckbox" name="selectMultipleChoice{{question.id}}[]" value="{{ answer.id }}" >  {{ answer.answerTitle }}
+                                </li>
+                                {% endif %}
+                               {% endif %}
+                            {% if not loop.last %} <br> {% endif %}
+                            {% endfor %}
+                          </ul>
+                            {% if not loop.last %} <br> {% endif %}
+                          {% endif %}
+
+
+
+
+
+                          {#Single TextBox Question#}
+                          {% if question.questionType == "Single TextBox Question" %}
+                          <br> <textarea class="form-control" id="textarea{{question.id}}" name="singleTextBoxTextArea{{question.id}}" placeholder="{{'placeholder.answer'|trans}}">-</textarea>
+                          {% if not loop.last %} <br> {% endif %}
+                          {% endif %}
+
+                           {#Ranking Question#}
+                           {% if question.questionType == "Ranking Question" %}
+                            <table class="table ranking">
+                            <thead>
+                            <td class='thide'></td>
+                              {% for i in 1..question.answerOptions.count %}
+                              <th class='thide'>{{loop.index}}</th>
+                              {% endfor %}
+                            <thead>
+                            <tbody>
+                              {% for answer in question.answerOptions %}
+                                <tr>
+                                  <td class="tdmobile">{{ answer.answerTitle }}</td>
+                                  {% for i in 1..question.answerOptions.count %}
+                                  <td class="rank"><input id="{{question.id}}" type="radio" name="{{loop.index}}" class="ranking" value="{{answer.id}}" required="true"/></td>
+                                  {% endfor %}
+                                </tr>
+                              {% endfor %}
+                             <!--  <tr> <td><span class="error_label_r"></span></td> </tr> -->
+                            <tbody>
+                            </table> 
+                           <label  id='rankingLbl' class='rankingLabel' for="rankLBL">                               
+                            {% if not loop.last %} <br> {% endif %}
+                            {% endif %}
+
+                        
+                       </div>
+                      {% endfor %}
+            		
+                  {% endif %}
+                </div>
+                                                                
+
+
+                {% if url is defined %} 
+                <div class="pull-right">
+                  <a class="btn btn-primary input-small" style="width: 169px;" href="{{path('send_mail_questionnaire',{'url':url})}}" >Send </a>
+                  </div>
+                {% else %}
+
+                  {% if (app.getRequest().getLocale() == 'fr' or  app.getRequest().getLocale() == 'en') %}
+                  <div class="footerToolbar" 
+                    style="padding-left: 38%;padding-bottom: 5%;">
+                  {% else %}
+                  <div class="footerToolbar" 
+                    style="padding-right: 33%;padding-bottom: 5%;">
+                  {% endif %}
+                     <!-- <input class="btn btn-primary btn-large " type="submit" style="width: 220px;" value="Send" />-->
+                     <a style="width: 50%;" class="btn btn-primary" href="{{path('questionnaire_generate_url',{'id': questionnaire.id})}}" > {{'questionnaire.send'|trans}}</a>
+                   </div>
+                {%endif%}                                                
+         </form>
+
+      </div>
+</div>
+</body>
+</html>                                                   

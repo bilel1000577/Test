@@ -1,0 +1,22 @@
+<h5>Categories</h5>
+<div class="controls">  
+ <select  class="selectpicker span2" id="my_selection"> 
+ {% if categorieName == 'All' %} 
+ 	 <option value="{{ path('quizmoo_questionnaire_homepage', {'page': 1,'categorieName': 'All' }) }}" selected>All</option> 
+ {% else %} 
+ <option value="{{ path('quizmoo_questionnaire_homepage', {'page': 1,'categorieName': 'All' }) }}">All</option> 
+{% endif %}
+ {% for categorie in categories %}
+ {% if categorieName==categorie.name %}
+ <option value="{{ path('quizmoo_questionnaire_homepage', {'page': 1,'categorieName': categorie.name }) }}" selected> {{ categorie.name }}</option>  
+{% else %}
+     <option value="{{ path('quizmoo_questionnaire_homepage', {'page': 1,'categorieName': categorie.name }) }}"> {{ categorie.name }}</option>
+{% endif %}  
+  {% endfor %}
+</select>  
+</div>  
+<script>
+    document.getElementById("my_selection").onchange = function() {
+            window.location.href = this.value;      
+    };
+</script>

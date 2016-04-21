@@ -1,0 +1,14 @@
+Quizmoo\QuestionnaireBundle\Entity\ListOfAgents:
+    properties:
+        firstname:
+            - NotBlank: { message: "not.blank.firstname" }
+        lastname:
+            - NotBlank: { message: "not.blank.lastname" }
+        location:
+            - NotBlank:  { message: "not.blank.location" }
+        phoneNumber:
+            - NotBlank:  { message: "not.blank.phoneNumber" }
+            - Regex:
+                pattern: "/\d/"
+                match:   true
+                message: "not.valid.phoneNumber"

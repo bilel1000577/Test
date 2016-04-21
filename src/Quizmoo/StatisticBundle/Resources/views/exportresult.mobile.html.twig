@@ -1,0 +1,69 @@
+{% extends "StatisticBundle::layout.mobile.html.twig" %}
+{% block title %}
+ 					
+  Questionnaire Details- {{ parent() }}
+{% endblock %}
+
+{% block javascripts %}
+ {{ parent()}}
+        <script type="text/javascript" src="{{ asset('http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.0/jquery.validate.js') }}">
+
+         <script type="text/javascript" src="{{ asset('js/jquery.zclip.js') }}"></script>
+        <script  type="text/javascript" src="{{ asset('js/bootstrap-tooltip.js') }}"></script>
+          <script type="text/javascript" src="{{ asset('js/auto_resize_input.js') }}"></script>
+        </script>
+
+{% endblock %}
+
+
+{% block menu %}
+	
+	
+	 
+{% endblock %}
+
+{% block body %}
+{% javascripts '@StatisticBundle/Resources/public/js/sendMail.js'%}
+             <script src="{{ asset_url}}"></script>
+                 {% endjavascripts %}
+				
+           <div class="nav nav-tabs">
+
+           	<h5> {{questionText}} - Export results </h5>
+
+           </div>
+
+
+
+         
+
+
+
+              <form id="myFormSend" name="myFormSend" action="{{ path('send_excel_mail',{'questionnaireId': questionnaire.id }) }}" method="POST" class="form_style">
+
+            <span style="line-height: 2.5em;">Please type in the E-Mail address(es) of the person(s) you would like to send the exported excel sheet to (separated by a comma):
+            </span>
+
+              <textarea style="width:97%" name="mails" id="mails" placeholder="E-Mail addresses separated by comma" required="true" ></textarea>
+
+               
+
+               <div>
+
+                <button class="btn btn-success telbtn" style="width:100%;" type="submit" name="excelMail">Export to xls and send
+                </button>
+                
+               <span class="loding">
+                                <img style="border-width: 0px;width: 30px;height: 30px;" src="{{asset(('img/loading.gif'))}}" class="image-btn new-web-link" id="loadingSend" />
+                </span>
+                          
+               
+               </div>
+             </form>
+
+
+
+
+			
+
+{% endblock %}

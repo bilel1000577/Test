@@ -1,0 +1,30 @@
+ratingscale:
+    pattern:  /
+    defaults: { _controller: "QuizmooQuestionnaireBundle:RatingScale:index" }
+
+ratingscale_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "QuizmooQuestionnaireBundle:RatingScale:show" }
+
+ratingscale_new:
+    pattern:  /new/{id}
+    defaults: { _controller: "QuizmooQuestionnaireBundle:RatingScale:new" }
+
+ratingscale_create:
+    pattern:  /create/{id}
+    defaults: { _controller: "QuizmooQuestionnaireBundle:RatingScale:create" }
+    requirements: { _method: post }
+
+ratingscale_edit:
+    pattern:  /{id}/edit/{questionnaire}
+    defaults: { _controller: "QuizmooQuestionnaireBundle:RatingScale:edit" }
+
+ratingscale_update:
+    pattern:  /{id}/update/{questionnaire}
+    defaults: { _controller: "QuizmooQuestionnaireBundle:RatingScale:update" }
+    requirements: { _method: post }
+
+ratingscale_delete:
+    pattern:  /{id}/delete/{questionnaire}
+    defaults: { _controller: "QuizmooQuestionnaireBundle:RatingScale:delete" }
+

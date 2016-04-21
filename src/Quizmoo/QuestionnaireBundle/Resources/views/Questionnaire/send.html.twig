@@ -1,0 +1,176 @@
+{% extends "QuizmooQuestionnaireBundle::layout.html.twig" %}
+  {% block stylesheets %}
+        {{ parent()}}
+        <style>
+          @media(max-width:767px){
+              
+              div.well{
+                display: none;
+              }
+              #input_url_fixe{
+                height: 31px;
+                width: 100% !important;
+              }
+              #name_id{
+                height: 31px;
+                width: 100% !important;
+              }
+              #appendedInputButton{
+                height: 31px;
+                width: 100% !important;
+              }
+              
+          }
+          @media(min-width:768px){
+            
+            
+          }
+          @media(min-width:992px){
+            
+            
+          }
+          @media(min-width:1200px){
+            
+            
+          } 
+          label.error{
+            color: red;
+          }
+          p.text-error{
+            color: red;
+          }
+      </style>
+    
+  {% endblock %} 
+
+  {% block javascripts %}
+        {{ parent()}} 
+        <script type="text/javascript" src="{{ asset('js/jquery.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('js/jquery-ui.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.0/jquery.validate.js') }}"></script>     
+        <script  type="text/javascript" src="{{ asset('js/jquery.zclip.js') }}"></script>
+        <script  type="text/javascript" src="{{ asset('js/auto_resize_input.js') }}"></script>
+        <script  type="text/javascript" src="{{ asset('js/bootstrap-tooltip.js') }}"></script>
+  {% endblock %}
+
+{% block quizmoo_questionnaire_body %}
+    
+    {% javascripts '@QuizmooQuestionnaireBundle/Resources/public/js/sendQuestionnaire.js'%}
+        <script src="{{ asset_url}}"></script>
+    {% endjavascripts %}
+      <input type="hidden" id="locale" value="{{ app.request.getLocale() }}">
+      <div class="thumbnail">
+        <div class="row">
+          <div class="col-xs-12">
+               <h4><span><img src="{{asset(('img/link.PNG'))}}" class="image-btn new-web-link" id="" style="width: 45px" /></span>{{'questionnaire.personalize_link'|trans}} </h4>
+                <pl><h5 style="margin-left: 1%;">{{'questionnaire.personalized_invitations'|trans}}</h5></pl>
+                {% if url is defined %} 
+                    
+                  <div  id="update-hash" style="margin-left: 1%;"> 
+                      <form  class="form-inline" role="form">
+                          <input id="appendedInputButton"  name="appendedInputButton" type="text" class="form-control" readonly value="{{ url }}" 
+                          style="height: 31px;width: 100%;"/> 
+                          {# <button class="btn btn-primary btn-sm"  rel="copy to cliboard" data-copied-hint="copied !" title="copy to clipboard" type="button" id="copy-button" style="margin-top: 10px;">{{'questionnaire.copy'|trans}}</button>
+                          <button class="btn btn-primary btn-sm"  type="button" name="edit-button" id="edit-button" style="margin-top: 10px;">{{'questionnaire.edit'|trans}}</button> #}
+                      </form>
+                  </div> 
+                   
+                   <div id="edit-input"  hidden style="margin-left: 1%;">
+                      {% if url is defined %}   
+                          <form class="form-inline" role="form" id="myForm"  action="{{path('my_app_greeting',{'id':id})}}" method="POST" >
+                          <div class="form-group">
+                          <input class="text" style="height: 31px;"  id="input_url_fixe" type="text" value="{{ url_fixe }}" readonly/>
+                          <input class="text" style="height: 31px;"   type="text" name="name" id="name_id" value="{{ hash }}"/>
+                          </div>
+                          <button class="btn btn-primary btn-sm"  type="submit" id="update-button">{{'send.btn_update'|trans}}</button>
+                          <span class="loding"  >
+                                          <img style="border-width: 0px;width: 30px;height: 30px;" src="{{asset(('img/loading.gif'))}}" class="image-btn new-web-link" id="loading" />
+                          </span>
+                          </form>
+
+                      {% endif %}
+                  </div>
+                {%endif%}
+          
+                <div style="margin-left: 1%;">
+                <br>             
+                <h4 style="margin-left: -1%;"><span><img src="" class="image-btn new-web-link" id="" style="width: 45px" /></span>{{'questionnaire.post_page'|trans}}</h4>
+                <pl><h5>{{'questionnaire.add_website'|trans}}</h5></pl>
+                <input name="WebLinkDesc" class="form-control"  style="height: 31px;width: 100%;" id="WebLinkDesc" type="text" value="&lt;a href=&quot;{{ url }}&quot;&gt;Click here to answer the survey&lt;/a&gt;" 
+                  readonly="readonly"  />
+                  <br>
+              </div>
+          </div>            
+        </div>
+      </div>
+
+      <div class="thumbnail">
+        <div class="row" >
+          <div class="col-lg-12">
+             <h4><span><img  src="{{asset(('img/Captureemial.JPG'))}}" class="image-btn new-web-link" id="" style="width: 45px" /></span>{{'questionnaire.send_via_email'|trans}}</h4>
+                {% if url is defined %} 
+                  <div class="col-lg-12">
+                    <form id="myFormSend" name="myformSend" action="{{path('send_mail_questionnaire',{'id':questionnaire.id})}}" method="POST" class="form_send">
+                      <pl><h5>{{'questionnaire.follow_interviewees'|trans}}</h5></pl>
+                        <div id="collapseTargetTwoo" >
+                          <pl><h5>{{'questionnaire.personalize_survey_description'|trans}}</h5></pl>
+                          <div class="form-group">
+                             <textarea class="form-control"  name="description" id="description" placeholder="{{'send.description'|trans}}"  ></textarea>
+                          </div>
+                              <slid style="width: 117%;margin-left: 0%;"></slid>
+                              <pl><h5>{{'questionnaire.send_via_email'|trans}}<ph>{{'questionnaire.seperated_comma'|trans}}</ph><h5></pl>
+                           <div class="form-group">   
+                             <textarea class="form-control"  name="mails" id="mails" placeholder="{{'send.email'|trans}}" required="true" ></textarea>
+                           </div>
+                             <button class="btn btn-primary btn-sm"  style="width: 149px;" type="submit"  name="registration_mail">{{'questionnaire.send'|trans}}</button>
+                              <span class="loding"   >
+                              <img style="border-width: 0px;width: 30px;height: 30px;display:none" src="{{asset(('img/loading.gif'))}}" class="image-btn new-web-link" id="loadingSend" />
+                              </span>
+                        </div>
+                      </form>
+                  </div>
+                {%endif%}
+          </div>
+         </div>
+      </div>
+   
+      <div class="well" style="background-color: white;">
+        <div class="row">      
+        <div class="col-lg-12">
+          <h4><span><img  src="{{asset(('img/Capturefacebook.JPG'))}}" class="image-btn new-web-link" id="" style="width: 45px" /></span>{{'questionnaire.be_social'|trans}}</h4>
+            <pl><h5> {{'questionnaire.share_text'|trans}}</h5></pl>
+                               
+               <span id="collapseTargetThree">
+                <div class="button-google_facebook" style="margin-left:  1%;">
+                                       
+                  {% if url is defined %}
+                   <a href="javascript:window.open('http://www.facebook.com/sharer/sharer.php?u={{ url }}', '_blank', 'width=400,height=600');void(0);" id="fb_share_btn" name="fb_share" type="button">
+                     <img src="{{asset('img/shrefacebook.PNG')}}" style="height: 28px;margin-top: -20px;" alt="Share">
+                   </a>
+                    <script src="http://connect.facebook.net/en_US/all.js"></script>
+                     <div id="gplus_share" style="display:inline">
+                      <g:plus action="share" href="{{url}}" style="height: 26px;" ></g:plus>
+                      </div>
+                      <input hidden id="titre" value="{{ titre }}" />
+                                          
+                  {% endif %}   
+                </div>
+              </span>
+        </div>
+        </div>
+       </div>
+
+    
+      <script type="text/javascript">
+      {parsetags: 'explicit'}
+        window.___gcfg = {
+          lang: 'en-US'
+        };
+
+        (function() {
+          var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+          po.src = 'https://apis.google.com/js/plusone.js';
+          var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+        })();
+      </script>
+{% endblock %}

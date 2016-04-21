@@ -1,0 +1,18 @@
+questionnaire_answers:
+    pattern: /answer/{questionnaire_id}
+    defaults:  { _controller: QuizmooRespondentBundle:Respondent:answer}
+
+quizmoo_respondent:
+    pattern:  /{hash}
+    defaults: { _controller: QuizmooRespondentBundle:Respondent:getForm }
+    requirements:
+        _method:  GET
+
+collect_SingleTextBoxAnswer:
+    pattern:  /collect_SingleTextBoxAnswers/{questionId}
+    defaults: { _controller: QuizmooRespondentBundle:SingleTextBoxAnswer:getSingleTextBoxAnswersResult}
+    requirements:
+        page:  \d*
+    options:
+                expose: true
+

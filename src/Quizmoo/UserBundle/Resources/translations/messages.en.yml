@@ -1,0 +1,41 @@
+login:
+    using: Or log In using
+    welcome: |
+      Create, send and analyse your surveys in just a few clicks! 
+    freewelcome: |
+     Profit for free during the Beta phase from all features below. If you <br>
+    freewelcome1: |
+     have further requirements, please
+    contact_us: contact us
+    signup: Sign up today
+    sign_in: Sign in to your account
+    remember: Remember me
+    noaccount: I have no account
+    forget: I forgot my password
+    connected: Stay Connected
+    user_mail: username or email
+    pwd: password
+register:
+    legend: Create User account
+    have_an_account: Already have an account
+    cancel: Cancel
+    username: User name
+    email: Email
+    mailConfir: Email Confirmation
+    pwd: Password
+    verification: Verification
+    firstname: Firstname
+    lastname: Lastname
+    gender: Gender
+    education: Education
+    position: Position
+    location: Location
+    birthday: Birth date
+    anoption: Choose an option
+    homme: man 
+    femme: woman
+    ecole: Primary school
+    lycee: Secondary school
+    universite: university
+    doctorat: Ph.D.
+    mba: MBA

@@ -1,0 +1,21 @@
+{
+	"creators":[
+	{
+		"type":"Echelle d'appréciation",
+		"class":"Quizmoo\\StatisticBundle\\DependencyInjection\\RatingScaleImageCreator"
+	},
+	{
+		"type":"Question à choix multiple",
+		"class":"Quizmoo\\StatisticBundle\\DependencyInjection\\MultipleChoiceImageCreator"
+	},
+	{
+		"type":"Mettre dans l'ordre",
+		"class":"Quizmoo\\StatisticBundle\\DependencyInjection\\RankingChartImageCreator"
+	},
+	{
+		"type":"Choisir à partir d'une liste",
+		"class":"Quizmoo\\StatisticBundle\\DependencyInjection\\SelectFieldImageCreator"
+	}
+
+	]
+}

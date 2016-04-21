@@ -1,0 +1,15 @@
+parameters:
+#    quizmoo_questionnaire.example.class: Quizmoo\QuestionnaireBundle\Example
+
+services:
+#    quizmoo_questionnaire.example:
+#        class: %quizmoo_questionnaire.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
+ mail_helper:
+        class:      Quizmoo\QuestionnaireBundle\Services\Mailer
+        arguments: ['@mailer']
+ # locale_listener:
+ #        class:      Quizmoo\QuestionnaireBundle\Services\LocaleListener
+ #        arguments: ['@defaultLocale']
+ #        tags:
+ #        - {name:kernel.event_subscriber}

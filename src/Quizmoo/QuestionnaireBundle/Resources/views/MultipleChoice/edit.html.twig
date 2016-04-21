@@ -1,0 +1,27 @@
+<style>
+input#quizmoo_questionnairebundle_multiplechoicetypeedit_isSingle.form-control{
+  width: 6%;
+}
+</style>
+<form id={{entity.id}} action="{{ path('multiplechoice_update', { 'id': entity.id , 'questionnaire': id_questionnaire }) }}" method="post" {{ form_enctype(edit_form) }}>
+<div class="row">
+    {# {{ form_widget(edit_form) }} #}
+    <div class="col-lg-12">
+    {{ form_row(edit_form.questionText,{ 'attr': {'class': 'form-control' } }) }}
+    </div>
+    <div class="row" style="margin-left: 0%;margin-right: 0%;" hidden>
+        <div class="col-lg-4">
+        {{ form_row(edit_form.isSingle,{ 'attr': {'class': 'form-control' } }) }}
+        </div>
+    </div>
+    <div class="col-lg-12">
+    {{ form_row(edit_form.questionAnswer,{ 'attr': {'class': 'form-control' } }) }}
+    </div>
+ 	<div class="col-lg-6"style="padding-top: 2%;"> 
+ 		<input type="submit" value="{{'question.btn.update'|trans}}" class="btn btn-primary"/>
+ 		<a href='#' id="cancelBtn{{entity.id}}" data-link="{{path('multiplechoice_show',
+     	{'id':entity.id})}}" data-id="{{entity.id}}" class="btn btn-default">{{'question.btn.cancel'|trans}} </a> 
+ 	 </div>
+ 	 {{ form_widget(edit_form._token) }}
+ </div>
+</form>

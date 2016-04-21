@@ -1,0 +1,30 @@
+commentbox:
+    pattern:  /
+    defaults: { _controller: "QuizmooQuestionnaireBundle:CommentBox:index" }
+
+commentbox_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "QuizmooQuestionnaireBundle:CommentBox:show" }
+
+commentbox_new:
+    pattern:  /new/{id}
+    defaults: { _controller: "QuizmooQuestionnaireBundle:CommentBox:new" }
+
+commentbox_create:
+    pattern:  /create/{id}
+    defaults: { _controller: "QuizmooQuestionnaireBundle:CommentBox:create" }
+    requirements: { _method: post|get }
+
+commentbox_edit:
+    pattern:  /{id}/edit/{questionnaire}
+    defaults: { _controller: "QuizmooQuestionnaireBundle:CommentBox:edit" }
+
+commentbox_update:
+    pattern:  /{id}/update/{questionnaire}
+    defaults: { _controller: "QuizmooQuestionnaireBundle:CommentBox:update" }
+    requirements: { _method: post }
+
+commentbox_delete:
+    pattern:  /{id}/delete/{questionnaire}
+    defaults: { _controller: "QuizmooQuestionnaireBundle:CommentBox:delete" }
+

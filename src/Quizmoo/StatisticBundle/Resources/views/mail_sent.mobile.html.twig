@@ -1,0 +1,31 @@
+{% extends "::layout.mobile.html.twig" %}
+{% block title %}
+  {{ parent() }}
+{% endblock %}
+
+{% block body %}
+
+{% if id_msg=="1" %}
+   <div style="margin=15%;font-size: 18px;line-height: 2em;">
+	<center> Your	chart has been sent successfully</center>
+</div>
+{% elseif id_msg=="2" %}
+
+   <div style="margin=15%;font-size: 18px;line-height: 2em;">
+	<center> Something wrong happen!! please try again later</center>
+</div>
+
+{% elseif id_msg=="3" %}
+
+   <div style="margin=15%;font-size: 18px;line-height: 2em;">
+	<center> You should provide valid emails</center>
+</div>
+
+{% elseif id_msg=="4" %}
+
+   <div style="margin=15%;font-size: 18px;line-height: 2em;">
+	<center> You should provide at least one valid email</center>
+</div>
+
+{% endif %}
+{% endblock %}

@@ -1,0 +1,28 @@
+parameters:
+   database_driver:   pdo_mysql
+   database_host:     localhost
+   database_port:     ~
+   database_name:     surveys
+   database_user:     root
+   database_password: 
+
+   mailer_transport:  smtp
+   mailer_host:       smtp.quizmoo.com
+   mailer_user:       noreply@quizmoo.com
+   mailer_password:   abc123456
+
+   locale:            fr
+   secret:            ThisTokenIsNotSoSecretChangeIt
+
+
+   api_facebook_id: 233089460218261 
+   api_facebook_secret: 4d77b05375167b30bab5810858789028 
+   api_facebook_name: http://apps.facebook.com/disycs-test
+   api_facebook_server: http://www.test.com/
+
+
+   client_id: 732046664328.apps.googleusercontent.com 
+   client_secret: -8Ah1ClVyNpFB2xdYKmizVR8
+   call_back_url: http://www.test.com/web/app.php/login_google_check
+
+   default_redirect_url: quizmoo_redirect_login

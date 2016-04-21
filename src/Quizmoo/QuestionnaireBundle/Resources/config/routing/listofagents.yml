@@ -1,0 +1,34 @@
+listofagents:
+    pattern:  /
+    defaults: { _controller: "QuizmooQuestionnaireBundle:ListOfAgents:index" }
+
+listofagents_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "QuizmooQuestionnaireBundle:ListOfAgents:show" }
+
+listofagents_new:
+    pattern:  /new
+    defaults: { _controller: "QuizmooQuestionnaireBundle:ListOfAgents:new" }
+
+listofagents_create:
+    pattern:  /create
+    defaults: { _controller: "QuizmooQuestionnaireBundle:ListOfAgents:create" }
+    requirements: { _method: post }
+
+listofagents_edit:
+    pattern:  /edit/{id}
+    defaults: { _controller: "QuizmooQuestionnaireBundle:ListOfAgents:edit" }
+
+listofagents_update:
+    pattern:  /update/{id}
+    defaults: { _controller: "QuizmooQuestionnaireBundle:ListOfAgents:update" }
+    requirements: { _method: post }
+
+listofagents_delete:
+    pattern:  /delete/{id}/{agentId}
+    defaults: { _controller: "QuizmooQuestionnaireBundle:ListOfAgents:delete" }
+    requirements: { _method: post }
+
+listofagents_bymanager:
+    pattern:  /listbymanager
+    defaults: { _controller: "QuizmooQuestionnaireBundle:ListOfAgents:listOfAgentsByManager" }

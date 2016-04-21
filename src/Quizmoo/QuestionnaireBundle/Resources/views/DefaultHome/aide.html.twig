@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<head>
+     <link rel="icon" 
+      type="image/png" 
+      href="{{asset('faviconquiz.png')}}">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <meta name="description" content="" />
+     <meta name="author" content="" />
+     <meta charset="utf-8" />
+     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+     <title>Quizmoo &middot; Surveys made easy</title>
+     <title>{% block title %}Quizmoo{% endblock %}</title>
+		{% block stylesheets %}
+            {% if app.getRequest().getLocale() == 'ar' %}
+            <link rel="stylesheet" href="{{ asset('css/bootstrap.rtl.css') }}" type="text/css" />
+            {% else %}
+            <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}" type="text/css" />
+            {% endif %}
+		{% endblock %}
+ {% block javascripts %}
+    <script type="text/javascript" src="{{ asset('js/jquery.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/bootstrap.js') }}"></script>
+  {% endblock %}
+  {% include '::navbarquizmoo.html.twig' %}
+</head>
+<body>
+<div class="container-fluid">
+    <div class="jumbotron" style="background-color: white;">
+    
+    </div>
+</div>   
+<div class="container">
+<div class="panel-group" id="accordion">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+        {{'help.title1'|trans|raw}} 
+        </a>
+      </h4>
+    </div>
+    <div id="collapseOne" class="panel-collapse collapse in">
+      <div class="panel-body">
+       <h5>
+        {{'help.p1'|trans|raw}}           
+       </h5>
+      </div>
+    </div>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+          {{'help.title2'|trans|raw}} 
+        </a>
+      </h4>
+    </div>
+    <div id="collapseTwo" class="panel-collapse collapse">
+      <div class="panel-body">
+               <h5>
+                 <p1>
+                  {{'help.p21'|trans|raw}}
+                 <p1>
+               </h5>
+               <h5>
+                <p1>
+                  {{'help.p22'|trans|raw}}
+                </p1>
+                </h5>
+      </div>
+    </div>
+  </div>
+  <!-- <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+          Que veut dire Beta ?
+        </a>
+      </h4>
+    </div>
+    <div id="collapseThree" class="panel-collapse collapse">
+      <div class="panel-body">
+        <h5>
+                Quizmoo est encore en version Beta, ce qui veut dire que le produit en phase de test pour optimiser l’expérience de l’utilisateur et éliminer de potentielles erreurs. On est entrain de travailler sur plusieurs fonctionnalités de Quizmoo qui seront lancées au fur et à mesure pour vous satisfaire et bien évidemment on est entrain d’optimiser jour après jour l’expérience Quizmoo afin que la création, la distribution et l’analyse des sondages ne soient pas un travail difficile mais plutôt un bon moment ! 
+                </h5>
+                <h5>
+                Pour nous aider à atteindre ce but, veuillez nous contacter pour nous donner votre feedback et vos suggestions pour améliorer Quizmoo
+                </h5>
+      </div>
+    </div>
+  </div> -->
+
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour">
+          {{'help.title3'|trans|raw}} 
+        </a>
+      </h4>
+    </div>
+    <div id="collapseFour" class="panel-collapse collapse">
+      <div class="panel-body">
+        <h5> {{'help.p30'|trans|raw}}</h5>
+                <ul>
+                <li>
+                 <h5>{{'help.p31'|trans|raw}}</h5>
+                </li>
+                <li>
+                <h5>{{'help.p32'|trans|raw}}</h5>
+                </li>
+                <li>
+                <h5>{{'help.p33'|trans|raw}}</h5>
+                </li>
+                <li>
+                 <h5>{{'help.p34'|trans|raw}}</h5>
+                </li>
+                <li>
+                <h5>{{'help.p35'|trans|raw}}</h5>
+                </li>
+                <li>
+                <h5>{{'help.p36'|trans|raw}}</h5>
+                </li>
+                <li>
+                 <h5>{{'help.p37'|trans|raw}}</h5>
+                </li>
+                <li>
+                <h5>{{'help.p38'|trans|raw}}</h5>
+                </li>
+                <li>
+                <h5>{{'help.p39'|trans|raw}}</h5>
+                </li>
+                <li>
+                <h5>{{'help.pp39'|trans|raw}}</h5>
+                </li>
+                <li>
+                <h5>{{'help.ppp39'|trans|raw}}</h5>
+                </li>
+                <li>
+                <h5>{{'help.pppp39'|trans|raw}}</h5>
+                </li>
+                </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapseSix">
+          {{'help.title4'|trans|raw}} 
+        </a>
+      </h4>
+    </div>
+    <div id="collapseSix" class="panel-collapse collapse">
+      <div class="panel-body">
+        <h5>{{'help.p40'|trans|raw}}</h5>
+                <ul>
+                <li>
+                <h5>{{'help.p41'|trans|raw}}</h5>
+                </li>
+                <li>
+                <h5>{{'help.p42'|trans|raw}}</h5>
+                </li>
+                <li>
+                <h5>{{'help.p43'|trans|raw}}</h5>
+                </li>
+                <li>
+                <h5>{{'help.p44'|trans|raw}}</h5>
+                </li>
+                </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapseSeven">
+          {{'help.title5'|trans|raw}}
+        </a>
+      </h4>
+    </div>
+    <div id="collapseSeven" class="panel-collapse collapse">
+      <div class="panel-body">
+        <h5>{{'help.p50'|trans|raw}} <a href="mailto:feedback@quizmoo.com">{{'help.p51'|trans|raw}}</a> {{'help.p52'|trans|raw}} </h5>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapseEight">
+          {{'help.title6'|trans|raw}}
+        </a>
+      </h4>
+    </div>
+    <div id="collapseEight" class="panel-collapse collapse">
+      <div class="panel-body">
+        <h5>{{'help.p60'|trans|raw}}</h5>
+      </div>
+    </div>
+  </div>
+
+</div> 
+</div>    
+</body>
+  {% if app.request.server.get('SERVER_NAME') == 'quizmoo' %}
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-53632559-1', 'auto');
+      ga('send', 'pageview');
+
+    </script>
+  {% endif %}
+</html>

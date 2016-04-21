@@ -1,0 +1,13 @@
+{% block quizmoo_profile %}
+
+  
+    	<div class="alert alert-profile " style="width: 26%;margin-left: 20%;padding-left: 13%;padding-bottom: 2%;padding-top: 2%;padding-right: 3%;">
+		<div class="fos_user_user_show">
+			<p>{{ 'profile.show.username'|trans({}, 'FOSUserBundle') }}: {{ user.username }}</p>
+			<p>{{ 'profile.show.email'|trans({}, 'FOSUserBundle') }}: {{ user.email }}</p>
+		</div>
+		</div>
+
+  
+
+{% endblock %}

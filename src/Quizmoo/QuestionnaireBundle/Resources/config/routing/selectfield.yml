@@ -1,0 +1,34 @@
+selectfield:
+    pattern:  /
+    defaults: { _controller: "QuizmooQuestionnaireBundle:SelectField:index" }
+
+selectfield_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "QuizmooQuestionnaireBundle:SelectField:show" }
+
+selectfield_new:
+    pattern:  /new/{id}
+    defaults: { _controller: "QuizmooQuestionnaireBundle:SelectField:new" }
+
+selectfield_create:
+    pattern:  /create/{id}
+    defaults: { _controller: "QuizmooQuestionnaireBundle:SelectField:create" }
+    # requirements: { _method: post }
+
+selectfield_edit:
+    pattern:  /{id}/edit/{questionnaire}
+    defaults: { _controller: "QuizmooQuestionnaireBundle:SelectField:edit" }
+
+selectfield_update:
+    pattern:  /{id}/update/{questionnaire}
+    defaults: { _controller: "QuizmooQuestionnaireBundle:SelectField:update" }
+    requirements:
+        id:  \d+
+    # requirements: { _method: post }
+
+selectfield_delete:
+    pattern:  /{id}/delete/{questionnaire}
+    defaults: { _controller: "QuizmooQuestionnaireBundle:SelectField:delete" }
+    requirements:
+        id:  \d+
+    # requirements: { _method: post }

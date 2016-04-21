@@ -1,0 +1,86 @@
+{% extends "::layout.html.twig" %}
+
+{% block body %}
+{% if app.getRequest().getLocale() == 'ar' %}
+<style>
+	div.container.graphics{
+		direction: ltr !important;
+	}
+	.table td {
+  	 text-align: center;   
+	}
+
+	.table th {
+  	 text-align: center;   
+	}
+
+	
+	h4.description{
+		margin-left: 50%;
+	}
+</style>
+{% else %}
+<style>
+	.table td {
+  	 text-align: center;   
+	}
+
+	.table th {
+  	 text-align: center;   
+	}
+
+	
+	h4.description{
+		margin-left: 35%;
+	}
+</style>
+{% endif %}
+<script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+<script src="{{ path('fos_js_routing_js', {"callback": "fos.Router.setData"}) }}"></script>
+
+<script src="{{ asset('bundles/obhighcharts/js/highcharts/highcharts.js') }}"></script>
+<script src="{{ asset('bundles/obhighcharts/js/highcharts/modules/exporting.js') }}"></script>	
+{% javascripts  '@StatisticBundle/Resources/public/js/touch-tooltip-fix.js' %}
+      <script src="{{ asset_url}}"></script>
+{% endjavascripts %}
+<script type="text/javascript">
+     {{ chart(bchart) }}
+</script>
+
+
+<h4 class="description" style="padding-top: 5%;">{{'results.statistics'|trans}} </h4>
+<div class="table-responsive">
+<table id="recap_table"  class="table table-bordered">
+	<thead>
+		<th>{{'results.item'|trans}}</th>
+		<th>{{'results.mean'|trans}}</th>
+		<th>{{'results.standard'|trans}}</th>
+		<th>{{'results.min'|trans}} </th>
+		<th>{{'results.max'|trans}} </th>
+		<th>{{'results.median'|trans}} </th>
+		<th>{{'results.nbr'|trans}}</th>
+	<thead>
+	<tbody>
+	{% for value in recap_array %}
+	  <tr>
+	  {% for key , element in value %}
+	  	{% if key==0 %}
+	  	<td> <a  href="{{path('statistic_rating_scale_item',{'questionId': recap_array[recap_array|length -1] ,'scale': element }) ~ '?' ~ app.request.queryString }}"> {{element}} </a>  </td>
+	  	{% else %}
+	  	<td> {{element}} </td>
+	  	{% endif %}
+	  {% endfor %}
+	</tr>
+	{% endfor %}
+	</tbody>
+</table>
+</div>
+<div class="row"  id="bar_chart_rating_scale"></div>
+
+{% for name in test %}
+		{% render  'StatisticBundle:RatingScaleAnswerChart:getItemResult' with { 'request' : app.request,'questionId': recap_array[recap_array|length -1],'scale':name,'template':'StatisticBundle:Default:rating_scale_item.html.twig' } %}
+{% endfor %}
+
+{% endblock %}
+
+

@@ -1,0 +1,6 @@
+<h5>Last Surveys</h5>
+<ul class="nav nav-pills nav-stacked">
+  {% for questionnaire in liste_questionnaires %}
+    <li><a href="{{ path('quizmoo_questionnaire_modifier', {'id': questionnaire.id} ) }}">{{ questionnaire.questionnaireName }}</a></li>
+  {% endfor %}
+</ul>

@@ -1,0 +1,195 @@
+/* Carousel Styles */
+.carousel-indicators .active {
+    background-color: #2980b9;
+}
+
+.carousel-inner img {
+    width: 100%;
+    max-height: 350px
+}
+
+.carousel-control {
+    width: 0;
+}
+
+.carousel-control.left,
+.carousel-control.right {
+  opacity: 1;
+  filter: alpha(opacity=100);
+  background-image: none;
+  background-repeat: no-repeat;
+  text-shadow: none;
+}
+
+.carousel-control.left span {
+  padding: 15px;
+}
+
+.carousel-control.right span {
+  padding: 15px;
+}
+
+.carousel-control .glyphicon-chevron-left, 
+.carousel-control .glyphicon-chevron-right, 
+.carousel-control .icon-prev, 
+.carousel-control .icon-next {
+  position: absolute;
+  top: 45%;
+  z-index: 5;
+  display: inline-block;
+}
+
+.carousel-control .glyphicon-chevron-left,
+.carousel-control .icon-prev {
+  left: 0;
+}
+
+.carousel-control .glyphicon-chevron-right,
+.carousel-control .icon-next {
+  right: 0;
+}
+
+.carousel-control.left span,
+.carousel-control.right span {
+  background-color: #000;
+}
+
+.carousel-control.left span:hover,
+.carousel-control.right span:hover {
+  opacity: .7;
+  filter: alpha(opacity=70);
+}
+
+
+.header-text {
+    position: absolute;
+    top: 20%;
+    left: 1.8%;
+    right: auto;
+    width: 96.66666666666666%;
+    text-align: center;
+    
+}
+
+.header-text h2 {
+    font-size: 18px;
+    color: white;
+}
+
+.header-text h2 span {
+  padding: 10px;
+    color: white;
+}
+
+.header-text h3 span {
+  padding: 10px;
+    color: #fff;
+    font-size: 18px;
+}
+
+.btn-min-block {
+    min-width: 170px;
+    line-height: 26px;
+}
+
+.btn-theme {
+    color: #fff;
+    background-color: transparent;
+    border: 2px solid #fff;
+    margin-right: 15px;
+}
+
+.btn-theme:hover {
+    color: #000;
+    background-color: #fff;
+    border-color: #fff;
+}
+
+div.col-md-12.text1{
+   margin-top: 11%;
+   margin-left: 9%;
+   background: #122c51;
+   width: 47%;
+   z-index: 10;
+   opacity: 0.7;
+   filter: alpha(opacity=50);
+}
+div.col-md-12.text2{
+    margin-left: 25%;
+    background: #122c51;
+    width: 62%;
+    margin-top: 3%;
+    z-index: 10;
+    opacity: 0.7;
+    filter: alpha(opacity=50);
+}
+div.container-fluid.mobile{
+   display: none;
+}
+
+div.row.connected{
+   display: block;
+}
+
+/* RESPONSIVE CSS
+-------------------------------------------------- */
+
+@media (max-width: 768px) {
+div.container-fluid.mobile{
+   display: block;
+}
+div.container-fluid{
+   /* margin-top: 16%;*/
+   display: none;
+}
+
+/*.header-text h2 {
+    font-size: 12px;
+    color: white;
+}
+
+.header-text h2 span {
+    margin-left: -8%;
+    padding: 10px;
+    color: white;
+}
+
+span.report{
+    display: none;
+}
+
+.header-text h3 span {
+    margin-left: -8%;
+    padding: 15px;
+    color: #fff;
+    font-size: 12px;
+}
+
+div.col-md-12.text1{
+   margin-top: 15%;
+   margin-left: 7%;
+   background: #122c51;
+   width: 83%;
+   z-index: 10;
+   opacity: 0.5;
+   filter: alpha(opacity=50);
+}
+
+div.col-md-12.text2{
+   margin-top: -13%;
+   margin-left: 7%;
+   background: #122c51;
+   width: 83%;
+   z-index: 10;
+   opacity: 0.5;
+   filter: alpha(opacity=50);
+}*/
+
+div.col-xs-12.col-sm-12.col-md-6.description{
+  display: none;
+}
+div.row.connected{
+   display: none;
+}
+
+}

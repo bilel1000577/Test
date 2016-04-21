@@ -1,0 +1,118 @@
+root:
+    pattern: /
+    defaults:
+        _controller: FrameworkBundle:Redirect:urlRedirect
+        path: /%locale%/
+        permanent: true
+statistic:
+    resource: "@StatisticBundle/Resources/config/routing.yml"
+    prefix:   /
+
+home_default:
+    pattern: /{_locale}/
+    defaults:  { _controller: QuizmooQuestionnaireBundle:DefaultHome:index}
+    requirements:
+                _locale: en|fr|ar
+quizmoo_questionnaire:
+    resource: "@QuizmooQuestionnaireBundle/Resources/config/routing.yml"
+    prefix:   /{_locale}/surveys
+    requirements:
+                _locale: en|fr|ar
+    options:
+                expose: true
+
+quizmoo_respondent:
+    resource: "@QuizmooRespondentBundle/Resources/config/routing.yml"
+    prefix:   /{_locale}/respondent
+    requirements:
+                _locale: en|fr|ar
+
+quizmoo_user:
+    resource: "@QuizmooUserBundle/Resources/config/routing.yml"
+    prefix:   /
+
+_security_check:
+    pattern:  /login_google_check
+_fb_security_check:
+    pattern:  /login_facebook_check
+_security_logout:
+    pattern:  /{_locale}/logout
+fos_google_bundle:
+    resource: "@FOSGoogleBundle/Resources/config/routing.xml"
+    prefix: /login
+fos_js_routing:
+    resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"
+questionnaire_generate_json_list:
+    pattern:   /public/user/{userId}/page/{page}/count/{count}/info.json
+    defaults: { _controller: QuizmooQuestionnaireBundle:Questionnaire:getquestionnaireJson }
+    requirements: 
+            _method: get 
+            userId:  \d+
+            page:  \d+ 
+            count: \d+
+user_authentification:
+    pattern:   public/username/{username}/password/{password}/info.json
+    defaults: { _controller: QuizmooUserBundle:Authentification:postTokenCreate }
+    requirements: 
+            _method: get
+statistic_ranking_json:
+    pattern:  public/ranking_chart_json/{questionId}/info.json
+    defaults: { _controller: StatisticBundle:RankingAnswerChart:getJsonRankingAnswerResult }
+    requirements: 
+            _method: get
+collect_json_SingleTextBoxAnswer:
+    pattern:  public/collect_json_SingleTextBoxAnswers/{questionId}/info.json
+    defaults: { _controller: QuizmooRespondentBundle:SingleTextBoxAnswer:getJsonSingleTextBoxAnswersResult }
+    requirements:
+        _method: get
+collect_json_CommentBoxAnswer:
+    pattern:  public/collect_json_CommentBoxAnswers/{questionId}/info.json
+    defaults: { _controller: QuizmooRespondentBundle:CommentBoxAnswer:getJsonCommentBoxAnswersResult }
+    requirements:
+        _method: get
+collect_json_PictorialAnswer:
+    pattern:  public/collect_json_PictorialAnswers/{questionId}/info.json
+    defaults: { _controller: QuizmooRespondentBundle:PictorialAnswer:getJsonPictorialAnswersResult }
+    requirements:
+        _method: get
+collect_json_multipleTextBoxAnswer:
+    pattern:  public/collect_json_MultipleTextBoxAnswers/{questionId}/info.json
+    defaults: { _controller: QuizmooRespondentBundle:MultipleTextBoxAnswer:getJsonMultipleTextBoxAnswersResult }
+    requirements:
+        _method: get
+statistic_rating_scale_json:
+    pattern:  public/rating_scale_chart_json/{questionId}/info.json
+    defaults: { _controller: StatisticBundle:RatingScaleAnswerChart:getJsonRatingResult }
+    requirements:
+        _method: get
+statistic_multiple_choice_json:
+    pattern:  public/multiple_choice_chart_json/{questionId}/info.json
+    defaults: { _controller: StatisticBundle:MultipleChoiceAnswerChart:getJsonMCAResult }
+    requirements:
+        _method: get
+statistic_matrix_of_choice_json:
+    pattern:  public/matrix_of_choice_chart_json/{questionId}/info.json
+    defaults: { _controller: StatisticBundle:MatrixOfChoiceAnswerChart:getJsonMOCResult }
+    requirements:
+        _method: get
+statistic_matrix_drop_down_json:
+    pattern:  public/matrix_drop_down_chart_json/{questionId}/info.json
+    defaults: { _controller: StatisticBundle:MatrixOfDropDownAnswerChart:getJsonMatrixOfDropDownResult }
+    requirements:
+        _method: get
+closing_questionnaire:
+    pattern:  public/close
+    defaults: { _controller: QuizmooQuestionnaireBundle:Questionnaire:closeJson }
+
+quizmoo_redirect_login:
+    pattern: /{_locale}/surveys/mysurveys/{categorieId}
+    defaults:  { _controller: QuizmooQuestionnaireBundle:Questionnaire:ongoingQuestionnaires,categorieId:41 }
+
+quizmoo_redirect_logout:
+    pattern: /{_locale}/login
+api_quizmoo_questionnaire:
+    resource: "@QuizmooQuestionnaireBundle/Resources/config/api.yml"
+    prefix:   /api/questionnaire
+api_quizmoo_response:
+    resource: "@QuizmooRespondentBundle/Resources/config/api.yml"
+    prefix:   /api/response

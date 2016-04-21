@@ -1,0 +1,173 @@
+ .row .grid{display:none;}
+        fieldset {
+            border: 1px solid #FFF ;
+            padding:5px;
+            margin:5px;
+            margin-left: -29px;
+            margin-top: -1px;
+            background-color: #08C;
+        }
+        fieldsetheader {
+            border: 1px solid #DCD1C6 ;
+            padding:5px;
+            margin:5px;
+            margin-left: -29px;
+            margin-top: -1px;
+        }
+        .row {display:none;}
+        legend {
+            font-weight:bold;
+
+        }
+        label {
+            padding :5px;
+            display:block;
+        }
+        label.en-ligne {
+            display:inline;
+        }
+        label.question{
+            color:#85AC1C;
+            font-weight:bold;
+        }
+        input[type="radio"] {
+            margin: 3px 3px 0px 5px;
+            margin-right:20px;
+            -webkit-appearance: radio;
+            box-sizing: border-box;
+        }
+        input { 
+            border:1px solid #000;
+
+            width: 80%;
+        }
+
+        input:focus { 
+
+        }
+
+        input.decole-curseur {
+            padding-left:20px;
+        }
+        .create-footer-lt {
+            background: url(../i/2x2.gif) repeat-y center top #EAEAE8;
+        }
+        .span15{
+            float: left;
+            min-height: 1px;
+            margin-left: -14px;
+            width: 100%;
+            height: 300px;
+            margin-top: 0%;
+        }
+        h7{
+            font-family: inherit;
+            /*font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;*/
+            font-size: 14px;
+            line-height: 20px;
+            color: inherit;
+            text-rendering: optimizelegibility;
+            color: white;
+        }
+        .carousel {
+            margin-bottom: 60px;
+            margin-top: -5%;
+            height: 255px;
+        }
+        .carousel-inner {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            height: 385px;
+        }
+        .carousel .item {
+            height: 385px;
+        }
+        .carousel img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            min-width: 100%;
+            height: 315px;
+        }
+        .carousel .container {
+            position: relative;
+            z-index: 9;
+            height: 315px;
+            margin-top: 10px;
+        }
+        .carousel-caption {
+            background-color: transparent;
+            position: static;
+            max-width: 1100px;
+            padding: 0 20px;
+            margin-top: 200px;
+            height: 115px;
+        }
+        .carousel-control {
+            position: absolute;
+            top: 65%;
+            left: 15px;
+            width: 40px;
+            height: 40px;
+            margin-top: -25px;
+            margin-left: 30px;
+            font-size: 60px;
+            font-weight: 100;
+            line-height: 30px;
+            color: white;
+            text-align: center;
+            background: #222;
+            border: 3px solid white;
+            -webkit-border-radius: 23px;
+            -moz-border-radius: 23px;
+            border-radius: 23px;
+            opacity: 0.5;
+            filter: alpha(opacity=50);
+        }
+        .carousel-caption h1, .carousel-caption .lead{
+            margin: 0;
+            line-height: 1;
+            color: #000000;
+            text-shadow: 0 0 0 rgba(0, 0, 0, .4);
+            margin-left: 0px;
+        }
+        .row.selected .grid{display:block; margin-left:25px;}
+
+        .accordionButton {	
+            width: 100%;
+            float: left;
+
+            cursor: pointer;
+        }
+
+        .accordionContent {	
+            width: 100%;
+            float: left;
+
+            display: none;
+        }
+        .accordion{
+            width: 85%;
+            background: url(../i/2x2.gif) repeat-y center top #EAEAE8;
+            margin: 7px 23px 0 6px;
+            padding: 5%;
+            height: 81%;
+        }
+
+        h8 {
+            font-size: 13px;
+        }
+        .createquestionnaire{
+            margin-left: 20px;
+            margin-top: -1px;
+        }
+        .copyquestionnaire{
+            margin-left: 20px;
+            margin-top: -1px;
+        }
+        .btncopycreat{
+        margin-top: 5%;
+        }
+        .accordion_ajouter{
+        }

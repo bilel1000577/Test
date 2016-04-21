@@ -1,0 +1,80 @@
+<html> 
+<head>
+      <link rel="icon" 
+      type="image/png" 
+      href="{{asset('/web/faviconquiz.png')}}">
+      <meta charset="utf-8"  style="visibility:hidden;display: block !important;width: 0px !important;height: 0px !important;border-style: none !important;">
+    <title>Quizmoo &middot; Platform</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>{% block title %}Quizmoo{% endblock %}</title>
+		{% block stylesheets %}
+		  <link rel="stylesheet" href="{{ asset('css/mobile/bootstrap.css') }}" type="text/css" />
+                  <link rel="stylesheet" href="{{ asset('css/mobile//hometest.css') }}" type="text/css" />
+		{% endblock %}
+ {% block javascripts %}
+    <script type="text/javascript" src="{{ asset('js/jquery.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/bootstrap.js') }}"></script>
+  {% endblock %}
+  </head>
+  <body>
+      
+{% include '::navbarquizmoo.html.twig' %}
+      <div class="hero-unit" style="width: 70%;text-align: center;margin-left: 10%;margin-top: 10%;">
+      <div class="entry-content">
+	
+<!-- Fast Secure Contact Form plugin 3.1.8.1 - begin - FastSecureContactForm.com -->
+<div id="FSContact1" style="width: 100%;">
+<form  id="si_contact_form1" method="post">
+
+
+         <div style="text-align:center;">
+              Design
+              <br>
+              Build your own surveys or choose from our templates.
+       </div>
+       <div style="text-align:center;">
+              Collect
+              <br>
+              Choose how to distribute and start collecting responses.
+       </div>
+       <div style="text-align:center;">
+              Analyze
+              <br>
+              Use our powerful analytical tools for intelligent insights.
+       </div>
+       <br>
+       <br>
+
+        <div style="text-align:left; padding-top:5px;">
+                Surveys Made Easy
+                Via  Quizmoo. It's easier than ever to send free surveys, polls, questionnaires, customer feedback and market research. Plus get access to survey questions and professional templates.
+                <br>
+                Looking for the right people to fill out your survey? Meet Quizmoo Audience, home to millions of qualified respondents ready to take your surveys and give you the feedback you need to make better decisions.
+        </div>
+        <div style="text-align:left;">
+              <br>
+        </div>
+
+
+<div style="text-align:left; padding-top:5px;"> </div>
+
+
+      <div style="text-align:left; padding-top:5px;">
+               <br>
+        </div>
+        
+
+
+</form>
+</div>
+      </div>
+
+
+ {% include '::footerquizoo.html.twig' %}
+
+   </body>
+</html>

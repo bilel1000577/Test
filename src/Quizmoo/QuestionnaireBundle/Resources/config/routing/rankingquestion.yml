@@ -1,0 +1,30 @@
+rankingquestion:
+    pattern:  /
+    defaults: { _controller: "QuizmooQuestionnaireBundle:RankingQuestion:index" }
+
+rankingquestion_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "QuizmooQuestionnaireBundle:RankingQuestion:show" }
+
+rankingquestion_new:
+    pattern:  /new/{id}
+    defaults: { _controller: "QuizmooQuestionnaireBundle:RankingQuestion:new" }
+
+rankingquestion_create:
+    pattern:  /create/{id}
+    defaults: { _controller: "QuizmooQuestionnaireBundle:RankingQuestion:create" }
+    requirements: { _method: post }
+
+rankingquestion_edit:
+    pattern:  /{id}/edit/{questionnaire}
+    defaults: { _controller: "QuizmooQuestionnaireBundle:RankingQuestion:edit" }
+
+rankingquestion_update:
+    pattern:  /{id}/update/{questionnaire}
+    defaults: { _controller: "QuizmooQuestionnaireBundle:RankingQuestion:update" }
+    requirements: { _method: post }
+
+rankingquestion_delete:
+    pattern:  /{id}/delete/{questionnaire}
+    defaults: { _controller: "QuizmooQuestionnaireBundle:RankingQuestion:delete" }
+

@@ -1,0 +1,39 @@
+<h1>SingleTextBoxQuestion list</h1>
+
+<table class="records_list">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Questiontext</th>
+            <th>Questionanswer</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for entity in entities %}
+        <tr>
+            <td><a href="{{ path('singletextboxquestion_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+            <td>{{ entity.questionText }}</td>
+            <td>{{ entity.questionAnswer }}</td>
+            <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('singletextboxquestion_show', { 'id': entity.id }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('singletextboxquestion_edit', { 'id': entity.id }) }}">edit</a>
+                    </li>
+                </ul>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+<ul>
+    <li>
+        <a href="{# { path('singletextboxquestion_new') } #}">
+            Create a new entry
+        </a>
+    </li>
+</ul>

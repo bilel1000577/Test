@@ -1,0 +1,57 @@
+<h5 id="modal_title" style="font-weight: bold;font-size: inherit;">{{'questionnaire.ranking_question'|trans}}</h5>
+<form class="form-horizontal" id="ranking_form" action="{{ path('rankingquestion_create', {'id': id_questionnaire}) }}" method="post" {{ form_enctype(form) }}>
+ <div class="row">
+    <div class="row" style="margin-left: 0%;margin-right: 0%;">
+    <div class="col-lg-12">
+    {{ form_row(form.questionText,{ 'attr': {'class': 'form-control' } }) }}
+    </div>
+
+    <div class="col-lg-12">
+    {{ form_row(form.questionAnswer,{ 'attr': {'class': 'form-control' } }) }}
+    </div>
+    {{ form_rest(form) }}
+    </div>
+    <div class="col-lg-6"style="padding-top: 2%;">
+        <button type="submit" class="btn btn-primary">{{'question.btn.create'|trans}}</button>
+         <a class="btn btn-default" id="cancelBtn" >{{'question.btn.cancel'|trans}} </a>
+         <img style="" src="{{asset(('img/ajax-loader.gif'))}}" class="image-btn new-web-link" id="loadingcancel" hidden />
+    </div>
+</div>
+</form>
+
+<script type="text/javascript" src="{{ asset('js/jquery.js') }}"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+
+    $('form#ranking_form.form-horizontal').submit(function(e){
+          e.preventDefault();
+          $("#loadingcancel").show();
+          $.post($(this).attr('action'), $(this).serialize(), function(response){
+                $("#loadingcancel").hide();
+                $("div.divempty").hide();
+                $("div.well").hide();
+                $('div#questions_div .column').append(response.Content);
+                $("div#questions_div :input").attr("disabled", true);
+                $('#question_form').empty();
+                if($('#input_new_name').val() != ''){
+                $('#send_btn').removeAttr('disabled');
+                $('#preview_btn').removeAttr('disabled');
+                $('#save_tmp').removeAttr('disabled');
+                }
+            },'json');
+          
+          return false;
+        });
+
+	
+
+         $(function(){
+            $('#cancelBtn').click(function(e){
+                $("#loadingcancel").show();
+                $('#question_form').empty();
+                $("div.well").hide();
+             });
+        });
+});
+</script>
+

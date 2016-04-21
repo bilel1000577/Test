@@ -1,0 +1,13 @@
+{% extends "::layout.html.twig" %}
+{% block menu %}
+	{% endblock %}
+	{% block body %}
+	<div>
+		{% block quizmoo_profile %}
+		{% endblock %}
+	</div>
+	<div class="user_contenu">
+	  {% block fos_user_content %}
+	  {% endblock fos_user_content %}
+	</div>
+{% endblock %}

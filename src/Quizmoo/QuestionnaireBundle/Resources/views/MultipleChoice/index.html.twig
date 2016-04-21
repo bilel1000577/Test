@@ -1,0 +1,42 @@
+{% extends "QuizmooQuestionnaireBundle::layout.html.twig" %}
+{% block quizmoo_questionnaire_body %}
+<h1>MultipleChoice list</h1>
+
+<table class="records_list">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Questiontext</th>
+            <th>Issingle</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for entity in entities %}
+        <tr>
+            <td><a href="{{ path('multiplechoice_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+            <td>{{ entity.questionText }}</td>
+            <td>{{ entity.isSingle }}</td>
+            <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('multiplechoice_show', { 'id': entity.id }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('multiplechoice_edit', { 'id': entity.id }) }}">edit</a>
+                    </li>
+                </ul>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+<ul>
+    <li>
+        <a href="{{ path('multiplechoice_new') }}">
+            Create a new entry
+        </a>
+    </li>
+</ul>
+{% endblock %}

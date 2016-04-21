@@ -1,0 +1,41 @@
+<div class="dragbox" id="{{question.id}}" data-id="{{questionnaire_id}}" data-order="{{ question.questionOrder }}">
+        <h2>   <span class="questionOrder"> {{ question.questionOrder }}</span>  {{ question.questionText }}  
+        <li class="dropdown" style="display: initial;;float: right;">
+            <a class="dropdown-toggle " data-toggle="dropdown" href="#" id="toggleQuestion"><img src="{{asset('img/chevron.png')}}" style="height: 10px"> </a>
+            <ul class="dropdown-menu" aria-labelledby="toggleQuestion">
+              <li>
+                <a class='minimize1' href="#" data-minimize="{{question.id}}" id="minimize{{question.id}}" >{{'question.minimize'|trans}}</a>
+                <a class='minimize2' href="#" data-maximize="{{question.id}}" id="maximize{{question.id}}" style="display:none;">{{'question.maximize'|trans}}</a>
+              </li> 
+              <li>
+                <a class="cloneQuestion"href="#" data-linkCopy="{{ path('questionnaire_copy_question', { 'questionId': question.id ,'questionnaireId' : questionnaire_id }) }}" data-idQuestion="{{question.id}}" data-idQuestionnaire="{{questionnaire_id}}">{{'question.copy'|trans}}</a>
+              </li> 
+            </ul>
+          </li>  
+          {# <a class='minimize' href="#" ><img src="{{asset('img/chevron.png')}}"></a> #}
+        </h2> 
+
+            <div class="dragbox-content" >
+
+            <div class="dragbox-content editableMC">   
+             {% for answer in question.answerOptions %}
+                <br>
+                {% if question.isSingle %}
+                  <label class="radio" style="margin-left: 15px;"> 
+                    <input type="radio" name="x" value="un" >{{ answer.answerTitle }} 
+                  </label>
+                {% else %}
+                  <label class="checkbox" style="margin-left: 15px;">
+                      <input type="checkbox"  value="option">  {{ answer.answerTitle }} 
+                  </label>
+                {% endif %}
+              
+             {% endfor %}
+            <div class="pull-right" style="margin-top: -3%;"> 
+                <a  id="editQestion{{question.id}}" class="btn btn-primary"  href="#" data-link="{{path('multiplechoice_edit', { 'id': question.id ,'questionnaire' : questionnaire_id }) }}" >{{'question.btn.update'|trans}}</a>
+                <a data-toggle="modal" id="deleteQuestion{{question.id}}" class="btn btn-primary"  href="{{path('multiplechoice_delete', { 'id': question.id ,'questionnaire' : questionnaire_id }) }}" data-link="{{path('multiplechoice_delete', { 'id': question.id ,'questionnaire' : questionnaire_id }) }}">{{'question.btn.delete'|trans}}</a>
+            </div>
+            <br>
+          </div>
+      </div>
+</div>

@@ -1,0 +1,7 @@
+parameters:
+#    quizmoo_respondent.example.class: Quizmoo\RespondentBundle\Example
+
+services:
+#    quizmoo_respondent.example:
+#        class: %quizmoo_respondent.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

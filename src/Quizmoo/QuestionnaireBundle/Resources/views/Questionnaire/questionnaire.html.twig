@@ -1,0 +1,259 @@
+<link rel="stylesheet" href="{{ asset('css/questionnaire-creation.css') }}" type="text/css" />
+
+            <input type="hidden" id="locale" value="{{app.getRequest().getLocale()}}"></div>
+            <div class="input-append" style='padding-bottom: 2%;padding-top: 2%;'>
+                <form class="form-inline" id="myFormModify"  action="{{path('rename_questionnaire',{'id':questionnaire.id})}}" method="POST" >
+                  <div class="form-group">
+                    <label for="input_new_name">{{'questionnaire.title'|trans}} </label>
+                  </div>
+                  <div class="form-group">
+                    {%  if questionnaire.questionnaireName != "" %}
+                    <div class="form-group">
+                    <input class="form-control"  id="input_new_name" type="text" value="{{ questionnaire.questionnaireName }}" required placeholder="{{'questionnaire.title'|trans}}" />
+                    </div>
+                    <div class="form-group">
+                    <button class="btn btn-primary"  id="update-button">{{'questionnaire.edit_title'|trans}}</button>
+                    <button class="btn btn-primary" type="submit" id="validate-button" style="display: none;">{{'questionnaire.submit_title'|trans}}</button>
+                    <span class="loding">
+                        <img style="" src="{{asset(('img/loading.gif'))}}" class="image-btn new-web-link" id="loading" hidden />
+                    </span>
+                    </div>
+                    {% else %}
+                    <div class="form-group">
+                    <input class="form-control"  id="input_new_name" type="text" value="" required autofocus placeholder="{{'questionnaire.title'|trans}}" />
+                    </div>
+                    <div class="form-group">
+                    <button class="btn btn-primary"  type="submit" id="validate-button">{{'questionnaire.submit_title'|trans}}</button>
+                    <button class="btn btn-primary"  id="update-button" style="display: none;">{{'questionnaire.edit_title'|trans}}</button>
+                    <span class="loding">
+                        <img style="" src="{{asset(('img/loading.gif'))}}" class="image-btn new-web-link" id="loading" hidden />
+                    </span>
+                    </div>
+                    {% endif %}  
+                  </div>
+                </form>   
+            </div>            
+
+            
+            <!--display single/multiple questions-->
+              {# <input type="hidden" id="questionnaire_id" value="{{ questionnaire.id}}">
+              <input type="hidden" id="locale" value="{{ app.request.getLocale() }}">
+              {% if (questionnaire.displaySingleQuestion) %}
+              <input type="checkbox" checked id='singleCheck' class="myCheckC" value="{{path('displayMultipleQuestion',{'id': questionnaire.id })}}"/>&nbsp;<label id='label' for="singleCheck">{{'check.single'|trans}}</label>
+              {% else %}
+              <input type="checkbox" id='singleCheck' class="myCheckC" value="{{path('displaySingleQuestion',{'id': questionnaire.id })}}"/>&nbsp;<label id='label' for="singleCheck">{{'check.single'|trans}}</label>
+              {% endif %} #}
+            <!-- end display single/multiple questions-->
+
+            <br>
+
+            <form class="form-inline" id="myFormDescription"  action="{{path('questionnaire_describe',{'id':questionnaire.id})}}" method="POST"  style="padding-top: 5px;">
+            <div class="form-group">
+                <label> {{'questionnaire.description'|trans}} </label>
+            </div>
+             {% if questionnaire.description != null %}
+                 {% set description = questionnaire.description %}
+                  <div class="form-group">
+                  <textarea class="form-control" cols="72" rows="1" id='descriptionTextArea' name="descriptionTextArea" required placeholder="{{'questionnaire.description'|trans}}">{{description}}</textarea>
+                  </div>
+                  <div class="form-group">
+                    <button class="btn btn-primary"  id="edit-description">{{'questionnaire.edit_description'|trans}}</button>
+                    <button type="submit" class="btn btn-primary"  id="submit-description" style="display: none;">{{'questionnaire.submit_description'|trans}}</button>
+                    <span class="loding">
+                        <img style="" src="{{asset(('img/loading.gif'))}}" class="image-btn new-web-link" id="loadingDescription" hidden />
+                    </span>
+                  </div>
+              {% else %}
+                 {% set description = '' %}
+                  <div class="form-group">
+                  <textarea class="form-control" cols="100" rows="1" id='descriptionTextArea' name="descriptionTextArea" required placeholder="{{'questionnaire.description'|trans}}">{{description}}</textarea>
+                  </div>
+                  <div class="form-group">
+                    <button type="submit" class="btn btn-primary"  id="submit-description">{{'questionnaire.submit_description'|trans}}</button>
+                    <button class="btn btn-primary"  id="edit-description" style="display: none;">{{'questionnaire.edit_description'|trans}}</button>
+                    <span class="loding">
+                        <img style="" src="{{asset(('img/loading.gif'))}}" class="image-btn new-web-link" id="loadingDescription" hidden />
+                    </span>
+                  </div>
+              {% endif %}
+            </form>
+
+          
+
+          <div id="questions_div" style="margin-top: 2%;">
+            <div class="column">
+              {% if nbOfQuestions == 0 %}
+                <p style="margin-top: 20px;padding-top: 5px;font-weight: 600;">{{'questionnaire.empty_survey'|trans}}</p>
+              {% endif %}
+          {% for question in questionnaire.questions %}
+
+          {% set urledit = 'test' %}
+          {% set urldelete = 'test'%}
+
+          <div class="dragbox" id="{{question.id}}" data-id="{{questionnaire.id}}" data-order="{{ question.questionOrder }}" >
+          <h2 >  <span class="questionOrder"> {{ question.questionOrder }}</span>  {{ question.questionText }}  {#{ question.QuestionType.questionTypeName }#}
+
+          <li class="dropdown" style="display: initial;;float: right;">
+            <a class="dropdown-toggle " data-toggle="dropdown" href="#" id="toggleQuestion"><img src="{{asset('img/chevron.png')}}" style="height: 10px"> </a>
+            <ul class="dropdown-menu" aria-labelledby="toggleQuestion">
+              <li>
+                <a class='minimize1' href="#" data-minimize="{{question.id}}" id="minimize{{question.id}}" >{{'question.minimize'|trans}}</a>
+                <a class='minimize2' href="#" data-maximize="{{question.id}}" id="maximize{{question.id}}" style="display:none;">{{'question.maximize'|trans}}</a>
+              </li>
+              <li>
+                <a class="cloneQuestion"href="#" data-linkCopy="{{ path('questionnaire_copy_question', { 'questionId': question.id ,'questionnaireId' : questionnaire.id }) }}" data-idQuestion="{{question.id}}" data-idQuestionnaire="{{questionnaire.id}}">{{'question.copy'|trans}}</a>
+              </li>
+            </ul>
+          </li></h2>
+          <div class="dragbox-content" >
+          {% set entity = question.id %}
+          {% set name = question.questionText %}
+
+
+          {#Multiple Choice Question#}
+          {% if question.questionType == "Multiple Choice Question" %}
+            {% set urledit = path('multiplechoice_edit', { 'id': entity ,'questionnaire' : questionnaire.id }) %}
+            {% set urldelete = path('multiplechoice_delete', { 'id': entity ,'questionnaire' : questionnaire.id }) %}
+            {# here we should make a test on the type of the question in order to render the answer options#}
+            {% for answer in question.answerOptions %}
+
+            {% if question.isSingle %}
+              <label class="radio" style="margin-left: 15px;"> <input type="radio" name="x" value="un" >
+                                     {{ answer.answerTitle }}
+              </label>
+                                   {% else %}
+              <label class="checkbox" style="margin-left: 15px;">
+                  <input type="checkbox"  value="option">  {{ answer.answerTitle }}
+              </label>
+            {% endif %}
+            {% if not loop.last %} <br> {% endif %}
+            {% endfor %}
+            {% if not loop.last %} <br> {% endif %}
+          {% endif %}
+
+        
+
+          {#Single TextBox Question#}
+          {% if question.questionType == "Single TextBox Question" %}
+            {% set urledit = path('singletextboxquestion_edit', { 'id': entity ,'questionnaire' : questionnaire.id }) %}
+            {% set urldelete = path('singletextboxquestion_delete', { 'id': entity ,'questionnaire' : questionnaire.id }) %}
+                          <p> <br> <br> <textarea class="form-control" id="textarea" placeholder="{{'placeholder.answer'|trans}}"></textarea></p>
+            {% if not loop.last %} <br> {% endif %}
+          {% endif %}
+
+          {% if question.questionType == "Ranking Question" %}
+            {% set urledit = path('rankingquestion_edit', { 'id': entity ,'questionnaire' : questionnaire.id }) %}
+            {% set urldelete = path('rankingquestion_delete', { 'id': entity ,'questionnaire' : questionnaire.id }) %}
+                <table class="table">
+                <td class='thide'></td>
+                {% for i in 1..question.answerOptions.count %}
+                  <th class='thide'>{{loop.index}}</th>
+                  {% endfor %}
+                  {% for answer in question.answerOptions %}
+                   <tr>
+                    <td class="tdmobile">{{ answer.answerTitle }}</td>
+                      {% for i in 1..question.answerOptions.count %}
+                      <td class="rank"><input id="{{question.id}}" type="radio" name="{{loop.index}}" class="ranking" value="{{answer.id}}" required="true"/></td>
+                      {% endfor %}
+                    </tr>
+                  {% endfor %}
+               </table>
+            {% if not loop.last %} <br> {% endif %}
+          {% endif %}
+
+      
+          <div class="pull-right">
+              <a  id="editQestion{{question.id}}" class="btn btn-primary"  href="#" data-link="{{ urledit }}" >
+              {{'question.btn.update'|trans}}</a>
+              <div class="modal hide fade" id="ModalUpdateQuestion{{question.id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-header">
+                <h5 id="myModalLabel">{{'questionnaire.edit_question'|trans}}</h5>
+                </div>
+                <div class="modal-body">
+                </div>
+                <div class="modal-footer">
+                 <a href="#" data-dismiss="modal" class="btn" >{{'questionnaire.close_question'|trans}}</a>
+                </div>
+              </div>
+              <script type="text/javascript" src="{{ asset('js/jquery.js') }}">
+                 $('#editQestion{{question.id}}').on('click', function(e) {
+                  e.preventDefault();
+                   $('ModalUpdateQuestion{{question.id}} .modal-body').modal({remote: $(this).attr("href")});
+                   });
+              </script>
+
+              <a data-toggle="modal" id="deleteQuestion{{question.id}}" class="btn btn-primary"  href="{{ urldelete }}" data-target="#ModalDeleteQuestion{{question.id}}">{{'question.btn.delete'|trans}}</a>
+              <div class="modal hide fade" id="ModalDeleteQuestion{{question.id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                  <div class="modal-header">
+                  <h5 id="myModalLabel">Delete Question</h5>
+                  </div>
+                  <div class="modal-body">
+                  </div>
+                  <div class="modal-footer">
+                  <a href="#" data-dismiss="modal" class="btn" >{{'questionnaire.close_question'|trans}}</a>
+                  </div>
+              </div>
+              <script type="text/javascript" src="{{ asset('js/jquery.js') }}">
+               $('#deleteQuestion{{question.id}}').on('click', function(e) {
+                e.preventDefault();
+                $('#ModalDeleteQuestion{{question.id}}').modal({remote: $(this).attr("href")});
+                });
+              </script>
+          </div><br><br>
+                
+                
+          </div>
+          </div>
+
+        {% endfor %}
+
+        </div>
+
+      </div>
+
+      {% block quizmoo_create_question_body %}
+          {% set id_questionnaire = questionnaire.id %}
+          <div class="well" style="display:none;">
+              {% render  'QuizmooQuestionnaireBundle:Question:new' with {'id': id_questionnaire} %}
+          </div>
+      {% endblock %}
+
+    
+      <footer>
+      <div class="foot-fixed-bottom">
+       <div class="container">
+        <ul class="footernav nav nav-pills nav-justified">
+          <li class="footernav">
+          {% if nbOfQuestions == 0 %}
+          <a  data-toggle="modal" class="btn left" id='send_btn' href="#send_confirmation"  disabled> {{'questionnaire.send_survey'|trans}}</a>
+          {% else %}
+          <a  data-toggle="modal" class="btn left" id='send_btn' href="#send_confirmation" > {{'questionnaire.send_survey'|trans}}</a>
+          {% endif %}
+          </li>
+        </ul>
+     </div>
+    </div>
+    </footer>
+
+
+   <div id="send_confirmation" class="modal fade" tabindex="-1"
+      role="dialog" aria-labelledby="addTemplateLabel" aria-hidden="true">
+      <div class="modal-dialog">
+          <div class="modal-content">
+          <div class="modal-header">
+          <a class="close" data-dismiss="modal">×</a>
+          <h5>{{'sending.confirmation'|trans}}</h5>
+          </div>
+          <div class="modal-body">
+          <p> {{'sending.confirmation_text'|trans}} </p>
+          </div>
+          <div class="modal-footer">
+          <a href="{{path('questionnaire_generate_url',{'id': questionnaire.id})}}" class="btn btn-primary">{{'sending.confirmation_yes'|trans}}</a>
+          <a href="#" class="btn btn-default" data-dismiss="modal">{{'sending.confirmation_no'|trans}}</a>
+          </div>
+        </div>
+    </div>
+  </div>
+
+
+

@@ -1,0 +1,96 @@
+rating_scale_chartstatistic_homepage:
+    pattern:  /hello/{name}
+    defaults: { _controller: StatisticBundle:MultipleChoiceAnswerChart:index }
+statistic_test:
+    pattern:  /test
+    defaults: { _controller: StatisticBundle:MultipleChoiceAnswerChart:chart }
+statistic_exemple:
+    pattern:  /testaction
+    defaults: { _controller: StatisticBundle:MultipleChoiceAnswerChart:test }
+statistic_multiple_choice:
+    pattern:  /{_locale}/multiple_choice_chart/{questionId}
+    defaults: { _controller: StatisticBundle:MultipleChoiceAnswerChart:getMCAResult}
+    requirements:
+                _locale: en|fr|ar
+    options:
+                expose: true
+statistic_select_field:
+    pattern:  /{_locale}/select_field_chart/{questionId}
+    defaults: { _controller: StatisticBundle:SelectFieldAnswerChart:getSelectFieldResult}
+    requirements:
+                _locale: en|fr|ar
+    options:
+                expose: true
+statistic_ranking:
+    pattern:  /{_locale}/ranking_chart/{questionId}
+    defaults: { _controller: StatisticBundle:RankingAnswerChart:getRankingAnswerResult}
+    requirements:
+                _locale: en|fr|ar
+    options:
+                expose: true
+statistic_rank:
+    pattern:  /rank_chart/{questionId}
+    defaults: { _controller: StatisticBundle:RankingAnswerChart:getRank }
+statistic_matrix_of_choice:
+    pattern:  /matrix_of_choice_chart/{questionId}
+    defaults: { _controller: StatisticBundle:MatrixOfChoiceAnswerChart:getMOCResult }
+statistic_rating_scale:
+    pattern:  /{_locale}/rating_scale_chart/{questionId}
+    defaults: { _controller: StatisticBundle:RatingScaleAnswerChart:getRatingResult}
+    requirements:
+                _locale: en|fr|ar
+    options:
+                expose: true
+statistic_rating_scale_item:
+    pattern:  /{_locale}/rating_scale_item_chart/{questionId}/{scale}
+    defaults: { _controller: StatisticBundle:RatingScaleAnswerChart:getItemResult}
+    requirements:
+                _locale: en|fr|ar
+statistic_matrix_drop_down:
+    pattern:  /matrix_drop_down_chart/{questionId}
+    defaults: { _controller: StatisticBundle:MatrixOfDropDownAnswerChart:getMatrixOfDropDownResult }
+nombre_of_answers_per_question:
+    pattern:  /{_locale}/nombre_of_answers_per_question/{questionnaireId}
+    defaults: { _controller: StatisticBundle:Default:countNbreOfAnswersPerQuestion }
+    requirements:
+                _locale: en|fr|ar
+answers_per_choice:
+    pattern:  /{_locale}/answers_per_choice/{questionnaireId}
+    defaults: { _controller: StatisticBundle:Filter:filtreAnswersPerChoice }
+    requirements:
+                _locale: en|fr|ar
+mobile_export:
+    pattern:  /mobile/{chartType}/{questionnaireId}
+    defaults: { _controller: StatisticBundle:MobileExport:index }
+send_excel_mail:
+    pattern:  excel_mail/{questionnaireId}/
+    defaults: { _controller: StatisticBundle:ExcelMail:index }
+send_images_mail:
+    pattern:  images_mail/{chartType}/{questionnaireId}
+    defaults: { _controller: StatisticBundle:MobileExport:sendImageAsemail }
+download_chart:
+    pattern:  /{_locale}/download_chart/{questionId}/{chartType}
+    defaults: { _controller: StatisticBundle:MobileExport:downloadChart}
+    requirements:
+                _locale: en|fr|ar
+    options:
+                expose: true
+download_all_chart:
+    pattern:  /{_locale}/download_all_chart/{id}
+    defaults: { _controller: StatisticBundle:MobileExport:downloadAllChart}
+    requirements:
+                _locale: en|fr|ar
+
+email_all_chart:
+    pattern:  /{_locale}/emailcharts/{id}/{email}/{save}
+    defaults: { _controller: StatisticBundle:Download:emailAllCharts}
+    requirements:
+                _locale: en|fr|ar
+
+web_download_all_chart:
+    pattern:  /{_locale}/downloadcharts/{id}
+    defaults: { _controller: StatisticBundle:Download:downloadAllCharts}
+    requirements:
+                _locale: en|fr|ar
+    options:
+                expose: true

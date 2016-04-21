@@ -1,0 +1,12 @@
+{# fields_errors.html.twig #}
+{% block field_errors %}
+    {% spaceless %}
+<div class="error" style="padding-bottom: 15px;">
+        {% if errors|length > 0 %}
+       {% for error in errors %}
+               {{ error.messageTemplate|trans(error.messageParameters, 'validators') }}
+            {% endfor %}
+        {% endif %}
+         </div>
+    {% endspaceless %}
+{% endblock field_errors %}

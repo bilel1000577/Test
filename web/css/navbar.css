@@ -1,0 +1,73 @@
+@media(max-width:767px){  
+li#mysurveys{
+    display: none;
+  }
+li#newsurvey{
+    display: none;
+  }
+ul#logoutMobile{
+  display: block;
+}
+li#logout{
+  display: none;
+}
+a#user.dropdown-toggle{
+  margin-left: 2%;
+  margin-right: 2%;
+}
+li.logoutMob{
+  margin-left: 2%;
+  margin-right: 2%;
+}
+
+}
+@media(min-width:768px){
+   li#mysurveys{
+    display: none;
+  }
+  li#newsurvey{
+    display: none;
+  }
+  ul#logoutMobile{
+  display: none;
+  }
+  li#logout{
+  display: block;
+  }
+}
+@media(min-width:992px){
+   li#mysurveys{
+    display: none;
+  }
+  li#newsurvey{
+    display: none;
+  }
+  ul#logoutMobile{
+  display: none;
+  }
+  li#logout{
+  display: block;
+  }
+}
+@media(min-width:1200px){
+   li#mysurveys{
+    display: none;
+  }
+  li#newsurvey{
+    display: none;
+  }
+  ul#logoutMobile{
+  display: none;
+  }
+  li#logout{
+  display: block;
+  }
+}
+.navbar-inverse .nav > li > a:hover {
+  color: #ffffff;
+  background-color: #3F3F3F;
+  }
+  .navbar-inverse .nav > li > a#logo:hover {
+  color: #ffffff;
+  background-color: transparent;
+  }

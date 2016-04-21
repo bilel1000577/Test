@@ -1,0 +1,28 @@
+multipletextboxquestion:
+    pattern:     /
+    defaults:  { _controller: QuizmooQuestionnaireBundle:MultipleTextBoxQuestion:index}
+multipletextboxquestion_new:
+    pattern:     /new/{id}
+    defaults:  { _controller: QuizmooQuestionnaireBundle:MultipleTextBoxQuestion:new}
+multipletextboxquestion_show:
+    pattern:     /{id}/show
+    defaults:  { _controller: QuizmooQuestionnaireBundle:MultipleTextBoxQuestion:show}
+    requirements:
+        id:  \d+ 
+multipletextboxquestion_create:
+    pattern:     /create/{id}
+    defaults:  { _controller: QuizmooQuestionnaireBundle:MultipleTextBoxQuestion:create}
+multipletextboxquestion_edit:
+    pattern:     /{id}/edit/{questionnaire}
+    defaults:  { _controller: QuizmooQuestionnaireBundle:MultipleTextBoxQuestion:edit}
+    requirements:
+        id:  \d+
+multipletextboxquestion_update:
+    pattern:     /{id}/update/{questionnaire}
+    defaults:  { _controller: QuizmooQuestionnaireBundle:MultipleTextBoxQuestion:update}
+    requirements:
+        id:  \d+ 
+multipletextboxquestion_delete:
+    pattern:     /{id}/delete/{questionnaire}
+    defaults:  { _controller: QuizmooQuestionnaireBundle:MultipleTextBoxQuestion:delete}
+
